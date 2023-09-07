@@ -1,5 +1,5 @@
 **English** | [中文](./README.md)
-<h2 align="center">🏬Laplace.NET General management platform🏬</h2>
+<h2 align="center">🏬Lean365.Lps General management platform🏬</h2>
 <h4 align="center">👉.Net7+Vue3.x+Element plus Fast development framework with front and rear separation👈</h4>  
 <div align=center>
 <img src="https://github.com/Lean365/LaplaceNet/blob/master/La.Vue/src/assets/logo/Laplace.png" width=128" height="128" />
@@ -90,15 +90,15 @@ Due to being a personal project, funds are limited!!!
 ## 🔰Project Structure
 
 ```
-├─La.Infra                          -> [base layer class library]: data types, I/O and other class libraries;
-├─La.Common                         -> [public layer class library]: Helper including data, regular, strings, etc;
-├─La.Service                        -> [service layer class library]: provides WebApi interface calls;
-├─La.Repository                     -> [Repository layer class library]: facilitates the provision of operations with executing stored procedures;
-├─La.Model                          -> [entity layer class library]: provides database tables, data transfer objects in the project;
-├─La.WebApi                         -> [webapi interface]: provides interface services for Vue version or other three-party systems.
-├─La.Tasks                          -> [timed task library]: provides project timed task implementation functions;
-├─La.CodeGenerator                  -> [code generation function]: contains templates, methods, code, downloads.
-├─La.Vue                            -> [front-end UI]: vue3.0 version UI layer.
+├─Lps.Infrastructure                 -> [base layer class library]: data types, I/O and other class libraries;
+├─Lps.Common                         -> [public layer class library]: Helper including data, regular, strings, etc;
+├─Lps.Service                        -> [service layer class library]: provides WebApi interface calls;
+├─Lps.Repository                     -> [Repository layer class library]: facilitates the provision of operations with executing stored procedures;
+├─Lps.Model                          -> [entity layer class library]: provides database tables, data transfer objects in the project;
+├─Lps.WebApi                         -> [webapi interface]: provides interface services for Vue version or other three-party systems.
+├─Lps.Tasks                          -> [timed task library]: provides project timed task implementation functions;
+├─Lps.CodeGenerator                  -> [code generation function]: contains templates, methods, code, downloads.
+├─Lps.Vue                            -> [front-end UI]: vue3.0 version UI layer.
 ```
 
 ## 📌Demo Images
@@ -249,5 +249,5 @@ Change to
    <img src="https://github.com/Lean365/LaplaceNET/raw/master/La.Docs/images/iis9.png"/>
 
 ## 🔑License
-[MIT](https://github.com/Lean365/LaplaceNet/blob/master/LICENSE)
+[MIT](https://github.com/Lean365/Lean365.LPS/blob/master/LICENSE)
 
