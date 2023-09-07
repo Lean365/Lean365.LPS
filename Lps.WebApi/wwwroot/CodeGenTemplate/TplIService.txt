@@ -1,0 +1,32 @@
+﻿using System;
+using ${options.BaseNamespace}Model;
+using ${options.DtosNamespace};
+using ${options.ModelsNamespace}.${options.SubNamespace};
+using System.Collections.Generic;
+
+namespace ${options.IServicsNamespace}.${options.SubNamespace}.I${options.SubNamespace}Service
+{
+    /// <summary>
+    /// ${genTable.FunctionName}service接口
+    /// </summary>
+    public interface I${replaceDto.ModelTypeName}Service : IBaseService<${replaceDto.ModelTypeName}>
+    {
+        PagedInfo<${replaceDto.ModelTypeName}Dto> GetList(${replaceDto.ModelTypeName}QueryDto parm);
+
+        ${replaceDto.ModelTypeName} GetInfo(${replaceDto.PKType} ${replaceDto.PKName});
+
+$if(genTable.TplCategory == "tree")
+        List<${replaceDto.ModelTypeName}> GetTreeList(${replaceDto.ModelTypeName}QueryDto parm);
+$end
+        ${replaceDto.ModelTypeName} Add${replaceDto.ModelTypeName}(${replaceDto.ModelTypeName} parm);
+
+        int Update${replaceDto.ModelTypeName}(${replaceDto.ModelTypeName} parm);
+$if(replaceDto.ShowBtnTruncate)        
+        bool Truncate${replaceDto.ModelTypeName}();
+$end
+
+$if(replaceDto.ShowBtnImport)
+        (string, object, object) Import${replaceDto.ModelTypeName}(List<${replaceDto.ModelTypeName}> list);
+$end
+    }
+}

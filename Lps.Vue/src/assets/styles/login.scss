@@ -1,0 +1,117 @@
+.login-wrap {
+  background: radial-gradient(220% 105% at top center, #1b2947 10%, #4b76a7 40%, #81acae 65%, #f7f7b6);
+  background-attachment: fixed;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  // background-image: url('@/assets/images/login-bg.jpg');
+  background-size: cover;
+  flex-direction: column;
+
+  .login {
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 6px;
+    width: var(--base-login-width);
+  }
+}
+
+.title {
+  margin: 0px auto 30px auto;
+  text-align: center;
+  // color: #fff;
+}
+
+.login-form {
+  padding: 35px 15px 5px 15px;
+  position: relative;
+  height: 300px;
+
+  .input-icon {
+    height: 39px;
+    width: 14px;
+    margin-left: 0px;
+  }
+}
+
+.login-tip {
+  font-size: 13px;
+  text-align: center;
+  color: #bfbfbf;
+}
+
+.login-code {
+  width: 33%;
+  height: 40px;
+  float: right;
+
+  img {
+    width: 100%;
+    cursor: pointer;
+    vertical-align: middle;
+  }
+}
+
+.el-login-footer {
+  height: 40px;
+  line-height: 40px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  font-family: Arial;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.login-code-img {
+  height: 40px;
+  padding-left: 12px;
+}
+.langSet {
+  position: absolute;
+  left: 20px;
+  top: 10px;
+}
+
+.scan-wrap {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  transition: all ease 0.3s;
+  overflow: hidden;
+
+  .icon {
+    width: 48px;
+    height: 50px;
+    display: inline-block;
+    font-size: 48px;
+    position: absolute;
+    right: 1px;
+    top: 0px;
+  }
+  .scan-delta {
+    position: absolute;
+    width: 35px;
+    height: 70px;
+    z-index: 2;
+    top: 2px;
+    right: 21px;
+    background: var(--el-color-white);
+    transform: rotate(-45deg);
+  }
+}
+
+.login-scan-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: space-around;
+}

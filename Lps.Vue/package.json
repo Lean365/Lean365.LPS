@@ -1,0 +1,55 @@
+{
+  "name": "zr.admin",
+  "version": "3.8.2",
+  "description": "ZRAdmin.NET管理系统",
+  "author": "ZR",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build:prod": "vite build",
+    "build:stage": "vite build --mode staging",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/izory/ZrAdminNetCore"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^0.2.7",
+    "@microsoft/signalr": "^6.0.21",
+    "@vueuse/core": "^8.9.4",
+    "@wangeditor/editor": "^5.1.1",
+    "@wangeditor/editor-for-vue": "^5.1.11",
+    "axios": "^0.27.2",
+    "countup.js": "^2.1.0",
+    "crypto-js": "^4.1.1",
+    "echarts": "5.2.2",
+    "element-plus": "^2.3.12",
+    "file-saver": "2.0.5",
+    "fuse.js": "6.4.6",
+    "highlight.js": "^11.5.1",
+    "js-cookie": "3.0.1",
+    "jsencrypt": "3.2.1",
+    "md-editor-v3": "^1.11.11",
+    "nprogress": "0.2.0",
+    "pinia": "^2.1.6",
+    "qrcodejs2-fixes": "^0.0.2",
+    "qs": "^6.11.0",
+    "sortablejs": "^1.15.0",
+    "vue": "^3.3.4",
+    "vue-clipboard3": "^2.0.0",
+    "vue-cropper": "1.0.2",
+    "vue-i18n": "9.2.2",
+    "vue-router": "^4.2.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.2.3",
+    "@vue/compiler-sfc": "^3.3.4",
+    "sass": "1.45.0",
+    "unplugin-auto-import": "0.5.3",
+    "vite": "^4.3.9",
+    "vite-plugin-compression": "^0.3.6",
+    "vite-plugin-svg-icons": "1.0.5",
+    "vite-plugin-vue-setup-extend": "^0.4.0"
+  }
+}
