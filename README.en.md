@@ -1,6 +1,6 @@
-**中文** | [English](./README.en.md)
-<h2 align="center">🏬Laplace.NET通用管理系统🏬</h2>
-<h4 align="center">👉.Net7+Vue3.x+Element plus前后端分离的快速发开框架👈</h4>  
+**English** | [中文](./README.md)
+<h2 align="center">🏬Laplace.NET General management platform🏬</h2>
+<h4 align="center">👉.Net7+Vue3.x+Element plus Fast development framework with front and rear separation👈</h4>  
 <div align=center>
 <img src="https://github.com/Lean365/LaplaceNet/blob/master/La.Vue/src/assets/logo/Laplace.png" width=128" height="128" />
 <img src="https://github.com/Lean365/LaplaceNet/blob/master/La.Vue/src/assets/logo/Lean365.png" width=128" height="128" />
@@ -15,93 +15,93 @@
   
 </p>
 
-## 🎉概述
+## 🎉Overview
 
-- 侧重中小制造企业的生产看板。
-- 整合[ZR.Admin](https://gitee.com/izory)框架技术高效快速开发，前后端分离模式，开箱即用。
-- 专注您的业务，轻松开发从现在开始！
-
-
-## 💚 适合人群
-
-- 熟悉中小制造企业的业务流程。
-- 正在以及想使用 element-ui/element-plus 开发，前端开发经验 1 年+。
-- 熟悉 Vue.js 技术栈，使用它开发过几个实际项目。
-- 对原理技术感兴趣，想进阶和提升的同学。
-- 零基础，请移步到izory：[ZR.Admin](https://gitee.com/izory)。
+- Production Kanban focusing on small and medium-sized manufacturing companies.
+- Integration of [ZR.Admin](https://gitee.com/izory) framework technology efficient and rapid development.
+- Focus on your business, easy development starts now!
 
 
+## 💚 Crowd
 
-## 🌐在线体验
-- 😭计划中...
+- Familiar with the business processes of a manufacturing company.
+- Being and wanting to develop with element-ui/element-plus with 1+ years of front-end development experience.
+- Familiar with the Vue.js technology stack and have developed several real-world projects using it.
+- Students who want to advance and improve.
+- Zero-based, please move to izory: [ZR.Admin](https://gitee.com/izory).
+
+
+
+## 🌐Online
+- 😭pending... 
 
 
 
 ```
-由于是个人项目，资金有限！！！
+Due to being a personal project, funds are limited!!!
 ```
-## 💎代码仓库
-| 仓库 | Gitee | Github                                                         |
-| ---- | ----- | -------------------------------------------------------------- |
-| Vue3 |       | [Net7中已包含克隆/下载](https://github.com/Lean365/LaplaceNet) |
-| Net7 |       | [克隆/下载](https://github.com/Lean365/LaplaceNet)             |
+## 💎Repositories
+| Repositories | Gitee | Github                                                                           |
+| ------------ | ----- | -------------------------------------------------------------------------------- |
+| Vue3         |       | [Clone/Download already included in Net7](https://github.com/Lean365/LaplaceNet) |
+| Net7         |       | [Clone/Download](https://github.com/Lean365/LaplaceNet)                          |
 
-## 🍅前端
-- 核心框架 ：vue3.x、vuex、vue-router 、vue-cli 、axios、 element-plus、echats、i18n国际化等，前端采用vscode工具开发
+## 🍅Front-end
+- Core:vue3.x、vite、vuex、vue-router 、vue-cli 、axios、 element-plus、echats、i18n etc,using vscode tools.
 
-## 🍆后端
-- 核心框架：.Net7.0 + Web API + sqlsugar + swagger + signalR + IpRateLimit + Quartz.net + Redis，前端采用vs2022工具开发
+## 🍆Back-end 
+- Core:.Net7.0 + Web API + sqlsugar + swagger + signalR + IpRateLimit + Quartz.net + Redis,using vs2022 tools.
 
-## ✨精益生产管理
-1. 预算管理
-- 人员
-- 设备
-- 加班
-7. 费用管理
-- 实际预算对比
-8. 成本管理
-- 销售
+## ✨ LeanManufacturing Management
+1. Budget management
+- Personnel
+- Equipment
+- Overtime
+7. Expense management
+- Actual budget comparison
+8. Cost Management
+- sales
 - BOM
-- 人工
-- 生产
-9.  销售管理
-- 客诉
-- 序列号
-10. 物料管理
+- labor
+- production
+9. Sales Management
+- Customer Complaints
+- Serial number
+10. Material Management
 - MRP
 - FC
-11. 生产管理
-- **设变**
-- **OPH(每小时产量)**
-- 不良
-- 工数
-12. 品质管理
-- 成本
-- 来料
-- 成品
+11. Production Management 
+- **EC**
+- **OPH(Output per hour)**
+- Defects
+- Manhour
+12. Quality Control
+- Cost
+- Incoming material
+- finished product
 
 ## 🌈OA
-- 计划中...
+- pending...
 
 ## 🌈ChatGPT
-- 计划中...
+- pending...
 
 
-## 🔰项目结构
+## 🔰Project Structure
 
 ```
-├─La.Infra                          ->[基础层类库]：数据类型，I/O以及其他类库；
-├─La.Common                         ->[公共层类库]：包括数据、正则、字符串等的Helper；
-├─La.Service                        ->[服务层类库]：提供WebApi接口调用；
-├─La.Repository                     ->[仓库层类库]：方便提供有执行存储过程的操作；
-├─La.Model                          ->[实体层类库]：提供项目中的数据库表、数据传输对象；
-├─La.WebApi                         ->[webapi接口]：为Vue版或其他三方系统提供接口服务。
-├─La.Tasks                          ->[定时任务类库]：提供项目定时任务实现功能；
-├─La.CodeGenerator                  ->[代码生成功能]：包含模板、方法、代码、下载。
-├─La.Vue                            ->[前端UI]：vue3.0版本UI层。
+├─La.Infra                          -> [base layer class library]: data types, I/O and other class libraries;
+├─La.Common                         -> [public layer class library]: Helper including data, regular, strings, etc;
+├─La.Service                        -> [service layer class library]: provides WebApi interface calls;
+├─La.Repository                     -> [Repository layer class library]: facilitates the provision of operations with executing stored procedures;
+├─La.Model                          -> [entity layer class library]: provides database tables, data transfer objects in the project;
+├─La.WebApi                         -> [webapi interface]: provides interface services for Vue version or other three-party systems.
+├─La.Tasks                          -> [timed task library]: provides project timed task implementation functions;
+├─La.CodeGenerator                  -> [code generation function]: contains templates, methods, code, downloads.
+├─La.Vue                            -> [front-end UI]: vue3.0 version UI layer.
 ```
 
-## 📌演示图
+## 📌Demo Images
 
 <table>
     <tr>
@@ -146,15 +146,15 @@
 	</tr>
 </table>
 
-## 🎉优势
+## 🎉Advantages
 
-1. 前台系统不用编写登录、授权、认证模块；只负责编写业务模块即可
-2. 后台系统无需任何二次开发，直接发布即可使用
-3. 前台与后台系统分离，分别为不同的系统（域名可独立）
-4. 全局异常统一处理
-5. 自定义的代码生成功能
+1. The front-end system does not need to write login, authorization and authentication modules; it is only responsible for writing business modules
+2. the backend system does not need any secondary development, direct release can be used
+3. front and back-end systems are separated, respectively, for different systems (domain names can be independent)
+4. unified global exception handling
+5. custom code generation function
 
-## 💐 特别鸣谢
+## 💐 Special Acknowledgements
 - 👉Ruoyi.vue：[Ruoyi](http://www.ruoyi.vip/)
 - 👉SqlSugar：[SqlSugar](https://www.donet5.com/Home/Doc)
 - 👉element-plus：[element-plus](https://github.com/element-plus/element-plus)
@@ -165,8 +165,8 @@
 - 👉cq-panda：[Vue.NetCore](https://github.com/cq-panda/Vue.NetCore)
 - 👉zuohuaijun：[Admin.NET](https://toscode.gitee.com/zuohuaijun/Admin.NET)
 
-## 🎀捐赠
-如果你觉得这个项目帮助到了你，你可以帮作者买一杯果汁表示鼓励 🍹 
+## 🎀Donate
+If you think this project has helped you, you can help the author buy a glass of juice to show your encouragement 🍹 
 <img src="https://github.com/Lean365/LaplaceNET/raw/master/La.Docs/images/pay.jpg"/>
 
 
@@ -178,63 +178,66 @@ Modern browsers and Internet Explorer 10+.
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | IE10, IE11, Edge                                                                                                                                                                                                 | last 2 versions                                                                                                                                                                                                    | last 2 versions                                                                                                                                                                                                | last 2 versions                                                                                                                                                                                                |
 
-## 🔧使用说明
-如果部署iis访问不了情况可以有以下两种办法：
-1. 后端打包：在VS2022菜单<生成>\<发布>
-2. 直接打开La.WebApi.exe文件然后看控制台的错误日志
-3. web.config里面有个false 改为 true，iis重启项目后运行网站后，跟目录下面 有个文件夹 log 里面有错误日志文件
-4. 有环境的请使用Laplace_deb.sql,sql2019版本直接导入，没有环境的可以使用SQLite版本，laplace.net.db，并在<font color=#ff0000>appsettings.json</font>配置
-5. 前端打包：npm run build:prod
- ```
-✓ built in 2m 20s
+## 🔧 Instructions for use
+If the deployment of iis cannot access the situation, there are two methods:
+1. Backend packaging: In the VS2022 menu<Generate><Publish>
+2. Open the La.WebApi.exe file directly and check the error log on the console
+3. Change false to true in webconfig. After restarting the project and running the website, there is an error log file in the folder log under the directory
+4. If there is an environment, please use Laplace_ Deb.sql, sql2019 version can be directly imported. If there is no environment, SQLite version, place.net.db can be used, and configured in<font color=# ff0000>appsettings. json</font>
+5. Front end packaging: npm run build: prod
 ```
-### 🔧溢出解决方案
- ```
+✓ build in 2m 20s
+```
+### 🔧 Overflow Solution
+```
 FATAL ERROR: Reached heap limit Allocation failed - JavaScript heap out of memory
 ```
-   1. 删除命令
-   ```
+1. Delete Command
+```
    rimraf node_modules
-   ```
-   2. 重新构建
-   ```
+```
+2. Reinstall
+```
    npm i
-   ```
-   3. 增加内存机制
-   ```
+```
+
+3. Increase memory mechanism
+```
    npm install -g increase-memory-limit
-   ```
-   4. 执行
-   ```
+```
+4. Execution
+```
     increase-memory-limit
-   ```
-   5. 修改node_modules\.bin\webpack.cmd文件，全局搜索 “%_prog%” 替换为 %_prog%即可
-   6. 修改package.js
-   ```
+```
+5. Modify node_modules\.bin\webpack.cmd, "%_prog%" replace % _prog% 
+6. Modify package.js
+```
      "scripts": {
     "dev": "vite",
     "build:prod": "vite build",
     "build:stage": "vite build --mode staging",
     "preview": "vite preview"
   },
-   ```
-   改成
-   ```
+
+```
+Change to
+```
      "scripts": {
     "dev": "node.exe --max-old-space-size=10240 node_modules/vite/bin/vite.js",
     "build:prod": "node.exe --max-old-space-size=10240 node_modules/vite/bin/vite.js build",
     "build:stage": "vite build --mode staging",
     "preview": "vite preview"
   },
-   ```
-   7. 重新打包
-   ```
+```
+7. Rebuild
+```
    npm run build:prod
-   ```
-6. IIS部署前端
-   下载URL重写模块[urlrewrite](https://www.iis.net/downloads/microsoft/url-rewrite)
-   下载代理模块[Application Request Routing](https://www.iis.net/downloads/microsoft/application-request-routing)
-   配置示例
+
+```
+6. IIS Deployment Vue
+   Download[urlrewrite](https://www.iis.net/downloads/microsoft/url-rewrite)
+   Download[Application Request Routing](https://www.iis.net/downloads/microsoft/application-request-routing)
+   Configuration Example
    <img src="https://github.com/Lean365/LaplaceNET/raw/master/La.Docs/images/iis1.png"/>
    <img src="https://github.com/Lean365/LaplaceNET/raw/master/La.Docs/images/iis2.png"/>
    <img src="https://github.com/Lean365/LaplaceNET/raw/master/La.Docs/images/iis3.png"/>
