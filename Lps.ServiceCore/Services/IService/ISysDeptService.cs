@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using Lps.Model.System;
-using Lps.Model.System.Dto;
+using Lps.ServiceCore.Model.Dto;
 using Lps.Model.System.Vo;
+using Lps.ServiceCore.Model.System;
 
-namespace Lps.Service.System.IService
+namespace Lps.ServiceCore.Service.IService
 {
     public interface ISysDeptService : IBaseService<SysDept>
     {

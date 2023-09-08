@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-
-namespace Lps.Model.System.Dto
+using Lps.Model;
+namespace Lps.ServiceCore.Model.Dto
 {
     public class RoleUserQueryDto : PagerInfo
     {

@@ -1,0 +1,32 @@
+{
+  "pmenu": {
+    "menuName": "メニュー名",
+    "menuState": "テータス",
+    "icon": "Icon",
+    "menuid": "ID",
+    "menuType": "タイプ",
+    "sort": "ソート",
+    "authorityID": "権限",
+    "componentPath": "コンポーネント",
+    "isShow": "表示否",
+    "parentMenu": "親メニュー",
+    "directory": "ディレクトリ",
+    "menu": "メニュー",
+    "button": "ボタン",
+    "link": "リンク",
+    "isFrame": "外部ンク否",
+    "routePath": "ルーティングアドレス",
+    "permissionStr": "権限文字",
+    "isCache": "Cache否",
+    "menuNameKey": "メニュー名(key)",
+    "menuNameKeymemo": "多言語翻訳キー:例:menu.system、多言語で記入する必要はありません。",
+    "selectIcon": "クリックしてアイコンを選択",
+    "linkMemo": "バックリンクを選択した場合、ルーティングアドレスは`http(s)://`で始まる必要があります",
+    "routePathmemo": "アクセスルートアドレス (例: 'user'、外部ネットワークアドレスが内部リンクアクセスを必要とする場合は 'http(s)://') で始まります",
+    "componentPathmemo": "'システム/ユーザー/インデックス' などのアクセスされたコンポーネントのパスは、デフォルトで 'views' ディレクトリになります",
+    "permissionStrmemo": "コントローラで定義されている権限文字: [ActionPermissionFilter(Permission = 'system:user:delete')]",
+    "isCachememo": "はいを選択すると、「キープアライブ」によってキャッシュされ、一致するコンポーネントの「名前」とアドレスが一貫している必要があります",
+    "isShowmemo": "非表示を選択すると、ルートはサイドバーに表示されませんが、引き続きアクセスできます",
+    "menuStatememo": "非アクティブ化を選択すると、ルートはサイドバーに表示されず、アクセスできなくなります"
+  }
+}

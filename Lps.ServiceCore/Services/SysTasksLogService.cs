@@ -1,13 +1,13 @@
-﻿using Infrastructure.Attribute;
+﻿using Lps.Infrastructure.Attribute;
 using System;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Lps.Model;
-using Lps.Model.System;
 using Lps.Repository;
-using Lps.Service.System.IService;
+using Lps.ServiceCore.Service.IService;
+using Lps.ServiceCore.Model.System;
 
-namespace Lps.Service.System
+namespace Lps.ServiceCore.Service
 {
     /// <summary>
     /// 任务日志

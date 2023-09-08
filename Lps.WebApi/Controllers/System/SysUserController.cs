@@ -1,20 +1,20 @@
 using Microsoft.AspNetCore.Mvc;
 using MiniExcelLibs;
 using SqlSugar;
-using Lps.Admin.WebApi.Filters;
+using Lps.WebApi.Filters;
 using Lps.Model;
-using Lps.Model.System;
-using Lps.Model.System.Dto;
-using Lps.Service.System.IService;
+using Lps.ServiceCore.Service.IService;
+using Lps.ServiceCore.Model.System;
+using Lps.ServiceCore.Model.Dto;
 
-namespace Lps.Admin.WebApi.Controllers.System
+namespace Lps.WebApi.Controllers.System
 {
     /// <summary>
     /// 用户管理
     /// </summary>
     [Verify]
     [Route("system/user")]
-    [ApiExplorerSettings(GroupName = "sys")]
+    [ApiExplorerSettings(GroupName = "system")]
     public class SysUserController : BaseController
     {
         private readonly ISysUserService UserService;

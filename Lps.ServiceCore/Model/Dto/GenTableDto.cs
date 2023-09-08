@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Lps.Model.System.Generate;
 
-namespace Lps.Model.System.Dto
+namespace Lps.ServiceCore.Model.Dto
 {
     public class GenTableDto
     {
@@ -20,7 +20,7 @@ namespace Lps.Model.System.Dto
         public string GenType { get; set; }
         public string GenPath { get; set; }
         //public string PermissionPrefix { get; set; }
-        public string Remark { get; set; }
+        public string ReMarks { get; set; }
         /// <summary>
         /// 额外参数
         /// </summary>
@@ -76,7 +76,7 @@ namespace Lps.Model.System.Dto
         /// <summary>
         /// 备注
         /// </summary>
-        public string Remark { get; set; }
+        public string ReMarks { get; set; }
         /// <summary>
         /// 自动填充类型
         /// </summary>

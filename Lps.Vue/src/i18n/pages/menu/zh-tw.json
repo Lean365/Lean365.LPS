@@ -1,0 +1,32 @@
+{
+  "Pmemu": {
+    "menuName": "菜單名稱",
+    "menuState": "菜單狀態",
+    "icon": "圖標",
+    "menuid": "菜單id",
+    "menuType": "菜單類型",
+    "sort": "排序",
+    "authorityID": "權限標識",
+    "componentPath": "組件路徑",
+    "sShow": "是否顯示",
+    "parentMenu": "上級菜單",
+    "directory": "目錄",
+    "menu": "菜單",
+    "button": "按鈕",
+    "link": "鏈接",
+    "isFrame": "是否外鏈",
+    "routePath": "路由地址",
+    "permissionStr": "權限字符",
+    "isCache": "是否緩存",
+    "menuNameKey": "菜單名(key)",
+    "menuNameKeymemo": "多語言翻譯key:eg:menu.system，不需要多語言的可不用填寫",
+    "selectIcon": "點擊選擇圖示",
+    "linkMemo": "選擇是外鏈則路由位址需要以'HTTP(s)://'開頭",
+    "routePathmemo": "訪問的路由位址，如:'user'，如外網位址需內鏈訪問則以'HTTP（s）://'開頭",
+    "componentPathmemo": "訪問的元件路徑，如:'system/user/index'，預設在'views'目錄下",
+    "permissionStrmemo": "控制器中定義的許可權字元，如:[ActionPermissionFilter（Permission = 'system:user:delete'）]）",
+    "isCachememo": "選擇是則會被'keep-alive'緩存，需要匹配元件的'name'和位址保持一致",
+    "isShowmemo": "選擇隱藏則路由將不會出現在側邊欄，但仍然可以訪問",
+    "menuStatememo": "選擇停用則路由將不會出現在側邊欄，也不能被訪問"
+  }
+}

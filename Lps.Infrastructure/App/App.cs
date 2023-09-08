@@ -1,4 +1,4 @@
-﻿using Infrastructure.Model;
+﻿using Lps.Infrastructure.Model;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
@@ -7,7 +7,7 @@ using Microsoft.Extensions.Options;
 using System;
 using System.Security.Claims;
 
-namespace Infrastructure
+namespace Lps.Infrastructure
 {
     public static class App
     {

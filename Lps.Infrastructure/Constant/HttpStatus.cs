@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Infrastructure.Constant
+namespace Lps.Infrastructure.Constant
 {
     public class HttpStatus
     {

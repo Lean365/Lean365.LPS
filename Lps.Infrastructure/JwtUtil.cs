@@ -1,5 +1,5 @@
-﻿using Infrastructure.Extensions;
-using Infrastructure.Model;
+﻿using Lps.Infrastructure.Extensions;
+using Lps.Infrastructure.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
@@ -10,7 +10,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 
-namespace Infrastructure
+namespace Lps.Infrastructure
 {
     /// <summary>
     /// 2023-8-29已从WebApi移至此

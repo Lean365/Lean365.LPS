@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Lps.Model.System.Dto
+namespace Lps.ServiceCore.Model.Dto
 {
     public class SysUserDto
     {
@@ -8,7 +8,7 @@ namespace Lps.Model.System.Dto
         public string UserName { get; set; }
         public string NickName { get; set; }
         public string Email { get; set; }
-        public string Remark { get; set; }
+        public string ReMarks { get; set; }
         public string Phonenumber { get; set; }
         /// <summary>
         /// 用户性别（0男 1女 2未知）
@@ -23,7 +23,7 @@ namespace Lps.Model.System.Dto
         public string UserName { get; set; }
         public string NickName { get; set; }
         public string Email { get; set; }
-        public string Remark { get; set; }
+        public string ReMarks { get; set; }
         public string Phonenumber { get; set; }
         /// <summary>
         /// 用户性别（0男 1女 2未知）
@@ -31,7 +31,7 @@ namespace Lps.Model.System.Dto
         public int Sex { get; set; }
         public DateTime? BeginTime { get; set; }
         public DateTime? EndTime { get; set; }
-        public int Status { get; set; }
+        public int IsStatus { get; set; }
         public long DeptId { get; set; }
     }
 }

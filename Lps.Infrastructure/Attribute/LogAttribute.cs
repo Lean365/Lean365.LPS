@@ -1,6 +1,6 @@
-﻿using Infrastructure.Enums;
+﻿using Lps.Infrastructure.Enums;
 
-namespace Infrastructure.Attribute
+namespace Lps.Infrastructure.Attribute
 {
     /// <summary>
     /// 自定义操作日志记录注解

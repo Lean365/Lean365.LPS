@@ -1,6 +1,6 @@
-using Infrastructure;
-using Infrastructure.Attribute;
-using Infrastructure.Extensions;
+using Lps.Infrastructure;
+using Lps.Infrastructure.Attribute;
+using Lps.Infrastructure.Extensions;
 using SqlSugar;
 using System;
 using System.Collections;
@@ -8,12 +8,12 @@ using System.Collections.Generic;
 using System.Linq;
 using Lps.Common;
 using Lps.Model;
-using Lps.Model.System;
-using Lps.Model.System.Dto;
+using Lps.ServiceCore.Model.Dto;
 using Lps.Repository;
-using Lps.Service.System.IService;
+using Lps.ServiceCore.Service.IService;
+using Lps.ServiceCore.Model.System;
 
-namespace Lps.Service
+namespace Lps.ServiceCore.Service
 {
     /// <summary>
     /// 系统用户
@@ -44,11 +44,11 @@ namespace Lps.Service
             var exp = Expressionable.Create<SysUser>();
             exp.AndIF(!string.IsNullOrEmpty(user.UserName), u => u.UserName.Contains(user.UserName));
             exp.AndIF(user.UserId > 0, u => u.UserId == user.UserId);
-            exp.AndIF(user.Status != -1, u => u.Status == user.Status);
+            exp.AndIF(user.IsStatus != -1, u => u.IsStatus == user.IsStatus);
             exp.AndIF(user.BeginTime != DateTime.MinValue && user.BeginTime != null, u => u.Create_time >= user.BeginTime);
             exp.AndIF(user.EndTime != DateTime.MinValue && user.EndTime != null, u => u.Create_time <= user.EndTime);
             exp.AndIF(!user.Phonenumber.IsEmpty(), u => u.Phonenumber == user.Phonenumber);
-            exp.And(u => u.DelFlag == 0);
+            exp.And(u => u.IsDeleted == 0);
 
             if (user.DeptId != 0)
             {
@@ -149,10 +149,10 @@ namespace Lps.Service
                 t.Email,
                 t.Phonenumber,
                 t.DeptId,
-                t.Status,
+                t.IsStatus,
                 t.Sex,
                 t.PostIds,
-                t.Remark,
+                t.ReMarks,
                 t.Update_by,
                 t.Update_time
             }, true);
@@ -177,7 +177,7 @@ namespace Lps.Service
         public int ChangeUserStatus(SysUser user)
         {
             CheckUserAllowed(user);
-            return Update(user, it => new { it.Status }, f => f.UserId == user.UserId);
+            return Update(user, it => new { it.IsStatus }, f => f.UserId == user.UserId);
         }
 
         /// <summary>
@@ -192,7 +192,7 @@ namespace Lps.Service
             UserRoleService.DeleteUserRoleByUserId((int)userid);
             // 删除用户与岗位关联
             UserPostService.Delete(userid);
-            return Update(new SysUser() { UserId = userid, DelFlag = 2 }, it => new { it.DelFlag }, f => f.UserId == userid);
+            return Update(new SysUser() { UserId = userid, IsDeleted = 2 }, it => new { it.IsDeleted }, f => f.UserId == userid);
         }
 
         /// <summary>
@@ -229,9 +229,9 @@ namespace Lps.Service
                 UserName = dto.Username,
                 NickName = dto.Username,
                 Password = password,
-                Status = 0,
+                IsStatus = 0,
                 DeptId = 0,
-                Remark = "用户注册"
+                ReMarks = "用户注册"
             };
             if (UserConstants.NOT_UNIQUE.Equals(CheckUserNameUnique(dto.Username)))
             {
@@ -278,10 +278,10 @@ namespace Lps.Service
             users.ForEach(x =>
             {
                 x.Create_time = DateTime.Now;
-                x.Status = 0;
-                x.DelFlag = 0;
+                x.IsStatus = 0;
+                x.IsDeleted = 0;
                 x.Password = "E10ADC3949BA59ABBE56E057F20F883E";
-                x.Remark = x.Remark.IsEmpty() ? "数据导入" : x.Remark;
+                x.ReMarks = x.ReMarks.IsEmpty() ? "数据导入" : x.ReMarks;
             });
             var x = Context.Storageable(users)
                 .SplitInsert(it => !it.Any())

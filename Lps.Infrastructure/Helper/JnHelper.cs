@@ -2,7 +2,7 @@
 using System;
 using System.IO;
 
-namespace Infrastructure.Helper
+namespace Lps.Infrastructure.Helper
 {
     public class JnHelper
     {

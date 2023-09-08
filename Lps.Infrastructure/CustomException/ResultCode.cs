@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Infrastructure
+namespace Lps.Infrastructure
 {
     public enum ResultCode
     {

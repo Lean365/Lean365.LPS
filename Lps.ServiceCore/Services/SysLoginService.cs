@@ -1,15 +1,15 @@
-﻿using Infrastructure;
-using Infrastructure.Attribute;
-using Infrastructure.Extensions;
+﻿using Lps.Infrastructure;
+using Lps.Infrastructure.Attribute;
+using Lps.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Http;
 using UAParser;
 using Lps.Model;
-using Lps.Model.System;
-using Lps.Model.System.Dto;
+using Lps.ServiceCore.Model.Dto;
 using Lps.Repository;
-using Lps.Service.System.IService;
+using Lps.ServiceCore.Service.IService;
+using Lps.ServiceCore.Model.System;
 
-namespace Lps.Service.System
+namespace Lps.ServiceCore.Service
 {
     /// <summary>
     /// 登录
@@ -40,7 +40,7 @@ namespace Lps.Service.System
             }
             SysUser user = SysUserService.Login(loginBody);
             logininfor.UserName = loginBody.Username;
-            logininfor.Status = "1";
+            logininfor.IsStatus = 0;
             logininfor.LoginTime = DateTime.Now;
             logininfor.Ipaddr = loginBody.LoginIP;
 
@@ -54,14 +54,14 @@ namespace Lps.Service.System
                 AddLoginInfo(logininfor);
                 throw new CustomException(ResultCode.LOGIN_ERROR, logininfor.Msg, false);
             }
-            if (user.Status == 1)
+            if (user.IsStatus == 1)
             {
                 logininfor.Msg = "该用户已禁用";
                 AddLoginInfo(logininfor);
                 throw new CustomException(ResultCode.LOGIN_ERROR, logininfor.Msg, false);
             }
 
-            logininfor.Status = "0";
+            logininfor.IsStatus = 0;
             logininfor.Msg = "登录成功";
             AddLoginInfo(logininfor);
             SysUserService.UpdateLoginInfo(loginBody, user.UserId);
@@ -85,7 +85,7 @@ namespace Lps.Service.System
             exp.AndIF(logininfoDto.BeginTime != null, it => it.LoginTime >= logininfoDto.BeginTime && it.LoginTime <= logininfoDto.EndTime);
             exp.AndIF(logininfoDto.Ipaddr.IfNotEmpty(), f => f.Ipaddr == logininfoDto.Ipaddr);
             exp.AndIF(logininfoDto.UserName.IfNotEmpty(), f => f.UserName.Contains(logininfoDto.UserName));
-            exp.AndIF(logininfoDto.Status.IfNotEmpty(), f => f.Status == logininfoDto.Status);
+            exp.AndIF(logininfoDto.IsStatus.ToString().IfNotEmpty(), f => f.IsStatus == logininfoDto.IsStatus);
             var query = Queryable().Where(exp.ToExpression())
             .OrderBy(it => it.InfoId, OrderByType.Desc);
 

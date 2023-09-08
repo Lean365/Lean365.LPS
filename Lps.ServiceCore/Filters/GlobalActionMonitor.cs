@@ -1,14 +1,14 @@
-﻿using Infrastructure;
-using Infrastructure.Attribute;
-using Infrastructure.Model;
+﻿using Lps.Infrastructure;
+using Lps.Infrastructure.Attribute;
+using Lps.Infrastructure.Model;
 using IPTools.Core;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Filters;
 using NLog;
-using Lps.Model.System;
-using Lps.Service.System.IService;
+using Lps.ServiceCore.Service.IService;
+using Lps.ServiceCore.Model.System;
 
 namespace Lps.ServiceCore.Middleware
 {
@@ -94,7 +94,7 @@ namespace Lps.ServiceCore.Middleware
 
                 SysOperLog sysOperLog = new()
                 {
-                    Status = 0,
+                    IsStatus = 0,
                     OperName = userName,
                     OperIp = ip,
                     OperUrl = HttpContextExtension.GetRequestUrl(context.HttpContext),

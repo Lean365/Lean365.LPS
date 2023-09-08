@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Infrastructure
+namespace Lps.Infrastructure
 {
     public class FileUtil
     {
@@ -174,6 +174,19 @@ namespace Infrastructure
             {
                 Console.WriteLine("写入文件出错了:" + ex.Message);
             }
+        }
+        /// <summary>
+        /// 删除文件
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="name"></param>
+        public static void deleteFile(string filePath, string fileName)
+        {
+            if (File.Exists(filePath + fileName))
+            {
+                File.Delete(filePath + fileName);
+            }
+
         }
     }
 }

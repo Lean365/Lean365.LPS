@@ -1,9 +1,11 @@
-﻿namespace Lps.Model.System.Dto
+﻿using Lps.ServiceCore.Model.System;
+using Lps.Model;
+namespace Lps.ServiceCore.Model.Dto
 {
     public class SysDeptQueryDto : PagerInfo
     {
-        public int? Status { get; set; }
-        public int? DelFlag { get; set; }
+        public int? IsStatus { get; set; }
+        public int? IsDeleted { get; set; }
         public string DeptName { get; set; }
     }
     public class SysDeptDto : SysBase
@@ -24,8 +26,8 @@
 
         public string Email { get; set; }
 
-        public int Status { get; set; }
+        public int IsStatus { get; set; }
 
-        public int DelFlag { get; set; }
+        public int IsDeleted { get; set; }
     }
 }

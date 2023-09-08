@@ -1,5 +1,5 @@
 **中文** | [English](./README.en.md)
-<h2 align="center">🏬Lean365.Lps通用管理系统🏬</h2>
+<h2 align="center">🏬Laplace.NET通用管理系统🏬</h2>
 <h4 align="center">👉.Net7+Vue3.x+Element plus前后端分离的快速发开框架👈</h4>  
 <div align=center>
 <img src="https://github.com/Lean365/LaplaceNet/blob/master/La.Vue/src/assets/logo/Laplace.png" width=128" height="128" />
@@ -90,15 +90,15 @@
 ## 🔰项目结构
 
 ```
-├─Lps.Infrastructure                 ->[基础层类库]：数据类型，I/O以及其他类库；
-├─Lps.Common                         ->[公共层类库]：包括数据、正则、字符串等的Helper；
-├─Lps.Service                        ->[服务层类库]：提供WebApi接口调用；
-├─Lps.Repository                     ->[仓库层类库]：方便提供有执行存储过程的操作；
-├─Lps.Model                          ->[实体层类库]：提供项目中的数据库表、数据传输对象；
-├─Lps.WebApi                         ->[webapi接口]：为Vue版或其他三方系统提供接口服务。
-├─Lps.Tasks                          ->[定时任务类库]：提供项目定时任务实现功能；
-├─Lps.CodeGenerator                  ->[代码生成功能]：包含模板、方法、代码、下载。
-├─Lps.Vue                            ->[前端UI]：vue3.0版本UI层。
+├─La.Infra                          ->[基础层类库]：数据类型，I/O以及其他类库；
+├─La.Common                         ->[公共层类库]：包括数据、正则、字符串等的Helper；
+├─La.Service                        ->[服务层类库]：提供WebApi接口调用；
+├─La.Repository                     ->[仓库层类库]：方便提供有执行存储过程的操作；
+├─La.Model                          ->[实体层类库]：提供项目中的数据库表、数据传输对象；
+├─La.WebApi                         ->[webapi接口]：为Vue版或其他三方系统提供接口服务。
+├─La.Tasks                          ->[定时任务类库]：提供项目定时任务实现功能；
+├─La.CodeGenerator                  ->[代码生成功能]：包含模板、方法、代码、下载。
+├─La.Vue                            ->[前端UI]：vue3.0版本UI层。
 ```
 
 ## 📌演示图
@@ -183,7 +183,7 @@ Modern browsers and Internet Explorer 10+.
 1. 后端打包：在VS2022菜单<生成>\<发布>
 2. 直接打开La.WebApi.exe文件然后看控制台的错误日志
 3. web.config里面有个false 改为 true，iis重启项目后运行网站后，跟目录下面 有个文件夹 log 里面有错误日志文件
-4. 有环境的请使用Laplace_deb.sql,sql2019版本直接导入，没有环境的可以使用SQLite版本，Lean365.Lps.db，并在<font color=#ff0000>appsettings.json</font>配置
+4. 有环境的请使用Laplace_deb.sql,sql2019版本直接导入，没有环境的可以使用SQLite版本，laplace.net.db，并在<font color=#ff0000>appsettings.json</font>配置
 5. 前端打包：npm run build:prod
  ```
 ✓ built in 2m 20s
@@ -246,5 +246,5 @@ FATAL ERROR: Reached heap limit Allocation failed - JavaScript heap out of memor
    <img src="https://github.com/Lean365/LaplaceNET/raw/master/La.Docs/images/iis9.png"/>
 
 ## 🔑License
-[MIT](https://github.com/Lean365/Lean365.LPS/blob/master/LICENSE)
+[MIT](https://github.com/Lean365/LaplaceNet/blob/master/LICENSE)
 

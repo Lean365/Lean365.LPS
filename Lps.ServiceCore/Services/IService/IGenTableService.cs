@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Lps.Model;
 using Lps.Model.System.Generate;
 
-namespace Lps.Service.System.IService
+namespace Lps.ServiceCore.Service.IService
 {
     public interface IGenTableService : IBaseService<GenTable>
     {

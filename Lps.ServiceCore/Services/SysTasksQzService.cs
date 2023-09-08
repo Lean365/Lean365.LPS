@@ -1,15 +1,15 @@
-﻿using Infrastructure;
-using Infrastructure.Attribute;
-using Infrastructure.Extensions;
+﻿using Lps.Infrastructure;
+using Lps.Infrastructure.Attribute;
+using Lps.Infrastructure.Extensions;
 using SqlSugar;
 using System;
 using Lps.Model;
-using Lps.Model.System;
-using Lps.Model.System.Dto;
+using Lps.ServiceCore.Model.Dto;
 using Lps.Repository;
-using Lps.Service.System.IService;
+using Lps.ServiceCore.Service.IService;
+using Lps.ServiceCore.Model.System;
 
-namespace Lps.Service.System
+namespace Lps.ServiceCore.Service
 {
     /// <summary>
     /// 定时任务
@@ -83,7 +83,7 @@ namespace Lps.Service.System
                 Cron = parm.Cron,
                 AssemblyName = parm.AssemblyName,
                 ClassName = parm.ClassName,
-                Remark = parm.Remark,
+                ReMarks = parm.ReMarks,
                 TriggerType = parm.TriggerType,
                 IntervalSecond = parm.IntervalSecond,
                 JobParams = parm.JobParams,

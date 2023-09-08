@@ -1,18 +1,18 @@
 ﻿using Lazy.Captcha.Core;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-using Lps.Admin.WebApi.Filters;
-using Lps.Model.System;
-using Lps.Model.System.Dto;
-using Lps.Service.System;
-using Lps.Service.System.IService;
+using Lps.WebApi.Filters;
+using Lps.ServiceCore.Service;
+using Lps.ServiceCore.Service.IService;
+using Lps.ServiceCore.Model.System;
+using Lps.ServiceCore.Model.Dto;
 
-namespace Lps.Admin.WebApi.Controllers.System
+namespace Lps.WebApi.Controllers.System
 {
     /// <summary>
     /// 登录
     /// </summary>
-    [ApiExplorerSettings(GroupName = "sys")]
+    [ApiExplorerSettings(GroupName = "system")]
     public class SysLoginController : BaseController
     {
         //static readonly NLog.Logger logger = NLog.LogManager.GetLogger("LoginController");
@@ -216,20 +216,20 @@ namespace Lps.Admin.WebApi.Controllers.System
         [AllowAnonymous]
         public IActionResult VerifyScan([FromBody] ScanDto dto)
         {
-            int status = -1;
+            int IsStatus = -1;
             object token = string.Empty;
             if (CacheService.GetScanLogin(dto.Uuid) is Dictionary<string, object> str)
             {
-                status = 0;
+                IsStatus = 0;
                 str.TryGetValue("token", out token);
                 if (str.ContainsKey("status") && (string)str.GetValueOrDefault("status") == "success")
                 {
-                    status = 2;//扫码成功
+                    IsStatus = 2;//扫码成功
                     CacheService.RemoveScanLogin(dto.Uuid);
                 }
             }
 
-            return SUCCESS(new { status, token });
+            return SUCCESS(new { IsStatus, token });
         }
 
         /// <summary>

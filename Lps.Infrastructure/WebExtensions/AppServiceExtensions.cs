@@ -1,10 +1,10 @@
-﻿using Infrastructure.Attribute;
+﻿using Lps.Infrastructure.Attribute;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
 using System.Reflection;
 
-namespace Infrastructure
+namespace Lps.Infrastructure
 {
     /// <summary>
     /// App服务注册

@@ -1,19 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SqlSugar;
-using Lps.Admin.WebApi.Filters;
+using Lps.WebApi.Filters;
 using Lps.Model;
-using Lps.Model.System;
-using Lps.Model.System.Dto;
-using Lps.Service.System.IService;
+using Lps.ServiceCore.Service.IService;
+using Lps.ServiceCore.Model.System;
+using Lps.ServiceCore.Model.Dto;
 
-namespace Lps.Admin.WebApi.Controllers.System
+namespace Lps.WebApi.Controllers.System
 {
     /// <summary>
     /// 任务日志
     /// </summary>
     [Verify]
     [Route("/monitor/jobLog")]
-    [ApiExplorerSettings(GroupName = "sys")]
+    [ApiExplorerSettings(GroupName = "tool")]
     public class TasksLogController : BaseController
     {
         private readonly ISysTasksLogService tasksLogService;
@@ -38,7 +38,7 @@ namespace Lps.Admin.WebApi.Controllers.System
             var predicate = Expressionable.Create<SysTasksLog>().And(it => it.CreateTime >= queryDto.BeginTime && it.CreateTime <= queryDto.EndTime);
             predicate = predicate.AndIF(queryDto.JobName.IfNotEmpty(), m => m.JobName.Contains(queryDto.JobName));
             predicate = predicate.AndIF(queryDto.JobGroup.IfNotEmpty(), m => m.JobGroup == queryDto.JobGroup);
-            predicate = predicate.AndIF(queryDto.Status.IfNotEmpty(), m => m.Status == queryDto.Status);
+            predicate = predicate.AndIF(queryDto.IsStatus.ToString().IfNotEmpty(), m => m.IsStatus == queryDto.IsStatus);
             predicate = predicate.AndIF(queryDto.JobId.IfNotEmpty(), m => m.JobId == queryDto.JobId);
 
             var response = tasksLogService.GetPages(predicate.ToExpression(), pager, m => m.CreateTime, OrderByType.Desc);

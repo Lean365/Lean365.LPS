@@ -4,7 +4,7 @@ using Swashbuckle.AspNetCore.Filters;
 using Swashbuckle.AspNetCore.SwaggerUI;
 using System.Reflection;
 
-namespace Lps.Admin.WebApi.Extensions
+namespace Lps.WebApi.Extensions
 {
     public static class SwaggerExtension
     {
@@ -37,7 +37,16 @@ namespace Lps.Admin.WebApi.Extensions
             {
                 c.SwaggerEndpoint("sys/swagger.json", "系统管理");
                 c.SwaggerEndpoint("article/swagger.json", "文章管理");
-                c.SwaggerEndpoint("v1/swagger.json", "business");
+                c.SwaggerEndpoint("financial/swagger.json", "会计核算");
+                c.SwaggerEndpoint("material/swagger.json", "物料管理");
+                c.SwaggerEndpoint("monitor/swagger.json", "服务监控");
+                c.SwaggerEndpoint("office/swagger.json", "日常办公");
+                c.SwaggerEndpoint("production/swagger.json", "生产管理");
+                c.SwaggerEndpoint("tool/swagger.json", "系统工具");
+                c.SwaggerEndpoint("sales/swagger.json", "销售管理");
+                c.SwaggerEndpoint("quality/swagger.json", "质量管理");
+                c.SwaggerEndpoint("bpm/swagger.json", "bpm");
+                c.SwaggerEndpoint("v1/swagger.json", "Lean365.LPS");
                 c.DocExpansion(DocExpansion.None); //->修改界面打开时自动折叠
             });
         }
@@ -54,15 +63,79 @@ namespace Lps.Admin.WebApi.Extensions
                     Title = "Lean365.NET Api",
                     Version = "v1",
                     Description = "系统管理",
-                    Contact = new OpenApiContact { Name = "Lean365 doc", Url = new Uri("https://www.izhaorui.cn/doc") }
+                    Contact = new OpenApiContact { Name = "Davis.Cheng", Email = "32322788@qq.com", Url = new Uri("https://laplacenet.github.io/") }
                 });
                 c.SwaggerDoc("article", new OpenApiInfo
                 {
                     Title = "Lean365.NET Api",
                     Version = "v1",
                     Description = "文章管理",
-                    Contact = new OpenApiContact { Name = "Lean365 doc", Url = new Uri("https://www.izhaorui.cn/doc") }
+                    Contact = new OpenApiContact { Name = "Davis.Cheng", Email = "32322788@qq.com", Url = new Uri("https://laplacenet.github.io/") }
                 });
+                c.SwaggerDoc("financial", new OpenApiInfo
+                {
+                    Title = "Lean365.NET Api",
+                    Version = "v1",
+                    Description = "会计核算",
+                    Contact = new OpenApiContact { Name = "Davis.Cheng", Email = "32322788@qq.com", Url = new Uri("https://laplacenet.github.io/") }
+                });
+                c.SwaggerDoc("material", new OpenApiInfo
+                {
+                    Title = "Lean365.NET Api",
+                    Version = "v1",
+                    Description = "物料管理",
+                    Contact = new OpenApiContact { Name = "Davis.Cheng", Email = "32322788@qq.com", Url = new Uri("https://laplacenet.github.io/") }
+                });
+                c.SwaggerDoc("monitor", new OpenApiInfo
+                {
+                    Title = "Lean365.NET Api",
+                    Version = "v1",
+                    Description = "服务监控",
+                    Contact = new OpenApiContact { Name = "Davis.Cheng", Email = "32322788@qq.com", Url = new Uri("https://laplacenet.github.io/") }
+                });
+                c.SwaggerDoc("office", new OpenApiInfo
+                {
+                    Title = "Lean365.NET Api",
+                    Version = "v1",
+                    Description = "日常办公",
+                    Contact = new OpenApiContact { Name = "Davis.Cheng", Email = "32322788@qq.com", Url = new Uri("https://laplacenet.github.io/") }
+                });
+                c.SwaggerDoc("production", new OpenApiInfo
+                {
+                    Title = "Lean365.NET Api",
+                    Version = "v1",
+                    Description = "生产管理",
+                    Contact = new OpenApiContact { Name = "Davis.Cheng", Email = "32322788@qq.com", Url = new Uri("https://laplacenet.github.io/") }
+                });
+                c.SwaggerDoc("tool", new OpenApiInfo
+                {
+                    Title = "Lean365.NET Api",
+                    Version = "v1",
+                    Description = "系统工具",
+                    Contact = new OpenApiContact { Name = "Davis.Cheng", Email = "32322788@qq.com", Url = new Uri("https://laplacenet.github.io/") }
+                });
+                c.SwaggerDoc("sales", new OpenApiInfo
+                {
+                    Title = "Lean365.NET Api",
+                    Version = "v1",
+                    Description = "销售管理",
+                    Contact = new OpenApiContact { Name = "Davis.Cheng", Email = "32322788@qq.com", Url = new Uri("https://laplacenet.github.io/") }
+                });
+                c.SwaggerDoc("quality", new OpenApiInfo
+                {
+                    Title = "Lean365.NET Api",
+                    Version = "v1",
+                    Description = "质量管理",
+                    Contact = new OpenApiContact { Name = "Davis.Cheng", Email = "32322788@qq.com", Url = new Uri("https://laplacenet.github.io/") }
+                });
+                c.SwaggerDoc("bpm", new OpenApiInfo
+                {
+                    Title = "Lean365.NET Api",
+                    Version = "v1",
+                    Description = "BPM",
+                    Contact = new OpenApiContact { Name = "Davis.Cheng", Email = "32322788@qq.com", Url = new Uri("https://laplacenet.github.io/") }
+                });
+
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Title = "Lean365.NET Api",
@@ -77,7 +150,7 @@ namespace Lps.Admin.WebApi.Extensions
                     c.IncludeXmlComments(Path.Combine(baseDir, "Lps.Model.xml"), true);
                     c.IncludeXmlComments(Path.Combine(baseDir, "Lps.ServiceCore.xml"), true);
                     c.IncludeXmlComments(Path.Combine(baseDir, "Lps.Service.xml"), true);
-                    c.IncludeXmlComments(Path.Combine(baseDir, "Lps.Admin.WebApi.xml"), true);
+                    c.IncludeXmlComments(Path.Combine(baseDir, "Lps.WebApi.xml"), true);
 
                     var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                     var xmlPath = Path.Combine(baseDir, xmlFile);

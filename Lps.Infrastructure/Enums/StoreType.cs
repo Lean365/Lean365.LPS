@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Infrastructure.Enums
+namespace Lps.Infrastructure.Enums
 {
     /// <summary>
     /// 文件存储位置

@@ -1,16 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Lps.Admin.WebApi.Filters;
-using Lps.Model.System.Dto;
-using Lps.Service.System.IService;
+using Lps.WebApi.Filters;
+using Lps.ServiceCore.Service.IService;
+using Lps.ServiceCore.Model.System;
+using Lps.ServiceCore.Model.Dto;
 
-namespace Lps.Admin.WebApi.Controllers.System
+namespace Lps.WebApi.Controllers.System
 {
     /// <summary>
     /// 用户角色管理
     /// </summary>
     [Verify]
     [Route("system/userRole")]
-    [ApiExplorerSettings(GroupName = "sys")]
+    [ApiExplorerSettings(GroupName = "system")]
     public class SysUserRoleController : BaseController
     {
         private readonly ISysUserRoleService SysUserRoleService;

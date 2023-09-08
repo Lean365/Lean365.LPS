@@ -1,6 +1,7 @@
 ﻿using System;
-
-namespace Lps.Model.System.Dto
+using Lps.ServiceCore.Model.System;
+using Lps.Model;
+namespace Lps.ServiceCore.Model.Dto
 {
     public class SysOperLogQueryDto : PagerInfo
     {
@@ -15,7 +16,7 @@ namespace Lps.Model.System.Dto
         /// <summary>
         /// 状态
         /// </summary>
-        public int Status { get; set; } = -1;
+        public int IsStatus { get; set; } = -1;
         /// <summary>
         /// 操作模块
         /// </summary>
@@ -46,7 +47,7 @@ namespace Lps.Model.System.Dto
         /// <summary>
         /// 状态
         /// </summary>
-        public int Status { get; set; } = -1;
+        public int IsStatus { get; set; } = -1;
         /// <summary>
         /// 操作模块
         /// </summary>

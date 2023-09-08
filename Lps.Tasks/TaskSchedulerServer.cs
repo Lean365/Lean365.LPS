@@ -1,4 +1,4 @@
-﻿using Infrastructure.Model;
+﻿using Lps.Infrastructure.Model;
 using NLog;
 using Quartz;
 using Quartz.Impl;
@@ -11,7 +11,7 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using Lps.Model.System;
+using Lps.ServiceCore.Model.System;
 
 namespace Lps.Tasks
 {

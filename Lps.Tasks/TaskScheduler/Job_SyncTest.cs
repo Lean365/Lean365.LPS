@@ -1,4 +1,4 @@
-﻿using Infrastructure.Attribute;
+﻿using Lps.Infrastructure.Attribute;
 using Quartz;
 using System.Threading.Tasks;
 

@@ -1,17 +1,17 @@
-﻿using Infrastructure;
-using Infrastructure.Attribute;
-using Infrastructure.Extensions;
+﻿using Lps.Infrastructure;
+using Lps.Infrastructure.Attribute;
+using Lps.Infrastructure.Extensions;
 using SqlSugar;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using Lps.Common;
-using Lps.Model.System;
-using Lps.Model.System.Dto;
+using Lps.ServiceCore.Model.Dto;
 using Lps.Model.System.Vo;
-using Lps.Service.System.IService;
+using Lps.ServiceCore.Service.IService;
+using Lps.ServiceCore.Model.System;
 
-namespace Lps.Service.System
+namespace Lps.ServiceCore.Service
 {
     /// <summary>
     /// 部门管理
@@ -33,9 +33,9 @@ namespace Lps.Service.System
         public List<SysDept> GetSysDepts(SysDeptQueryDto dept)
         {
             var predicate = Expressionable.Create<SysDept>();
-            predicate = predicate.And(it => it.DelFlag == 0);
+            predicate = predicate.And(it => it.IsDeleted == 0);
             predicate = predicate.AndIF(dept.DeptName.IfNotEmpty(), it => it.DeptName.Contains(dept.DeptName));
-            predicate = predicate.AndIF(dept.Status != null, it => it.Status == dept.Status);
+            predicate = predicate.AndIF(dept.IsStatus.ToString().IfNotEmpty(), it => it.IsStatus == dept.IsStatus);
 
             var response = GetList(predicate.ToExpression());
 
@@ -67,7 +67,7 @@ namespace Lps.Service.System
         {
             SysDept info = GetFirst(it => it.DeptId == dept.ParentId);
             //如果父节点不为正常状态,则不允许新增子节点
-            if (info != null && UserConstants.DEPT_NORMAL != info?.Status)
+            if (info != null && UserConstants.DEPT_NORMAL != info?.IsStatus)
             {
                 throw new CustomException("部门停用，不允许新增");
             }
@@ -96,7 +96,7 @@ namespace Lps.Service.System
                 UpdateDeptChildren(dept.DeptId, newAncestors, oldAncestors);
             }
             int result = Context.Updateable(dept).ExecuteCommand();
-            if (UserConstants.DEPT_NORMAL.Equals(dept.Status) && dept.Ancestors.IfNotEmpty()
+            if (UserConstants.DEPT_NORMAL.Equals(dept.IsStatus) && dept.Ancestors.IfNotEmpty()
                 && !"0".Equals(dept.Ancestors))
             {
                 // 如果该部门是启用状态，则启用该部门的所有上级部门
@@ -112,10 +112,10 @@ namespace Lps.Service.System
         private void UpdateParentDeptStatusNormal(SysDept dept)
         {
             long[] depts = Tools.SpitLongArrary(dept.Ancestors);
-            dept.Status = 0;
+            dept.IsStatus = 0;
             dept.Update_time = DateTime.Now;
 
-            Update(dept, it => new { it.Update_by, it.Update_time, it.Status }, f => depts.Contains(f.DeptId));
+            Update(dept, it => new { it.Update_by, it.Update_time, it.IsStatus }, f => depts.Contains(f.DeptId));
         }
 
         /// <summary>

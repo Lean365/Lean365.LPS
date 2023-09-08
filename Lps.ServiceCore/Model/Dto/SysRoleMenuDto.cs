@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Lps.Model.System.Dto
+namespace Lps.ServiceCore.Model.Dto
 {
     public class SysRoleMenuDto
     {

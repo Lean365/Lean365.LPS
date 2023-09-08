@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Infrastructure
+namespace Lps.Infrastructure
 {
     public class AppSettings
     {

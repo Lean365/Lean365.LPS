@@ -1,11 +1,12 @@
-﻿using Lps.Model.System;
+﻿using Lps.ServiceCore;
+using Lps.ServiceCore.Model.System;
 
 namespace Lps.Service.IService
 {
     /// <summary>
     /// Hello接口
     /// </summary>
-    public interface IHelloService : IBaseService<ArticleCategory>
+    public interface IHelloService : IBaseService<OfficeArticleCategory>
     {
         /// <summary>
         /// 

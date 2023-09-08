@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Lps.ServiceCore.Model.System;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace Lps.Model.System.Vo

@@ -1,7 +1,7 @@
-﻿using Infrastructure;
-using Infrastructure.Extensions;
-using Infrastructure.Helper;
-using Infrastructure.Model;
+﻿using Lps.Infrastructure;
+using Lps.Infrastructure.Extensions;
+using Lps.Infrastructure.Helper;
+using Lps.Infrastructure.Model;
 using JinianNet.JNTemplate;
 using SqlSugar;
 using System;
@@ -15,7 +15,7 @@ namespace Lps.CodeGenerator
 {
     /// <summary>
     /// 代码生成器
-    /// </remarks>
+    /// </ReMarkss>
     /// </summary>
     public class CodeGeneratorTool
     {
@@ -28,7 +28,7 @@ namespace Lps.CodeGenerator
         public static void Generate(GenerateDto dto)
         {
             var genOptions = AppSettings.Get<Gen>("gen");
-            dto.VueParentPath = dto.VueVersion == 3 ? "Lean365-vue" : "Lps.Vue";
+            dto.VueParentPath = dto.VueVersion == 3 ? "Lps.Vue" : "Lps.Vue";
             if (!genOptions.VuePath.IsEmpty())
             {
                 dto.VueParentPath = genOptions.VuePath;
@@ -62,6 +62,7 @@ namespace Lps.CodeGenerator
 
             replaceDto.UploadFile = columns.Any(f => f.HtmlType.Equals(GenConstants.HTML_IMAGE_UPLOAD) || f.HtmlType.Equals(GenConstants.HTML_FILE_UPLOAD)) ? 1 : 0;
             replaceDto.SelectMulti = columns.Any(f => f.HtmlType.Equals(GenConstants.HTML_SELECT_MULTI)) ? 1 : 0;
+            replaceDto.SelectRemote = columns.Any(f => f.HtmlType.Equals(GenConstants.HTML_SELECT_REMOTE)) ? 1 : 0;
             replaceDto.ShowEditor = columns.Any(f => f.HtmlType.Equals(GenConstants.HTML_EDITOR)) ? 1 : 0;
             replaceDto.FistLowerPk = replaceDto.PKName.FirstLowerCase();
             InitJntTemplate(dto, replaceDto);
@@ -105,7 +106,7 @@ namespace Lps.CodeGenerator
             //_option.IRepositoriesNamespace = _option.BaseNamespace + "Repository";
             _option.IServicsNamespace = _option.BaseNamespace + "Service";
             _option.ServicesNamespace = _option.BaseNamespace + "Service";
-            _option.ApiControllerNamespace = _option.BaseNamespace + "Admin.WebApi";
+            _option.ApiControllerNamespace = _option.BaseNamespace + "WebApi";
             return _option;
         }
 
@@ -386,6 +387,17 @@ namespace Lps.CodeGenerator
         /// <returns></returns>
         public static CSharpDataType GetCSharpDatatype(string sDatatype, CsharpTypeArr csharpType)
         {
+            //定义GUID类型
+            string GuidStr;
+            if (sDatatype.ToLower().Contains("uniqueidentifier"))
+            {
+                GuidStr = "00000000-0000-0000-0000-000000000000";
+                if (csharpType.uniqueidentifier.CompareTo(Guid.Parse(GuidStr)) == 0)
+                {
+                    return CSharpDataType.Guid;
+                }
+
+            }
             sDatatype = sDatatype.ToLower();
             if (csharpType.Int.Contains(sDatatype))
             {
@@ -428,25 +440,58 @@ namespace Lps.CodeGenerator
         /// <returns></returns>
         public static GenTable InitTable(string dbName, string userName, string tableName, string desc)
         {
+            //应用程序启动目录
+            string StartupPathStr = Directory.GetCurrentDirectory();
+            //返回上一层目录
+            string CDUPStr = StartupPathStr.Substring(0, StartupPathStr.LastIndexOf("\\")); // 第一个\是转义符，所以要写两个
             GenTable genTable = new()
             {
+                //数据库名称
                 DbName = dbName,
+                //导入默认命名空间前缀
                 BaseNameSpace = "Lps.",//导入默认命名空间前缀
-                ModuleName = "business",//导入默认模块名
+                //导入默认模块名
+                ModuleName = "office,production,financial,material,sales,quality,example,bpm,human,consolidated",//导入默认模块名
+                //生成实体类名，首字大写
                 ClassName = GetClassName(tableName),
+                //生成业务名，首字大写
                 BusinessName = GetClassName(tableName),
+                //程序员
                 FunctionAuthor = AppSettings.GetConfig(GenConstants.Gen_author),
+                //表名
                 TableName = tableName,
+                //表描述
                 TableComment = desc,
+                //生成功能名
                 FunctionName = desc,
+                //创建者
                 Create_by = userName,
+                //基本信息备注
+                ReMarks = desc + "(" + tableName + ")",
+                //自定义路径
+                GenPath = CDUPStr,
+                //生成代码方式：1为自定义路径，0为zip打包下载
+                GenType = "1",
+                //显示按钮
                 Options = new Options()
                 {
                     SortType = "asc",
-                    CheckedBtn = new int[] { 1, 2, 3 }
+                    CheckedBtn = new int[] { 1, 2, 3, 4, 7, 8 }
                 }
             };
-            genTable.Options.PermissionPrefix = $"{genTable.ModuleName.ToLower()}:{genTable.ClassName.ToLower()}";//权限
+            bool isContain = tableName.Contains("_");
+            if (isContain)
+            {
+                //权限前缀，如表sys_user，前缀为sys:user
+                genTable.Options.PermissionPrefix = tableName.ToLower().Substring(0, tableName.IndexOf("_")) + ":" + $"{genTable.ClassName.ToLower().Replace(tableName.ToLower().Substring(0, tableName.IndexOf("_")), "")}";//权限
+            }
+            else
+            {
+                //权限前缀，如表sysuser，前缀为la:sysuser
+                genTable.Options.PermissionPrefix = $"{genTable.ModuleName.ToLower()}:{genTable.ClassName.ToLower()}";//权限
+
+            }
+            //genTable.Options.PermissionPrefix = $"{genTable.ModuleName.ToLower()}:{genTable.ClassName.ToLower()}";//权限
 
             return genTable;
         }

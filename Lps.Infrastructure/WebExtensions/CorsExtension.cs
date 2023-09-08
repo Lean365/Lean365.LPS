@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using System;
 
-namespace Infrastructure
+namespace Lps.Infrastructure
 {
     /// <summary>
     /// 跨域扩展

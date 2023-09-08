@@ -1,5 +1,5 @@
 ﻿using CSRedis;
-using Infrastructure;
+using Lps.Infrastructure;
 
 namespace Lps.Common.Cache
 {

@@ -1,12 +1,12 @@
-﻿using Infrastructure;
+﻿using Lps.Infrastructure;
 using NLog;
 using Quartz;
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Lps.Common;
-using Lps.Model.System;
-using Lps.Service.System.IService;
+using Lps.ServiceCore.Service.IService;
+using Lps.ServiceCore.Model.System;
 
 namespace Lps.Tasks
 {
@@ -25,7 +25,7 @@ namespace Lps.Tasks
         public async Task<SysTasksLog> ExecuteJob(IJobExecutionContext context, Func<Task> job)
         {
             double elapsed = 0;
-            int status = 0;
+            int IsStatus = 0;
             string logMsg;
             try
             {
@@ -46,7 +46,7 @@ namespace Lps.Tasks
                     //true  是立即重新执行任务 
                     RefireImmediately = true
                 };
-                status = 1;
+                IsStatus = 1;
                 logMsg = $"Job Run Fail，Exception：{ex.Message}";
                 WxNoticeHelper.SendMsg("任务执行出错", logMsg);
             }
@@ -54,7 +54,7 @@ namespace Lps.Tasks
             var logModel = new SysTasksLog()
             {
                 Elapsed = elapsed,
-                Status = status.ToString(),
+                IsStatus = IsStatus,
                 JobMessage = logMsg
             };
 
@@ -78,7 +78,7 @@ namespace Lps.Tasks
             logModel.InvokeTarget = job.JobType.FullName;
             logModel = await tasksLogService.AddTaskLog(job.Key.Name, logModel);
             //成功后执行次数+1
-            if (logModel.Status == "0")
+            if (logModel.IsStatus == 0)
             {
                 await taskQzService.UpdateAsync(f => new SysTasks()
                 {

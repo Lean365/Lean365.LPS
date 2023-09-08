@@ -1,19 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SqlSugar;
-using Lps.Admin.WebApi.Extensions;
-using Lps.Admin.WebApi.Filters;
+using Lps.WebApi.Extensions;
+using Lps.WebApi.Filters;
 using Lps.Model;
-using Lps.Model.System;
-using Lps.Service.System.IService;
+using Lps.ServiceCore.Service.IService;
+using Lps.ServiceCore.Model.System;
+using Lps.ServiceCore.Model.Dto;
 
-namespace Lps.Admin.WebApi.Controllers.monitor
+namespace Lps.WebApi.Controllers.monitor
 {
     /// <summary>
     /// 系统访问记录
     /// </summary>
     [Verify]
     [Route("/monitor/logininfor")]
-    [ApiExplorerSettings(GroupName = "sys")]
+    [ApiExplorerSettings(GroupName = "monitor")]
     public class SysLogininforController : BaseController
     {
         private ISysLoginService sysLoginService;

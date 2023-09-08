@@ -1,17 +1,17 @@
-using Infrastructure;
-using Infrastructure.Attribute;
+using Lps.Infrastructure;
+using Lps.Infrastructure.Attribute;
 using SqlSugar;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Lps.Model;
-using Lps.Model.System;
-using Lps.Model.System.Dto;
+using Lps.ServiceCore.Model.Dto;
 using Lps.Repository;
-using Lps.Service.System.IService;
+using Lps.ServiceCore.Service.IService;
+using Lps.ServiceCore.Model.System;
 
-namespace Lps.Service
+namespace Lps.ServiceCore.Service
 {
     /// <summary>
     /// 角色
@@ -41,9 +41,9 @@ namespace Lps.Service
         public PagedInfo<SysRole> SelectRoleList(SysRole sysRole, PagerInfo pager)
         {
             var exp = Expressionable.Create<SysRole>();
-            exp.And(role => role.DelFlag == 0);
+            exp.And(role => role.IsDeleted == 0);
             exp.AndIF(!string.IsNullOrEmpty(sysRole.RoleName), role => role.RoleName.Contains(sysRole.RoleName));
-            exp.AndIF(sysRole.Status != -1, role => role.Status == sysRole.Status);
+            exp.AndIF(sysRole.IsStatus != -1, role => role.IsStatus == sysRole.IsStatus);
             exp.AndIF(!string.IsNullOrEmpty(sysRole.RoleKey), role => role.RoleKey == sysRole.RoleKey);
 
             var query = Queryable()
@@ -64,7 +64,7 @@ namespace Lps.Service
         public List<SysRole> SelectRoleAll()
         {
             return Queryable()
-                .Where(role => role.DelFlag == 0)
+                .Where(role => role.IsDeleted == 0)
                 .OrderBy(role => role.RoleSort)
                 .ToList();
         }
@@ -77,7 +77,7 @@ namespace Lps.Service
         public List<SysRole> SelectRolePermissionByUserId(long userId)
         {
             return Queryable()
-                .Where(role => role.DelFlag == 0)
+                .Where(role => role.IsDeleted == 0)
                 .Where(it => SqlFunc.Subqueryable<SysUserRole>().Where(s => s.UserId == userId).Any())
                 .OrderBy(role => role.RoleSort)
                 .ToList();
@@ -119,7 +119,7 @@ namespace Lps.Service
         /// <returns></returns>
         public int UpdateRoleStatus(SysRole roleDto)
         {
-            return Update(roleDto, it => new { it.Status }, f => f.RoleId == roleDto.RoleId);
+            return Update(roleDto, it => new { it.IsStatus }, f => f.RoleId == roleDto.RoleId);
         }
 
         /// <summary>
@@ -308,7 +308,7 @@ namespace Lps.Service
         /// <returns></returns>
         public List<long> SelectUserRoles(long userId)
         {
-            var list = SelectUserRoleListByUserId(userId).Where(f => f.Status == 0);
+            var list = SelectUserRoleListByUserId(userId).Where(f => f.IsStatus == 0);
 
             return list.Select(x => x.RoleId).ToList();
         }
@@ -369,7 +369,7 @@ namespace Lps.Service
             return db.Updateable<SysRole>()
             .SetColumns(it => it.Update_time == sysRole.Update_time)
             .SetColumns(it => it.DataScope == sysRole.DataScope)
-            .SetColumns(it => it.Remark == sysRole.Remark)
+            .SetColumns(it => it.ReMarks == sysRole.ReMarks)
             .SetColumns(it => it.Update_by == sysRole.Update_by)
             //.SetColumns(it => it.MenuCheckStrictly == sysRole.MenuCheckStrictly)
             .SetColumns(it => it.DeptCheckStrictly == sysRole.DeptCheckStrictly)

@@ -1,7 +1,7 @@
-﻿using Infrastructure.Constant;
+﻿using Lps.Infrastructure.Constant;
 using Newtonsoft.Json;
 
-namespace Infrastructure.Model
+namespace Lps.Infrastructure.Model
 {
     public class ApiResult
     {

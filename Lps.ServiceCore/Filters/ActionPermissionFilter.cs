@@ -1,10 +1,10 @@
-﻿using Infrastructure;
-using Infrastructure.Model;
+﻿using Lps.Infrastructure;
+using Lps.Infrastructure.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using Lps.Model.System;
-using Lps.Service.System;
-using Lps.Service.System.IService;
+using Lps.ServiceCore.Model.System;
+using Lps.ServiceCore.Service;
+using Lps.ServiceCore.Service.IService;
 
 namespace Lps.ServiceCore.Middleware
 {

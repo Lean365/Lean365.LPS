@@ -1,4 +1,5 @@
-﻿using SqlSugar;
+﻿using Lps.ServiceCore.Model.System;
+using SqlSugar;
 using System;
 using System.Linq;
 

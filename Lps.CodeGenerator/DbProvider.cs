@@ -1,5 +1,5 @@
-﻿using Infrastructure;
-using Infrastructure.Model;
+﻿using Lps.Infrastructure;
+using Lps.Infrastructure.Model;
 using SqlSugar;
 using System;
 using System.Collections.Generic;

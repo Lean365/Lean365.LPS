@@ -1,5 +1,5 @@
-﻿using Infrastructure;
-using Infrastructure.Model;
+﻿using Lps.Infrastructure;
+using Lps.Infrastructure.Model;
 using MailKit.Net.Smtp;
 using MimeKit;
 using MimeKit.Text;

@@ -1,23 +1,24 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SqlSugar;
-using Lps.Admin.WebApi.Extensions;
-using Lps.Admin.WebApi.Filters;
+using Lps.WebApi.Extensions;
+using Lps.WebApi.Filters;
 using Lps.CodeGenerator;
 using Lps.CodeGenerator.Model;
 using Lps.CodeGenerator.Service;
 using Lps.Model;
-using Lps.Model.System.Dto;
 using Lps.Model.System.Generate;
-using Lps.Service.System.IService;
+using Lps.ServiceCore.Service.IService;
+using Lps.ServiceCore.Model.System;
+using Lps.ServiceCore.Model.Dto;
 
-namespace Lps.Admin.WebApi.Controllers
+namespace Lps.WebApi.Controllers
 {
     /// <summary>
     /// 代码生成
     /// </summary>
     [Verify]
     [Route("tool/gen")]
-    [ApiExplorerSettings(GroupName = "sys")]
+    [ApiExplorerSettings(GroupName = "tool")]
     public class CodeGeneratorController : BaseController
     {
         private readonly CodeGeneraterService _CodeGeneraterService = new CodeGeneraterService();

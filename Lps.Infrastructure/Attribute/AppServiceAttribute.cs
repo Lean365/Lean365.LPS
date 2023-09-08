@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Infrastructure.Attribute
+namespace Lps.Infrastructure.Attribute
 {
     /// <summary>
     /// 参考地址：https://www.cnblogs.com/kelelipeng/p/10643556.html

@@ -2,7 +2,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Infrastructure.Converter
+namespace Lps.Infrastructure.Converter
 {
     public class JsonConverterUtil
     {

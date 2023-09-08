@@ -1,5 +1,8 @@
 ﻿namespace Lps.CodeGenerator
 {
+    /// <summary>
+    /// 生成代码选项
+    /// </summary>
     public class CodeGenerateOption
     {
         /// <summary>

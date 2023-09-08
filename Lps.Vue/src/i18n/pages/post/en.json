@@ -1,0 +1,11 @@
+{
+  "ppost": {
+    "post": "post",
+    "postName": "Job Name",
+    "postCode": "post code",
+    "postSort": "Job Sort",
+    "isStatus": "Job Status",
+    "createTime": "creation time",
+    "reMarks": "Remarks"
+  }
+}

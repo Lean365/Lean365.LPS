@@ -1,14 +1,14 @@
-﻿using Infrastructure.Attribute;
-using Infrastructure.Extensions;
+﻿using Lps.Infrastructure.Attribute;
+using Lps.Infrastructure.Extensions;
 using SqlSugar;
 using System.Collections.Generic;
 using Lps.Model;
-using Lps.Model.System;
-using Lps.Model.System.Dto;
+using Lps.ServiceCore.Model.Dto;
 using Lps.Repository;
-using Lps.Service.System.IService;
+using Lps.ServiceCore.Service.IService;
+using Lps.ServiceCore.Model.System;
 
-namespace Lps.Service.System
+namespace Lps.ServiceCore.Service
 {
     /// <summary>
     /// 用户角色
@@ -67,7 +67,7 @@ namespace Lps.Service.System
             return Context.Queryable<SysUserRole, SysUser>((t1, u) => new JoinQueryInfos(
                    JoinType.Left, t1.UserId == u.UserId))
                 .WithCache(60 * 10)
-                .Where((t1, u) => t1.RoleId == roleId && u.DelFlag == 0)
+                .Where((t1, u) => t1.RoleId == roleId && u.IsDeleted == 0)
                 .Select((t1, u) => u)
                 .ToList();
         }
@@ -81,7 +81,7 @@ namespace Lps.Service.System
         {
             var query = Context.Queryable<SysUserRole, SysUser>((t1, u) => new JoinQueryInfos(
                 JoinType.Left, t1.UserId == u.UserId))
-                .Where((t1, u) => t1.RoleId == roleUserQueryDto.RoleId && u.DelFlag == 0);
+                .Where((t1, u) => t1.RoleId == roleUserQueryDto.RoleId && u.IsDeleted == 0);
             if (!string.IsNullOrEmpty(roleUserQueryDto.UserName))
             {
                 query = query.Where((t1, u) => u.UserName.Contains(roleUserQueryDto.UserName));
@@ -97,7 +97,7 @@ namespace Lps.Service.System
         public PagedInfo<SysUser> GetExcludedSysUsersByRoleId(RoleUserQueryDto roleUserQueryDto)
         {
             var query = Context.Queryable<SysUser>()
-                .Where(it => it.DelFlag == 0)
+                .Where(it => it.IsDeleted == 0)
                 .Where(it => SqlFunc.Subqueryable<SysUserRole>().Where(s => s.UserId == it.UserId && s.RoleId == roleUserQueryDto.RoleId).NotAny())
                 .WhereIF(roleUserQueryDto.UserName.IsNotEmpty(), it => it.UserName.Contains(roleUserQueryDto.UserName));
 

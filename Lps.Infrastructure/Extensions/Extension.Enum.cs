@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
 
-namespace Infrastructure.Extensions
+namespace Lps.Infrastructure.Extensions
 {
     public static partial class Extensions
     {

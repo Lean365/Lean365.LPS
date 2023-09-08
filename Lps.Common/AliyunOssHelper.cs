@@ -1,6 +1,6 @@
 ﻿using Aliyun.OSS;
 using Aliyun.OSS.Common;
-using Infrastructure;
+using Lps.Infrastructure;
 using System;
 using System.IO;
 

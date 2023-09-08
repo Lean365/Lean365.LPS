@@ -55,7 +55,7 @@ export default {
   /**
    * 版权信息
    */
-  copyright: 'Copyright ©2023 <a target="_black" href="http://www.izhaorui.cn/doc">ZRAdmin.NET</a> All Rights Reserved.',
+  copyright: 'Copyright ©2022-2023 <a  target="_blank"  style="color: #a0cfff"  href="https://beian.miit.gov.cn/"  >粤ICP备88889999</a> <a target="_black" href="https://laplacenet.github.io/">@Lean365 Inc.</a> All Rights Reserved.  <a target="_black" style="color: #a0cfff" href="https://laplacenet.github.io/">Terms of Use</a>    <a target="_black" href="https://laplacenet.github.io/">Privacy Policy</a>',
   /**
    * 是否显示底部栏
    */
@@ -67,7 +67,7 @@ export default {
   /**
    * 水印文案
    */
-  watermarkText: 'ZRAdmin.NET',
+  watermarkText: 'Lean365.Lps',
   /**
    * 是否显示其他登录
    */
@@ -75,9 +75,9 @@ export default {
   /**
    * 默认大小
    */
-	defaultSize: 'default',
-	/**
-	 * 默认语言
-	 */
-	defaultLang: 'zh-cn'
+  defaultSize: 'default',
+  /**
+   * 默认语言
+   */
+  defaultLang: 'zh-cn'
 }

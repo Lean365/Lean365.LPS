@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using System;
 
-namespace Infrastructure
+namespace Lps.Infrastructure
 {
     public static class InternalApp
     {

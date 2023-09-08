@@ -1,0 +1,29 @@
+{
+  "prole": {
+    "roleName": "角色名稱",
+    "isStatus": "狀態",
+    "all": "全部",
+    "troleID": "編號",
+    "troleName": "角色名稱",
+    "troleSort": "顯示順序",
+    "troleKey": "許可權字元",
+    "troleScope": "許可權範圍",
+    "userNum": "用戶個數",
+    "createTime": "創建時間",
+    "reMarks": "備註",
+    "exportMenu": "導出功能表",
+    "droleMenuPermi": "菜单权限",
+    "expandCollapse": "展开/折叠",
+    "selectAllorNo": "全选/全不选",
+    "Linkage": "父子联动",
+    "loading": "加载中,请稍后",
+    "stop": "停用",
+    "check": "檢查父節點是否也選擇了子節點",
+    "dataPermi": "數據許可權",
+    "keywords": "關鍵字過濾",
+    "customization": "定制",
+    "department": "部門",
+    "departmentandbelow": "部門及以下",
+    "onlyme": "我"
+  }
+}

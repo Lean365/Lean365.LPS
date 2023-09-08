@@ -1,10 +1,10 @@
 ﻿
-using Infrastructure.Extensions;
+using Lps.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Reflection;
 
-namespace Infrastructure
+namespace Lps.Infrastructure
 {
     public static class EntityExtension
     {

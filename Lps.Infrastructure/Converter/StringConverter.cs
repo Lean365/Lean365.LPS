@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 
-namespace Infrastructure.Converter
+namespace Lps.Infrastructure.Converter
 {
     /// <summary>
     /// Json任何类型读取到字符串属性

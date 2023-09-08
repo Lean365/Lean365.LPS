@@ -1,5 +1,5 @@
-﻿using Infrastructure;
-using Infrastructure.Model;
+﻿using Lps.Infrastructure;
+using Lps.Infrastructure.Model;
 using SqlSugar;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +16,35 @@ namespace Lps.CodeGenerator.Service
         /// <returns></returns>
         public List<string> GetAllDataBases()
         {
+             //var db = GetSugarDbContext();
+            ////Oracle库特殊处理
+            //DbConfigs configs = AppSettings.Get<DbConfigs>(nameof(GlobalConstant.CodeGenDbConfig));
+            //if (configs.DbType == 3)
+            //{
+            //    return new List<string>() { configs?.DbName };
+            //}
+            //var templist = db.DbMaintenance.GetDataBaseList(db);
+            //return templist.FindAll(f => !f.Contains("schema"));
+
+            //读取配置文件中数据库名称(AppSettings.json)
+            //string connStr = AppSettings.GetConfig(GenConstants.Gen_conn);
+            //string[] AppSettoArrey = connStr.Split(';'); //字符串转数组
+            //string AppSetName = AppSettoArrey[4];
+            //int sindex = AppSettoArrey[4].IndexOf('=') + 1;
+            //int eindex = AppSettoArrey[4].Length - AppSettoArrey[4].IndexOf('=') - 1;
+            //var AppSetDataBase = AppSetName.Substring(sindex, eindex);
+            //读取配置文件中数据库名称
+            string connDbName = AppSettings.GetConfig(GenConstants.Gen_dbname);
             var db = GetSugarDbContext();
+            ////Oracle库特殊处理
+            //DbConfigs configs = AppSettings.Get<DbConfigs>(nameof(GlobalConstant.CodeGenDbConfig));
+            //if (configs.DbType == 3)
+            //{
+            //    return new List<string>() { configs?.DbName };
+            //}
+            //var templist = db.DbMaintenance.GetDataBaseList(db);
+
+            //return templist.FindAll(f => !f.Contains("schema"));
             //Oracle库特殊处理
             DbConfigs configs = AppSettings.Get<DbConfigs>(nameof(GlobalConstant.CodeGenDbConfig));
             if (configs.DbType == 3)
@@ -25,7 +53,24 @@ namespace Lps.CodeGenerator.Service
             }
             var templist = db.DbMaintenance.GetDataBaseList(db);
 
-            return templist.FindAll(f => !f.Contains("schema"));
+            //return templist.FindAll(f => !f.Contains("schema"));
+
+            //只读取当前数据库
+            var Currentdatabase = (from s in templist
+                                   where s.Contains(connDbName)
+                                   select s).ToList();
+
+            return Currentdatabase;
+            //var db = GetSugarDbContext();
+            ////Oracle库特殊处理
+            //DbConfigs configs = AppSettings.Get<DbConfigs>(nameof(GlobalConstant.CodeGenDbConfig));
+            //if (configs.DbType == 3)
+            //{
+            //    return new List<string>() { configs?.DbName };
+            //}
+            //var templist = db.DbMaintenance.GetDataBaseList(db);
+
+            //return templist.FindAll(f => !f.Contains("schema"));
         }
 
         /// <summary>

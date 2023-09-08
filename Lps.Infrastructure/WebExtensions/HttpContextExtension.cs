@@ -9,7 +9,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using UAParser;
 
-namespace Infrastructure.Extensions
+namespace Lps.Infrastructure.Extensions
 {
     /// <summary>
     /// HttpContext扩展类

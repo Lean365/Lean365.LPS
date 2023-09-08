@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Lps.Model.System.Dto
+namespace Lps.ServiceCore.Model.Dto
 {
     public class TasksLogQueryDto
     {
@@ -11,7 +11,7 @@ namespace Lps.Model.System.Dto
         public string JobName { get; set; }
         public string JobId { get; set; }
         public string JobGroup { get; set; }
-        public string Status { get; set; }
+        public int IsStatus { get; set; }
         public DateTime? BeginTime { get; set; }
         public DateTime? EndTime { get; set; }
     }

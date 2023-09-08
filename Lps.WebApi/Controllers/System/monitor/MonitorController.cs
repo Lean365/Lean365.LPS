@@ -1,15 +1,15 @@
-using Infrastructure.Extensions;
+using Lps.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
-namespace Lps.Admin.WebApi.Controllers.monitor
+namespace Lps.WebApi.Controllers.monitor
 {
     /// <summary>
     /// 系统监控
     /// </summary>
-    [ApiExplorerSettings(GroupName = "sys")]
+    [ApiExplorerSettings(GroupName = "monitor")]
     public class MonitorController : BaseController
     {
         private OptionsSetting Options;

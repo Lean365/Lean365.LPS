@@ -1,0 +1,11 @@
+{
+  "ppost": {
+    "post": "崗位",
+    "postName": "崗位名稱",
+    "postCode": "崗位編碼",
+    "postSort": "崗位排序",
+    "isStatus": "崗位狀態",
+    "createTime": "創建時間",
+    "reMarks": "備註"
+  }
+}

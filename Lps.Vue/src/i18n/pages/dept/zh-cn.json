@@ -1,0 +1,14 @@
+{
+  "pdept": {
+    "parentDepartment": "上级部门",
+    "deptName": "部门名称",
+    "isStatus": "状态",
+    "deptId": "部门id",
+    "leader": "负责人",
+    "orderNum": "排序",
+    "createTime": "创建时间",
+    "phone": "联系电话",
+    "email": "邮箱",
+    "dept": "部门"
+  }
+}

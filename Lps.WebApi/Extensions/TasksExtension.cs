@@ -1,9 +1,9 @@
 ﻿using Quartz.Spi;
 using SqlSugar.IOC;
-using Lps.Model.System;
 using Lps.Tasks;
+using Lps.ServiceCore.Model.System;
 
-namespace Lps.Admin.WebApi.Extensions
+namespace Lps.WebApi.Extensions
 {
     /// <summary>
     /// 定时任务扩展方法

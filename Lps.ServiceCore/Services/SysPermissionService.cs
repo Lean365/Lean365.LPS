@@ -1,10 +1,10 @@
-﻿using Infrastructure;
-using Infrastructure.Attribute;
+﻿using Lps.Infrastructure;
+using Lps.Infrastructure.Attribute;
 using System.Collections.Generic;
-using Lps.Model.System;
-using Lps.Service.System.IService;
+using Lps.ServiceCore.Service.IService;
+using Lps.ServiceCore.Model.System;
 
-namespace Lps.Service.System
+namespace Lps.ServiceCore.Service
 {
     /// <summary>
     /// 角色权限

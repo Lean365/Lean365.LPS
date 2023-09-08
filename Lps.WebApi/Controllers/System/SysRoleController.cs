@@ -1,18 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Lps.Admin.WebApi.Filters;
+using Lps.WebApi.Filters;
 using Lps.Model;
-using Lps.Model.System;
-using Lps.Model.System.Dto;
-using Lps.Service.System.IService;
+using Lps.ServiceCore.Service.IService;
+using Lps.ServiceCore.Model.System;
+using Lps.ServiceCore.Model.Dto;
 
-namespace Lps.Admin.WebApi.Controllers.System
+namespace Lps.WebApi.Controllers.System
 {
     /// <summary>
     /// 角色信息
     /// </summary>
     [Verify]
     [Route("system/role")]
-    [ApiExplorerSettings(GroupName = "sys")]
+    [ApiExplorerSettings(GroupName = "system")]
     public class SysRoleController : BaseController
     {
         private readonly ISysRoleService sysRoleService;
@@ -187,7 +187,7 @@ namespace Lps.Admin.WebApi.Controllers.System
         [AllowAnonymous]
         public IActionResult ExportRoleMenu(int roleId)
         {
-            MenuQueryDto dto = new() { Status = "0", MenuTypeIds = "M,C,F" };
+            MenuQueryDto dto = new() { IsStatus = 0, MenuTypeIds = "M,C,F" };
 
             var list = sysMenuService.SelectRoleMenuListByRole(dto, roleId);
 

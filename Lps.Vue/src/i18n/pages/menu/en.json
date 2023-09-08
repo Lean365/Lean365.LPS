@@ -1,0 +1,32 @@
+{
+  "pmenu": {
+    "menuName": "name",
+    "menuState": "status",
+    "icon": "icon",
+    "menuid": "id",
+    "menuType": "type",
+    "sort": "sort",
+    "authorityID": "authority",
+    "componentPath": "component",
+    "isShow": "isShow",
+    "parentMenu": "parentMenu",
+    "directory": "directory",
+    "menu": "menu",
+    "button": "button",
+    "link": "link",
+    "isFrame": "isFrame",
+    "routePath": "routePath",
+    "permissionStr": "permission",
+    "isCache": "isCache",
+    "menuNameKey": "menuKey",
+    "menuNameKeymemo": "multilingual translation key:eg:menu.system, do not need to fill in multilingual can be filled in",
+    "selectIcon": "Click to select icon",
+    "linkMemo": "If you select a backlink, the routing address needs to start with 'http(s)://'",
+    "routePathmemo": "The access route address, such as: 'user', if the external network address requires internal link access, it starts with 'http(s)://'",
+    "componentPathmemo": "The path of the accessed component, such as 'system/user/index', defaults to the 'views' directory",
+    "permissionStrmemo": "permission characters defined in the controller, such as: [ActionPermissionFilter(Permission = 'system:user:delete')]",
+    "isCachememo": "Select Yes and it will be cached by 'keep-alive', and the 'name' and address of the matching component need to be consistent",
+    "isShowmemo": "Select hide and the route will not appear in the sidebar, but will still be accessible",
+    "menuStatememo": "Select Deactivate and the route will not appear in the sidebar and cannot be accessed"
+  }
+}

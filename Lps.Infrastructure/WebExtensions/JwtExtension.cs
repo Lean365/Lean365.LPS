@@ -1,4 +1,4 @@
-﻿using Infrastructure;
+﻿using Lps.Infrastructure;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;

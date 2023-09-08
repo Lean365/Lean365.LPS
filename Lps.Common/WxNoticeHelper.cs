@@ -1,4 +1,4 @@
-﻿using Infrastructure;
+﻿using Lps.Infrastructure;
 using System.Collections.Generic;
 using System.Text.Json;
 using Lps.Common.Model;

@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
-namespace Infrastructure.Model
+namespace Lps.Infrastructure.Model
 {
     /// <summary>
     /// 获取配置文件POCO实体类
@@ -122,5 +123,6 @@ namespace Infrastructure.Model
         public string[] Float { get; set; }
         public string[] Decimal { get; set; }
         public string[] Bool { get; set; }
+        public Guid uniqueidentifier { get; set; }
     }
 }

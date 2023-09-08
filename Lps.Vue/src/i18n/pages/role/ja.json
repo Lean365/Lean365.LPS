@@ -1,0 +1,31 @@
+{
+  "prole": {
+    "roleName": "ロール名",
+    "isStatus": "ステータス",
+    "all": "すべて",
+    "troleID": "番号",
+    "troleName": "ロール名",
+    "troleSort": "順番",
+    "troleKey": "許可文字",
+    "troleScope": "許可範囲",
+    "userNum": "ユーザー数",
+    "createTime": "作成時刻",
+    "reMarks": "備考",
+    "exportMenu": "エクスポートメニュー",
+    "drolePermi": "ロール権限の割り当て",
+    "droleQuery": "メニュー検索",
+    "droleMenuPermi": "メニュー権限",
+    "expandCollapse": "展開/折りたたむ",
+    "selectAllorNo": "すべて/未選擇",
+    "Linkage": "父と息子のリンケージ",
+    "loading": "読み込み中、お待ちください...",
+    "stop": "ストップ",
+    "check": "子ノードも選択します",
+    "dataPermi": "データパーミッション",
+    "keywords": "キーワードフィルタリング",
+    "customization": "カスタマイズ",
+    "department": "部門",
+    "departmentandbelow": "部門及び以下",
+    "onlyme": "自分"
+  }
+}

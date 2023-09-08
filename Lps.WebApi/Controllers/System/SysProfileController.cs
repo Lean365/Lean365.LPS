@@ -1,24 +1,24 @@
 using Microsoft.AspNetCore.Mvc;
-using Lps.Admin.WebApi.Filters;
-using Lps.Model.System;
-using Lps.Model.System.Dto;
-using Lps.Service.System.IService;
+using Lps.WebApi.Filters;
+using Lps.ServiceCore.Service.IService;
+using Lps.ServiceCore.Model.System;
+using Lps.ServiceCore.Model.Dto;
 
-namespace Lps.Admin.WebApi.Controllers.System
+namespace Lps.WebApi.Controllers.System
 {
     /// <summary>
     /// 个人中心
     /// </summary>
     [Verify]
     [Route("system/user/profile")]
-    [ApiExplorerSettings(GroupName = "sys")]
+    [ApiExplorerSettings(GroupName = "system")]
     public class SysProfileController : BaseController
     {
         private readonly ISysUserService UserService;
         private readonly ISysRoleService RoleService;
         private readonly ISysUserPostService UserPostService;
         private readonly ISysDeptService DeptService;
-        private readonly ISysFileService FileService;
+        private readonly IOfficeFileService FileService;
         private IWebHostEnvironment hostEnvironment;
 
         public SysProfileController(
@@ -26,7 +26,7 @@ namespace Lps.Admin.WebApi.Controllers.System
             ISysRoleService roleService,
             ISysUserPostService postService,
             ISysDeptService deptService,
-            ISysFileService sysFileService,
+            IOfficeFileService sysFileService,
             IWebHostEnvironment hostEnvironment)
         {
             UserService = userService;
@@ -119,7 +119,7 @@ namespace Lps.Admin.WebApi.Controllers.System
             long userId = HttpContext.GetUId();
             if (formFile == null) throw new CustomException("请选择文件");
 
-            SysFile file = await FileService.SaveFileToLocal(hostEnvironment.WebRootPath, "", "avatar", HttpContext.GetName(), formFile);
+            OfficeFile file = await FileService.SaveFileToLocal(hostEnvironment.WebRootPath, "", "avatar", HttpContext.GetName(), formFile);
 
             UserService.UpdatePhoto(new SysUser() { Avatar = file.AccessUrl, UserId = userId });
             return SUCCESS(new { imgUrl = file.AccessUrl });

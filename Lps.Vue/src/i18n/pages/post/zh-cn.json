@@ -1,0 +1,11 @@
+{
+  "ppost": {
+    "post": "岗位",
+    "postName": "岗位名称",
+    "postCode": "岗位编码",
+    "postSort": "岗位排序",
+    "isStatus": "岗位状态",
+    "createTime": "创建时间",
+    "reMarks": "备注"
+  }
+}

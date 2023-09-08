@@ -1,18 +1,18 @@
-﻿using Infrastructure;
-using Infrastructure.Attribute;
+﻿using Lps.Infrastructure;
+using Lps.Infrastructure.Attribute;
 using SqlSugar.IOC;
-using Lps.Model.System;
+using Lps.ServiceCore;
 using Lps.Repository;
 using Lps.Service.IService;
-using Lps.Service.System.IService;
-
+using Lps.ServiceCore.Model.System;
+using Lps.ServiceCore.Service.IService;
 namespace Lps.Service
 {
     /// <summary>
     /// 注意：下面的AppService不要漏了
     /// </summary>
     [AppService(ServiceType = typeof(IHelloService), ServiceLifetime = LifeTime.Transient)]
-    public class HelloService : BaseService<ArticleCategory>, IHelloService
+    public class HelloService : BaseService<OfficeArticleCategory>, IHelloService
     {
         /// <summary>
         /// 引用User服务

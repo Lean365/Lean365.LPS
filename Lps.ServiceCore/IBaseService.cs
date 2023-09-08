@@ -1,6 +1,5 @@
-﻿using Lps.Repository;
-
-namespace Lps.Service
+﻿
+namespace Lps.Repository
 {
     /// <summary>
     /// 基础服务定义

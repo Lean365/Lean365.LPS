@@ -1,18 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SqlSugar;
-using Lps.Admin.WebApi.Filters;
+using Lps.WebApi.Filters;
 using Lps.Model;
-using Lps.Model.System;
-using Lps.Service.System.IService;
+using Lps.ServiceCore.Service.IService;
+using Lps.ServiceCore.Model.System;
+using Lps.ServiceCore.Model.Dto;
 
-namespace Lps.Admin.WebApi.Controllers.System
+namespace Lps.WebApi.Controllers.System
 {
     /// <summary>
     /// 岗位管理
     /// </summary>
     [Verify]
     [Route("system/post")]
-    [ApiExplorerSettings(GroupName = "sys")]
+    [ApiExplorerSettings(GroupName = "system")]
     public class SysPostController : BaseController
     {
         private readonly ISysPostService PostService;
@@ -30,7 +31,7 @@ namespace Lps.Admin.WebApi.Controllers.System
         public IActionResult List([FromQuery] SysPost post, [FromQuery] PagerInfo pagerInfo)
         {
             var predicate = Expressionable.Create<SysPost>();
-            predicate = predicate.AndIF(post.Status.IfNotEmpty(), it => it.Status == post.Status);
+            predicate = predicate.AndIF(post.IsStatus.ToString().IfNotEmpty(), it => it.IsStatus == post.IsStatus);
             var list = PostService.GetPages(predicate.ToExpression(), pagerInfo, s => new { s.PostSort });
 
             return SUCCESS(list);

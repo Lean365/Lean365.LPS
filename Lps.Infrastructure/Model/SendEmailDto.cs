@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Infrastructure.Model
+namespace Lps.Infrastructure.Model
 {
     public class SendEmailDto
     {

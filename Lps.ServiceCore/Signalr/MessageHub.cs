@@ -1,10 +1,10 @@
-﻿using Infrastructure;
-using Infrastructure.Model;
+﻿using Lps.Infrastructure;
+using Lps.Infrastructure.Model;
 using IPTools.Core;
 using Microsoft.AspNetCore.SignalR;
 using System.Web;
 using UAParser;
-using Lps.Service.System.IService;
+using Lps.ServiceCore.Service.IService;
 
 namespace Lps.ServiceCore.Signalr
 {
@@ -17,9 +17,9 @@ namespace Lps.ServiceCore.Signalr
         public static readonly List<OnlineUsers> onlineClients = new();
         public static List<OnlineUsers> users = new();
         //private readonly NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
-        private readonly ISysNoticeService SysNoticeService;
+        private readonly IOfficeNoticeService SysNoticeService;
 
-        public MessageHub(ISysNoticeService noticeService)
+        public MessageHub(IOfficeNoticeService noticeService)
         {
             SysNoticeService = noticeService;
         }

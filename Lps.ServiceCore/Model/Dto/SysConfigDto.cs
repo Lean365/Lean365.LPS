@@ -1,6 +1,6 @@
 using System;
-
-namespace Lps.Model.System.Dto
+using Lps.Model;
+namespace Lps.ServiceCore.Model.Dto
 {
     /// <summary>
     /// 参数配置输入对象模型
@@ -12,7 +12,7 @@ namespace Lps.Model.System.Dto
         public string ConfigKey { get; set; }
         public string ConfigValue { get; set; }
         public string ConfigType { get; set; }
-        public string Remark { get; set; }
+        public string ReMarks { get; set; }
     }
 
     /// <summary>

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Lps.Model.System;
+using Lps.ServiceCore.Model.System;
 
-namespace Lps.Service.System.IService
+namespace Lps.ServiceCore.Service.IService
 {
     public interface ISysUserPostService
     {

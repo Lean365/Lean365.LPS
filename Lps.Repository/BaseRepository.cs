@@ -1,4 +1,4 @@
-using Infrastructure.Extensions;
+using Lps.Infrastructure.Extensions;
 using Mapster;
 using SqlSugar;
 using SqlSugar.IOC;

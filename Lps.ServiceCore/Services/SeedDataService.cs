@@ -1,12 +1,12 @@
-﻿using Infrastructure.Extensions;
+﻿using Lps.Infrastructure.Extensions;
 using MiniExcelLibs;
 using SqlSugar.IOC;
 using System.Collections.Generic;
 using System.Linq;
 using Lps.Common;
-using Lps.Model.System;
+using Lps.ServiceCore.Model.System;
 
-namespace Lps.Service.System
+namespace Lps.ServiceCore.Service
 {
     /// <summary>
     /// 种子数据处理
@@ -191,7 +191,7 @@ namespace Lps.Service.System
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public (string, object, object) InitArticleCategoryData(List<ArticleCategory> data)
+        public (string, object, object) InitArticleCategoryData(List<OfficeArticleCategory> data)
         {
             var db = DbScoped.SugarScope;
             var x = db.Storageable(data)
@@ -276,15 +276,15 @@ namespace Lps.Service.System
             var result8 = InitDictType(sysDict);
             result.Add(result8.Item1);
 
-            var sysDictData = MiniExcel.Query<SysDictData>(path, sheetName: "dict_data").ToList();
-            var result9 = InitDictData(sysDictData);
+            var SysDictData = MiniExcel.Query<SysDictData>(path, sheetName: "dict_data").ToList();
+            var result9 = InitDictData(SysDictData);
             result.Add(result9.Item1);
 
             var sysDept = MiniExcel.Query<SysDept>(path, sheetName: "dept").ToList();
             var result10 = InitDeptData(sysDept);
             result.Add(result10.Item1);
 
-            var sysArticleCategory = MiniExcel.Query<ArticleCategory>(path, sheetName: "article_category").ToList();
+            var sysArticleCategory = MiniExcel.Query<OfficeArticleCategory>(path, sheetName: "article_category").ToList();
             var result11 = InitArticleCategoryData(sysArticleCategory);
             result.Add(result11.Item1);
 

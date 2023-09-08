@@ -1,8 +1,8 @@
-using Infrastructure.Attribute;
-using Lps.Model.System;
-using Lps.Service.System.IService;
+using Lps.Infrastructure.Attribute;
+using Lps.ServiceCore.Service.IService;
+using Lps.ServiceCore.Model.System;
 
-namespace Lps.Service.System
+namespace Lps.ServiceCore.Service
 {
     /// <summary>
     /// 参数配置Service业务层处理

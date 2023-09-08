@@ -1,14 +1,14 @@
-﻿using Infrastructure.Attribute;
-using Infrastructure.Extensions;
+﻿using Lps.Infrastructure.Attribute;
+using Lps.Infrastructure.Extensions;
 using SqlSugar;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using Lps.Model;
 using Lps.Model.System.Generate;
-using Lps.Service.System.IService;
+using Lps.ServiceCore.Service.IService;
 
-namespace Lps.Service.System
+namespace Lps.ServiceCore.Service
 {
     /// <summary>
     /// 代码生成表
@@ -29,8 +29,55 @@ namespace Lps.Service.System
         /// <returns></returns>
         public int DeleteGenTableByIds(long[] tableIds)
         {
+            //Delete(f => tableIds.Contains(f.TableId));
+            //return GenTableColumnService.DeleteGenTableColumn(tableIds);
+            //应用程序启动目录
+            string StartupPathStr = Directory.GetCurrentDirectory();
+            //返回上一层目录
+            string CDUPStr = StartupPathStr.Substring(0, StartupPathStr.LastIndexOf("\\")); // 第一个\是转义符，所以要写两个
+                                                                                            //读取类名
+            string DelClassname;
+            foreach (var item in tableIds)
+            {
+                var info = GetId(item);
+                DelClassname = info.ClassName;
+                DelectDir(CDUPStr, DelClassname);
+                //路径将随着系统位置而变化，注意修改。
+            }
             Delete(f => tableIds.Contains(f.TableId));
             return GenTableColumnService.DeleteGenTableColumn(tableIds);
+            //Delete(f => tableIds.Contains(f.TableId));
+            //return GenTableColumnService.DeleteGenTableColumn(tableIds);
+        }
+        /// <summary>
+        /// 查找并删除类
+        /// </summary>
+        /// <param name="srcPath"></param>
+        /// <param name="fileName"></param>
+        public static void DelectDir(string srcPath, string fileName)
+        {
+
+            //string[] files = Directory.GetFiles(filepath + @"\", "*.xls");
+            //string[] files = Directory.GetFiles(filepath + @"\", filename);  //查找时不包括子目录
+            try
+            {
+                string[] files = Directory.GetFiles(srcPath + @"\\", "*" + fileName + "*.*", SearchOption.AllDirectories);   //查找时包括子目录
+                foreach (string file in files)
+                {
+                    File.Delete(file); //删除指定文件
+                }
+
+
+
+            }
+            catch (Exception ex)
+            {
+                var a = ex.Message; //a的值为：发生一个或多个错误。
+                var b = ex.GetBaseException(); //b的值为：Task异常测试
+                Console.WriteLine(a + "|*|" + b);
+
+            }
+
         }
 
         /// <summary>
@@ -235,7 +282,7 @@ namespace Lps.Service.System
         /// <returns></returns>
         public int InsertGenTableColumn(List<GenTableColumn> tableColumn)
         {
-            return Context.Insertable(tableColumn).IgnoreColumns(x => new { x.Remark }).ExecuteCommand();
+            return Context.Insertable(tableColumn).IgnoreColumns(x => new { x.ReMarks }).ExecuteCommand();
         }
 
         /// <summary>
@@ -263,7 +310,7 @@ namespace Lps.Service.System
                     it.Update_time,
                     it.DictType,
                     it.Update_by,
-                    it.Remark,
+                    it.ReMarks,
                     it.IsSort,//
                     it.IsExport,
                     it.AutoFillType,

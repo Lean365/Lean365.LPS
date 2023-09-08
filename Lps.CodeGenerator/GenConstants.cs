@@ -7,6 +7,7 @@ namespace Lps.CodeGenerator
     /// </summary>
     public class GenConstants
     {
+        public static string Gen_dbname = "CodeGenDbConfig:DbName";
         public static string Gen_author = "gen:author";
         public static string Gen_autoPre = "gen:autoPre";
         public static string Gen_tablePrefix = "gen:tablePrefix";
@@ -14,7 +15,7 @@ namespace Lps.CodeGenerator
         /// <summary>
         /// InputDto输入实体是不包含字段
         /// </summary>
-        public static readonly string[] inputDtoNoField = new string[] { "createTime", "updateTime", "addtime", "create_time", "update_time", "create_by", "update_by" };
+        public static readonly string[] inputDtoNoField = new string[] { "createTime", "updateTime", "addtime", "create_time", "update_time", "create_by", "update_by", "UDF01", "UDF02", "UDF03", "UDF04", "UDF05", "UDF06", "UDF51", "UDF52", "UDF53", "UDF54", "UDF55", "UDF56" };
         /// <summary>
         /// 图片字段
         /// </summary>
@@ -22,11 +23,11 @@ namespace Lps.CodeGenerator
         /// <summary>
         /// 下拉框字段
         /// </summary>
-        public static readonly string[] selectFiled = new string[] { "status", "type", "state", "sex", "gender" };
+        public static readonly string[] selectFiled = new string[] { "IsStatus", "type", "state", "sex", "gender" };
         /// <summary>
         /// 单选按钮字段
         /// </summary>
-        public static readonly string[] radioFiled = new string[] { "status", "state", "is" };
+        public static readonly string[] radioFiled = new string[] { "IsStatus", "state", "is" };
 
         /// <summary>
         /// 单表（增删改查）
@@ -86,24 +87,32 @@ namespace Lps.CodeGenerator
         /// <summary>
         /// 页面不需要编辑字段
         /// </summary>
-        public static string[] COLUMNNAME_NOT_EDIT = { "id", "create_by", "create_time", "delFlag" };
+        public static string[] COLUMNNAME_NOT_EDIT = { "id", "create_by", "create_time", "IsDeleted", "UDF01", "UDF02", "UDF03", "UDF04", "UDF05", "UDF06", "UDF51", "UDF52", "UDF53", "UDF54", "UDF55", "UDF56" };
 
         /// <summary>
         /// 页面不需要显示的列表字段
         /// </summary>
-        public static string[] COLUMNNAME_NOT_LIST = { "create_by", "create_time", "delFlag", "update_by",
-            "update_time" , "password"};
+        public static string[] COLUMNNAME_NOT_LIST = { "IsDeleted", "update_by", "update_time", "password", "UDF01", "UDF02", "UDF03", "UDF04", "UDF05", "UDF06", "UDF51", "UDF52", "UDF53", "UDF54", "UDF55", "UDF56" };
 
         /// <summary>
         /// 页面不需要查询字段
         /// </summary>
-        public static string[] COLUMNNAME_NOT_QUERY = { "id", "create_by", "create_time", "delFlag", "update_by",
-            "update_time", "remark" };
+        public static string[] COLUMNNAME_NOT_QUERY = { "id", "create_by", "create_time", "IsDeleted", "update_by", "update_time", "Remark", "UDF01", "UDF02", "UDF03", "UDF04", "UDF05", "UDF06", "UDF51", "UDF52", "UDF53", "UDF54", "UDF55", "UDF56" };
+
+        /// <summary>
+        /// 页面不需要导出字段
+        /// </summary>
+        public static string[] COLUMNNAME_NOT_EXPORT = { "update_by", "update_time", "IsDeleted", "UDF01", "UDF51", "UDF02", "UDF52", "UDF03", "UDF53", "UDF04", "UDF54", "UDF05", "UDF55", "UDF06", "UDF56" };
+        /// <summary>
+        /// 页面不需要填写字段
+        /// </summary>
+
+        public static string[] COLUMNNAME_NOT_REQUIRED = { "IsDeleted", "UDF01", "UDF51", "UDF02", "UDF52", "UDF03", "UDF53", "UDF04", "UDF54", "UDF05", "UDF55", "UDF06", "UDF56" };
 
         /// <summary>
         /// Entity基类字段
         /// </summary>
-        public static string[] BASE_ENTITY = { "createBy", "createTime", "updateBy", "updateTime", "remark" };
+        public static string[] BASE_ENTITY = { "createBy", "createTime", "updateBy", "updateTime", "ReMarks" };
 
         /// <summary>
         /// Tree基类字段
@@ -130,6 +139,10 @@ namespace Lps.CodeGenerator
         /// 下拉多选
         /// </summary>
         public static string HTML_SELECT_MULTI = "selectMulti";
+        /// <summary>
+        /// 下拉远程
+        /// </summary>
+        public static string HTML_SELECT_REMOTE = "SelectRemote";
 
         /// <summary>
         /// 单选框

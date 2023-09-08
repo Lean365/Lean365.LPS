@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "Lps.Admin.WebApi": {
+    "Lps.WebApi": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchUrl": "",

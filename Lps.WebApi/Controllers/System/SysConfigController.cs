@@ -1,20 +1,20 @@
-using Infrastructure.Extensions;
+using Lps.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using SqlSugar;
-using Lps.Admin.WebApi.Extensions;
-using Lps.Admin.WebApi.Filters;
-using Lps.Model.System;
-using Lps.Model.System.Dto;
-using Lps.Service.System.IService;
+using Lps.WebApi.Extensions;
+using Lps.WebApi.Filters;
+using Lps.ServiceCore.Service.IService;
+using Lps.ServiceCore.Model.System;
+using Lps.ServiceCore.Model.Dto;
 
-namespace Lps.Admin.WebApi.Controllers
+namespace Lps.WebApi.Controllers
 {
     /// <summary>
     /// 参数配置Controller
     /// </summary>
     [Verify]
     [Route("system/config")]
-    [ApiExplorerSettings(GroupName = "sys")]
+    [ApiExplorerSettings(GroupName = "system")]
     public class SysConfigController : BaseController
     {
         /// <summary>
@@ -99,7 +99,7 @@ namespace Lps.Admin.WebApi.Controllers
                 it.ConfigType,
                 it.Create_by,
                 it.Create_time,
-                it.Remark,
+                it.ReMarks,
             }));
         }
 
@@ -126,7 +126,7 @@ namespace Lps.Admin.WebApi.Controllers
                 ConfigType = model.ConfigType,
                 Update_by = model.Update_by,
                 Update_time = model.Update_time,
-                Remark = model.Remark
+                ReMarks = model.ReMarks
             });
 
             return SUCCESS(response);

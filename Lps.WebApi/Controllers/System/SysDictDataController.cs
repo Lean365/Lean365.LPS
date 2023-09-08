@@ -1,26 +1,26 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Lps.Admin.WebApi.Filters;
+using Lps.WebApi.Filters;
 using Lps.Model;
-using Lps.Model.System;
-using Lps.Model.System.Dto;
-using Lps.Service.System.IService;
+using Lps.ServiceCore.Service.IService;
+using Lps.ServiceCore.Model.System;
+using Lps.ServiceCore.Model.Dto;
 
-namespace Lps.Admin.WebApi.Controllers.System
+namespace Lps.WebApi.Controllers.System
 {
     /// <summary>
     /// 数据字典信息
     /// </summary>
     [Verify]
     [Route("system/dict/data")]
-    [ApiExplorerSettings(GroupName = "sys")]
+    [ApiExplorerSettings(GroupName = "tool")]
     public class SysDictDataController : BaseController
     {
         private readonly ISysDictDataService SysDictDataService;
-        private readonly ISysDictService SysDictService;
+        private readonly ISysDictTypeService SysDictTypeService;
 
-        public SysDictDataController(ISysDictService sysDictService, ISysDictDataService sysDictDataService)
+        public SysDictDataController(ISysDictTypeService sysDictTypeService, ISysDictDataService sysDictDataService)
         {
-            SysDictService = sysDictService;
+            SysDictTypeService = sysDictTypeService;
             SysDictDataService = sysDictDataService;
         }
 
@@ -38,7 +38,7 @@ namespace Lps.Admin.WebApi.Controllers.System
 
             if (dictData.DictType.StartsWith("sql_"))
             {
-                var result = SysDictService.SelectDictDataByCustomSql(dictData.DictType);
+                var result = SysDictTypeService.SelectDictDataByCustomSql(dictData.DictType);
 
                 list.Result.AddRange(result);
                 list.TotalNum += result.Count;
@@ -65,14 +65,14 @@ namespace Lps.Admin.WebApi.Controllers.System
         /// <returns></returns>
         [AllowAnonymous]
         [HttpPost("types")]
-        public IActionResult DictTypes([FromBody] List<SysdictDataDto> dto)
+        public IActionResult DictTypes([FromBody] List<SysDictDataDto> dto)
         {
             var list = SysDictDataService.SelectDictDataByTypes(dto.Select(f => f.DictType).ToArray());
-            List<SysdictDataDto> dataVos = new();
+            List<SysDictDataDto> dataVos = new();
 
             foreach (var dic in dto)
             {
-                SysdictDataDto vo = new()
+                SysDictDataDto vo = new()
                 {
                     DictType = dic.DictType,
                     ColumnName = dic.ColumnName,
@@ -80,7 +80,7 @@ namespace Lps.Admin.WebApi.Controllers.System
                 };
                 if (dic.DictType.StartsWith("cus_") || dic.DictType.StartsWith("sql_"))
                 {
-                    vo.List.AddRange(SysDictService.SelectDictDataByCustomSql(dic.DictType));
+                    vo.List.AddRange(SysDictTypeService.SelectDictDataByCustomSql(dic.DictType));
                 }
                 dataVos.Add(vo);
             }

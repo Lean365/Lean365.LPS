@@ -1,0 +1,14 @@
+{
+  "pdept": {
+    "parentDepartment": "parent",
+    "deptName": "Name",
+    "isStatus": "Status",
+    "deptId": "id",
+    "leader": "leader",
+    "orderNum": "sort",
+    "createTime": "create time",
+    "phone": "phone",
+    "email": "email",
+    "dept": "dept"
+  }
+}

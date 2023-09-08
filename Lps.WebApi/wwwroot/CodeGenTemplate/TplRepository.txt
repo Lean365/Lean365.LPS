@@ -1,4 +1,4 @@
-﻿using Infrastructure.Attribute;
+﻿using Lps.Infrastructure.Attribute;
 using ${options.ModelsNamespace}.${options.SubNamespace};
 
 namespace ${options.RepositoriesNamespace}

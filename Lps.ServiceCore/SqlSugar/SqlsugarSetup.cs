@@ -1,10 +1,10 @@
-﻿using Infrastructure;
-using Infrastructure.Model;
+﻿using Lps.Infrastructure;
+using Lps.Infrastructure.Model;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SqlSugar.IOC;
-using Lps.Model.System;
+using Lps.ServiceCore.Model.System;
 
 namespace Lps.ServiceCore.SqlSugar
 {
@@ -120,7 +120,7 @@ namespace Lps.ServiceCore.SqlSugar
                 {
                     var pars = db.Utilities.SerializeObject(item.Columns.ToDictionary(it => it.ColumnName, it => it.Value));
 
-                    SqlDiffLog log = new()
+                    SysSqldiffLog log = new()
                     {
                         BeforeData = pars,
                         BusinessData = data?.ToString(),

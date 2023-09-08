@@ -1,5 +1,5 @@
-﻿using Infrastructure;
-using Infrastructure.Model;
+﻿using Lps.Infrastructure;
+using Lps.Infrastructure.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using Lps.Common;
 
 //本命名空间暂时先不改，改动比较大2023年9月2日
-namespace Lps.Admin.WebApi.Filters
+namespace Lps.WebApi.Filters
 {
     /// <summary>
     /// 授权校验访问

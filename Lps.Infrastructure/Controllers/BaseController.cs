@@ -1,5 +1,5 @@
-﻿using Infrastructure.Extensions;
-using Infrastructure.Model;
+﻿using Lps.Infrastructure.Extensions;
+using Lps.Infrastructure.Model;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using MiniExcelLibs;
@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Web;
 
-namespace Infrastructure.Controllers
+namespace Lps.Infrastructure.Controllers
 {
     public class BaseController : ControllerBase
     {

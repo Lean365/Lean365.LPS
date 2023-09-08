@@ -1,4 +1,6 @@
-﻿namespace Lps.Model.System.Dto
+﻿using Lps.ServiceCore.Model.System;
+
+namespace Lps.ServiceCore.Model.Dto
 {
     public class SysLogininfoDto : SysBase
     {
@@ -10,7 +12,7 @@
         /// <summary>
         /// 登录状态 0成功 1失败
         /// </summary>
-        public string Status { get; set; }
+        public int IsStatus { get; set; }
         /// <summary>
         /// 用户名
         /// </summary>

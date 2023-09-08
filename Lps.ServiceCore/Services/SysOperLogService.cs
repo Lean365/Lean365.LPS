@@ -1,14 +1,14 @@
-﻿using Infrastructure;
-using Infrastructure.Attribute;
-using Infrastructure.Extensions;
+﻿using Lps.Infrastructure;
+using Lps.Infrastructure.Attribute;
+using Lps.Infrastructure.Extensions;
 using SqlSugar;
 using Lps.Model;
-using Lps.Model.System;
-using Lps.Model.System.Dto;
+using Lps.ServiceCore.Model.Dto;
 using Lps.Repository;
-using Lps.Service.System.IService;
+using Lps.ServiceCore.Service.IService;
+using Lps.ServiceCore.Model.System;
 
-namespace Lps.Service.System
+namespace Lps.ServiceCore.Service
 {
     /// <summary>
     /// 操作日志
@@ -45,7 +45,7 @@ namespace Lps.Service.System
             exp.AndIF(sysOper.Title.IfNotEmpty(), it => it.Title.Contains(sysOper.Title));
             exp.AndIF(sysOper.OperName.IfNotEmpty(), it => it.OperName.Contains(sysOper.OperName));
             exp.AndIF(sysOper.BusinessType != -1, it => it.BusinessType == sysOper.BusinessType);
-            exp.AndIF(sysOper.Status != -1, it => it.Status == sysOper.Status);
+            exp.AndIF(sysOper.IsStatus != -1, it => it.IsStatus == sysOper.IsStatus);
             exp.AndIF(sysOper.OperParam != null, it => it.OperParam.Contains(sysOper.OperParam));
 
             return Queryable().Where(exp.ToExpression())

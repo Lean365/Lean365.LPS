@@ -1,17 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Lps.Admin.WebApi.Extensions;
-using Lps.Admin.WebApi.Filters;
-using Lps.Model.System.Dto;
-using Lps.Service.System.IService;
+using Lps.WebApi.Extensions;
+using Lps.WebApi.Filters;
+using Lps.ServiceCore.Service.IService;
+using Lps.ServiceCore.Model.System;
+using Lps.ServiceCore.Model.Dto;
 
-namespace Lps.Admin.WebApi.Controllers.monitor
+namespace Lps.WebApi.Controllers.monitor
 {
     /// <summary>
     /// 操作日志记录
     /// </summary>
     [Verify]
     [Route("/monitor/operlog")]
-    [ApiExplorerSettings(GroupName = "sys")]
+    [ApiExplorerSettings(GroupName = "monitor")]
     public class SysOperlogController : BaseController
     {
         private ISysOperLogService sysOperLogService;

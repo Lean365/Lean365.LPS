@@ -1,0 +1,31 @@
+{
+  "prole": {
+    "roleName": "RoleName",
+    "isStatus": "Status",
+    "all": "All",
+    "troleID": "number",
+    "troleName": "RoleName",
+    "troleSort": "Sort",
+    "troleKey": "permission character",
+    "troleScope": "permission scope",
+    "userNum": "Number of users",
+    "createTime": "create Time",
+    "reMarks": "Remarks",
+    "exportMenu": "Export Menu",
+    "drolePermi": "role permission assignment",
+    "droleQuery": "Menu Search",
+    "droleMenuPermi": "menu permissions",
+    "expandCollapse": "expand/collapse",
+    "selectAllorNo": "Select All/Select All",
+    "Linkage": "Father-son linkage",
+    "loading": "loading, please wait...",
+    "stop": "deactivate",
+    "check": "Check whether the parent node also selects child nodes",
+    "dataPermi": "data permissions",
+    "keywords": "keyword filtering",
+    "customization": "Customization",
+    "department": "Department",
+    "departmentandbelow": "Department and below",
+    "onlyme": "Only me"
+  }
+}

@@ -1,18 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
-using Lps.Admin.WebApi.Filters;
+using Lps.WebApi.Filters;
 using Lps.Model;
-using Lps.Model.System.Dto;
+using Lps.ServiceCore.Service.IService;
+using Lps.ServiceCore.Model.System;
+using Lps.ServiceCore.Model.Dto;
 using Lps.ServiceCore.Signalr;
 
-namespace Lps.Admin.WebApi.Controllers.monitor
+namespace Lps.WebApi.Controllers.monitor
 {
     /// <summary>
     /// 在线用户
     /// </summary>
     [Verify]
     [Route("monitor/online")]
-    [ApiExplorerSettings(GroupName = "sys")]
+    [ApiExplorerSettings(GroupName = "monitor")]
     public class SysUserOnlineController : BaseController
     {
         private readonly IHubContext<MessageHub> HubContext;

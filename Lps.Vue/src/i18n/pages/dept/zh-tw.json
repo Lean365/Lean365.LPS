@@ -1,0 +1,14 @@
+{
+  "pdept": {
+    "parentDepartment": "上層業務",
+    "deptName": "部門名稱",
+    "isStatus": "狀態",
+    "deptId": "部門id",
+    "leader": "負責人",
+    "orderNum": "排序",
+    "createTime": "創建時間",
+    "phone": "聯繫電話",
+    "email": "郵箱",
+    "dept": "部門"
+  }
+}

@@ -1,13 +1,13 @@
-﻿using Infrastructure;
-using Infrastructure.Attribute;
+﻿using Lps.Infrastructure;
+using Lps.Infrastructure.Attribute;
 using Quartz;
 using Quartz.Impl;
 using Quartz.Impl.Triggers;
 using SqlSugar.IOC;
 using System;
 using System.Threading.Tasks;
-using Lps.Model.System;
-using Lps.Service.System.IService;
+using Lps.ServiceCore.Service.IService;
+using Lps.ServiceCore.Model.System;
 
 namespace Lps.Tasks.TaskScheduler
 {

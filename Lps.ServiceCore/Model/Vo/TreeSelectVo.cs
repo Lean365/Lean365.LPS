@@ -1,4 +1,6 @@
-﻿namespace Lps.Model.System.Vo
+﻿using Lps.ServiceCore.Model.System;
+
+namespace Lps.Model.System.Vo
 {
     /// <summary>
     /// Treeselect树结构实体类
@@ -13,7 +15,7 @@
         /// 节点名称
         /// </summary>
         public string Label { get; set; }
-        public string Status { get; set; }
+        public int IsStatus { get; set; }
         public string MenuType { get; set; }
 
         public TreeSelectVo() { }
@@ -22,7 +24,7 @@
         {
             Id = menu.MenuId;
             Label = menu.MenuName;
-            Status = menu.Status;
+            IsStatus = menu.IsStatus;
             MenuType = menu.MenuType;
 
             List<TreeSelectVo> child = new List<TreeSelectVo>();

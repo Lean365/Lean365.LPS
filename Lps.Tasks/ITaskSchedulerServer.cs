@@ -1,13 +1,13 @@
-﻿using Infrastructure.Model;
+﻿using Lps.Infrastructure.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using Lps.Model.System;
+using Lps.ServiceCore.Model.System;
 
 namespace Lps.Tasks
 {
-	public interface ITaskSchedulerServer
+    public interface ITaskSchedulerServer
 	{
 		Task<ApiResult> StartTaskScheduleAsync();
 

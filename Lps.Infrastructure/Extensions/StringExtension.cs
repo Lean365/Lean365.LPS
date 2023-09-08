@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Infrastructure.Extensions
+namespace Lps.Infrastructure.Extensions
 {
     public static class StringExtension
     {

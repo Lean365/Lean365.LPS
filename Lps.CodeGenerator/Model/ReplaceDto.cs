@@ -11,7 +11,7 @@ namespace Lps.CodeGenerator.Model
         /// <summary>
         /// 首字母小写主键
         /// </summary>
-        public string FistLowerPk{ get; set; }
+        public string FistLowerPk { get; set; }
         /// <summary>
         /// 主键类型
         /// </summary>
@@ -43,13 +43,37 @@ namespace Lps.CodeGenerator.Model
         /// 查询条件
         /// </summary>
         public string QueryCondition { get; set; } = "";
+        /// <summary>
+        /// 导出
+        /// </summary>
         public bool ShowBtnExport { get; set; }
+        /// <summary>
+        /// 新增
+        /// </summary>
         public bool ShowBtnAdd { get; set; }
+        /// <summary>
+        /// 编辑
+        /// </summary>
         public bool ShowBtnEdit { get; set; }
+        /// <summary>
+        /// 删除
+        /// </summary>
         public bool ShowBtnDelete { get; set; }
+        /// <summary>
+        /// 查看
+        /// </summary>
         public bool ShowBtnView { get; set; }
+        /// <summary>
+        /// 清空
+        /// </summary>
         public bool ShowBtnTruncate { get; set; }
+        /// <summary>
+        /// 删除
+        /// </summary>
         public bool ShowBtnMultiDel { get; set; }
+        /// <summary>
+        /// 导入
+        /// </summary>
         public bool ShowBtnImport { get; set; }
         /// <summary>
         /// 上传URL data
@@ -57,10 +81,20 @@ namespace Lps.CodeGenerator.Model
         //public string VueUploadUrl { get; set; }
         public int UploadFile { get; set; } = 0;
         /// <summary>
-        /// 是否有下拉多选框
+        /// 下拉多选
         /// </summary>
         public int SelectMulti { get; set; }
+        /// <summary>
+        /// 下拉远程
+        /// </summary>
+        public int SelectRemote { get; set; }
+        /// <summary>
+        /// 作者
+        /// </summary>
         public string Author { get; set; }
+        /// <summary>
+        /// 添加时间
+        /// </summary>
         public string AddTime { get; set; } = DateTime.Now.ToString("yyyy-MM-dd");
         /// <summary>
         /// 是否有编辑器

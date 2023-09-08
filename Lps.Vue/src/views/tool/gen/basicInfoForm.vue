@@ -23,24 +23,24 @@
         </el-form-item>
       </el-col>
       <el-col :lg="24">
-        <el-form-item label="备注" prop="remark">
-          <el-input type="textarea" :rows="3" v-model="info.remark"></el-input>
+        <el-form-item label="备注" prop="reMarks">
+          <el-input type="textarea" :rows="3" v-model="info.reMarks"></el-input>
         </el-form-item>
       </el-col>
     </el-row>
   </el-form>
 </template>
 <script setup name="BasicInfoForm">
-const props = defineProps({
-  info: {
-    type: Object,
-    default: null,
-  },
-})
-const rules = reactive({
-  tableName: [{ required: true, message: '请输入表名称', trigger: 'blur' }],
-  tableComment: [{ required: true, message: '请输入表描述', trigger: 'blur' }],
-  className: [{ required: true, message: '请输入实体类名称', trigger: 'blur' }],
-  functionAuthor: [{ required: true, message: '请输入作者', trigger: 'blur' }],
-})
+  const props = defineProps({
+    info: {
+      type: Object,
+      default: null,
+    },
+  })
+  const rules = reactive({
+    tableName: [{ required: true, message: '请输入表名称', trigger: 'blur' }],
+    tableComment: [{ required: true, message: '请输入表描述', trigger: 'blur' }],
+    className: [{ required: true, message: '请输入实体类名称', trigger: 'blur' }],
+    functionAuthor: [{ required: true, message: '请输入作者', trigger: 'blur' }],
+  })
 </script>

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Lps.Model.System.Dto
+namespace Lps.ServiceCore.Model.Dto
 {
     public class SysDictTypeDto
     {
@@ -15,11 +15,12 @@ namespace Lps.Model.System.Dto
         [Required(ErrorMessage = "字典类型不能为空")]
         [RegularExpression(pattern: "^[a-z][a-z0-9_]*$", ErrorMessage = "字典类型必须以字母开头,且字典类型只能由小写字母或加下划线还有数字组成")]
         public string DictType { get; set; }
-        public string Status { get; set; }
+        public int IsStatus { get; set; }
         /// <summary>
         /// 系统内置 Y是 N否
         /// </summary>
         public string Type { get; set; }
+        public string ReMarks { get; set; }
         /// <summary>
         /// 自定义sql
         /// </summary>

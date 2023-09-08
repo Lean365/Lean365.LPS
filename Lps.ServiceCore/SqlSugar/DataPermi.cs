@@ -1,6 +1,6 @@
-﻿using Infrastructure;
+﻿using Lps.Infrastructure;
 using SqlSugar.IOC;
-using Lps.Model.System;
+using Lps.ServiceCore.Model.System;
 
 namespace Lps.ServiceCore.SqlSugar
 {

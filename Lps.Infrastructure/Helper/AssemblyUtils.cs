@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infrastructure.Helper
+namespace Lps.Infrastructure.Helper
 {
     public static class AssemblyUtils
     {

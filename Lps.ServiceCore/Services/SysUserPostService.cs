@@ -1,10 +1,10 @@
-﻿using Infrastructure.Attribute;
+﻿using Lps.Infrastructure.Attribute;
 using SqlSugar;
 using System.Linq;
-using Lps.Model.System;
-using Lps.Service.System.IService;
+using Lps.ServiceCore.Service.IService;
+using Lps.ServiceCore.Model.System;
 
-namespace Lps.Service.System
+namespace Lps.ServiceCore.Service
 {
     /// <summary>
     /// 用户岗位

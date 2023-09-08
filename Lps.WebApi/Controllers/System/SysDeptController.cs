@@ -1,18 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections;
-using Lps.Admin.WebApi.Filters;
-using Lps.Model.System;
-using Lps.Model.System.Dto;
-using Lps.Service.System.IService;
+using Lps.WebApi.Filters;
+using Lps.ServiceCore.Service.IService;
+using Lps.ServiceCore.Model.System;
+using Lps.ServiceCore.Model.Dto;
 
-namespace Lps.Admin.WebApi.Controllers.System
+namespace Lps.WebApi.Controllers.System
 {
     /// <summary>
     /// 部门
     /// </summary>
     [Verify]
     [Route("system/dept")]
-    [ApiExplorerSettings(GroupName = "sys")]
+    [ApiExplorerSettings(GroupName = "tool")]
     public class SysDeptController : BaseController
     {
         public ISysDeptService DeptService;
@@ -149,11 +149,11 @@ namespace Lps.Admin.WebApi.Controllers.System
         [Log(Title = "部门管理", BusinessType = BusinessType.DELETE)]
         public IActionResult Remove(long deptId)
         {
-            if (DeptService.Queryable().Count(it => it.ParentId == deptId && it.DelFlag == 0) > 0)
+            if (DeptService.Queryable().Count(it => it.ParentId == deptId && it.IsDeleted == 0) > 0)
             {
                 return ToResponse(ResultCode.CUSTOM_ERROR, $"存在下级部门，不允许删除");
             }
-            if (UserService.Queryable().Count(it => it.DeptId == deptId && it.DelFlag == 0) > 0)
+            if (UserService.Queryable().Count(it => it.DeptId == deptId && it.IsDeleted == 0) > 0)
             {
                 return ToResponse(ResultCode.CUSTOM_ERROR, $"部门存在用户，不允许删除");
             }

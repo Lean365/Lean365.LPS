@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Lps.Model.System;
 using Lps.Repository;
+using Lps.ServiceCore.Model.System;
 
-namespace Lps.Service.System.IService
+namespace Lps.ServiceCore.Service.IService
 {
     public interface ISysPostService : IBaseService<SysPost>
     {

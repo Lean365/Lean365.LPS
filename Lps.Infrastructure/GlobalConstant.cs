@@ -1,4 +1,4 @@
-﻿namespace Infrastructure
+﻿namespace Lps.Infrastructure
 {
     /// <summary>
     /// 全局静态常量

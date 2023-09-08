@@ -1,7 +1,7 @@
 ﻿using System;
 using Lps.Common;
 
-namespace Lps.Service.System
+namespace Lps.ServiceCore.Service
 {
     public class CacheService
     {

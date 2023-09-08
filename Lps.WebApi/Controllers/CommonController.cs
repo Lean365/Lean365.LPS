@@ -1,32 +1,31 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
-using Lps.Admin.WebApi.Filters;
-using Lps.Model.System;
+using Lps.WebApi.Filters;
+using Lps.ServiceCore.Service.IService;
+using Lps.ServiceCore.Model.System;
 using Lps.Service.IService;
-using Lps.Service.System;
-using Lps.Service.System.IService;
-
-namespace Lps.Admin.WebApi.Controllers
+using Lps.ServiceCore.Service;
+namespace Lps.WebApi.Controllers
 {
     /// <summary>
     /// 公共模块
     /// </summary>
     [Route("[controller]/[action]")]
-    [ApiExplorerSettings(GroupName = "sys")]
+    [ApiExplorerSettings(GroupName = "system")]
     public class CommonController : BaseController
     {
         private OptionsSetting OptionsSetting;
         private NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
 
         private IWebHostEnvironment WebHostEnvironment;
-        private ISysFileService SysFileService;
+        private IOfficeFileService SysFileService;
         private IHelloService HelloService;
 
         public CommonController(
             IOptions<OptionsSetting> options,
             IWebHostEnvironment webHostEnvironment,
-            ISysFileService fileService,
+            IOfficeFileService fileService,
             IHelloService helloService)
         {
             WebHostEnvironment = webHostEnvironment;
@@ -43,8 +42,9 @@ namespace Lps.Admin.WebApi.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return Ok("看到这里页面说明你已经成功启动了本项目:)\n\n" +
-                "如果觉得项目有用，打赏作者喝杯咖啡作为奖励\n☛☛http://www.izhaorui.cn/doc/support.html\n");
+            return new RedirectResult("/swagger/");//返回API界面
+            //return Ok("看到这里页面说明你已经成功启动了本项目:)\n\n" +
+            //    "如果觉得项目有用，打赏作者喝杯咖啡作为奖励\n☛☛https://laplacenet.github.io/\n");
         }
 
         /// <summary>
@@ -122,7 +122,7 @@ namespace Lps.Admin.WebApi.Controllers
         {
             IFormFile formFile = uploadDto.File;
             if (formFile == null) throw new CustomException(ResultCode.PARAM_ERROR, "上传文件不能为空");
-            SysFile file = new();
+            OfficeFile file = new();
             string fileExt = Path.GetExtension(formFile.FileName);//文件后缀
             double fileSize = Math.Round(formFile.Length / 1024.0, 2);//文件大小KB
 

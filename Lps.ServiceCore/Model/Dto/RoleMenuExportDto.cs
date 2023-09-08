@@ -2,7 +2,7 @@
 using SqlSugar.DbConvert;
 using Lps.Model.System.Enums;
 
-namespace Lps.Model.System.Dto
+namespace Lps.ServiceCore.Model.Dto
 {
     public class RoleMenuExportDto
     {

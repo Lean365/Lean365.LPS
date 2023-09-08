@@ -9,6 +9,9 @@ namespace Lps.CodeGenerator.Model
         /// vue版本
         /// </summary>
         public int VueVersion { get; set; }
+        /// <summary>
+        /// 表ID
+        /// </summary>
         public long TableId { get; set; }
         /// <summary>
         /// 是否预览代码
@@ -22,6 +25,9 @@ namespace Lps.CodeGenerator.Model
         /// 生成的按钮功能
         /// </summary>
         public int[] CheckedBtn { get; set; } = System.Array.Empty<int>();
+        /// <summary>
+        /// 生成表
+        /// </summary>
         public GenTable GenTable { get; set; }
         /// <summary>
         /// 主表属性

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Lps.Model.System.Dto
+namespace Lps.ServiceCore.Model.Dto
 {
     public class MenuDto
     {
@@ -62,7 +62,7 @@ namespace Lps.Model.System.Dto
         /// 菜单状态（0正常 1停用）
         /// </summary>
         [Required(ErrorMessage = "菜单状态不能为空")]
-        public string Status { get; set; }
+        public int IsStatus { get; set; }
 
         /// <summary>
         /// 权限字符串
@@ -85,7 +85,7 @@ namespace Lps.Model.System.Dto
     {
         public string MenuName { get; set; }
         public string Visible { get; set; }
-        public string Status { get; set; }
+        public int IsStatus { get; set; }
         public string MenuTypeIds { get; set; } = string.Empty;
         public int? ParentId { get; set; }
         public string[] MenuTypeIdArr

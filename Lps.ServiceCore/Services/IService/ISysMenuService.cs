@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using Lps.Model.System.Dto;
-using Lps.Model.System;
+using Lps.ServiceCore.Model.Dto;
 using Lps.Model.System.Vo;
 using Lps.Model.System.Generate;
+using Lps.ServiceCore.Model.System;
 
-namespace Lps.Service.System.IService
+namespace Lps.ServiceCore.Service.IService
 {
     public interface ISysMenuService : IBaseService<SysMenu>
     {

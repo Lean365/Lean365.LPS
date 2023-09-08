@@ -1,15 +1,15 @@
-﻿using Infrastructure;
-using Infrastructure.Attribute;
-using Infrastructure.Model;
+﻿using Lps.Infrastructure;
+using Lps.Infrastructure.Attribute;
+using Lps.Infrastructure.Model;
 using IPTools.Core;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
 using NLog;
 using System.Text.Encodings.Web;
 using Lps.Common;
-using Lps.Model.System;
-using Lps.Service.System.IService;
+using Lps.ServiceCore.Service.IService;
 using textJson = System.Text.Json;
+using Lps.ServiceCore.Model.System;
 
 namespace Lps.ServiceCore.Middleware
 {
@@ -83,7 +83,7 @@ namespace Lps.ServiceCore.Middleware
 
             SysOperLog sysOperLog = new()
             {
-                Status = 1,
+                IsStatus = 1,
                 OperIp = ip,
                 OperUrl = HttpContextExtension.GetRequestUrl(context),
                 RequestMethod = context.Request.Method,

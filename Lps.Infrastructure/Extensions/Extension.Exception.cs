@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infrastructure.Extensions
+namespace Lps.Infrastructure.Extensions
 {
     public static partial class Extensions
     {

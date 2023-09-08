@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-
-namespace Lps.Model.System.Dto
+using Lps.Model;
+namespace Lps.ServiceCore.Model.Dto
 {
     public class TasksQueryDto : PagerInfo
     {
@@ -63,7 +63,7 @@ namespace Lps.Model.System.Dto
         /// 任务描述
         /// </summary>
         [Display(Name = "任务描述")]
-        public string Remark { get; set; }
+        public string ReMarks { get; set; }
 
         /// <summary>
         /// 开始时间

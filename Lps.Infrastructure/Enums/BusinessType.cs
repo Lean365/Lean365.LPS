@@ -1,4 +1,4 @@
-﻿namespace Infrastructure.Enums
+﻿namespace Lps.Infrastructure.Enums
 {
     /// <summary>
     /// 业务操作类型 0=其它,1=新增,2=修改,3=删除,4=授权,5=导出,6=导入,7=强退,8=生成代码,9=清空数据

@@ -1,18 +1,19 @@
-using Infrastructure.Attribute;
-using Infrastructure.Extensions;
+using Lps.Infrastructure.Attribute;
+using Lps.Infrastructure.Extensions;
 using SqlSugar;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using Lps.Common;
-using Lps.Model.System;
-using Lps.Model.System.Dto;
+using Lps.ServiceCore.Model.Dto;
 using Lps.Model.System.Enums;
 using Lps.Model.System.Generate;
 using Lps.Model.System.Vo;
-using Lps.Service.System.IService;
+using Lps.ServiceCore.Service.IService;
+using Lps.ServiceCore.Model.System;
+using Microsoft.IdentityModel.Tokens;
 
-namespace Lps.Service
+namespace Lps.ServiceCore.Service
 {
     /// <summary>
     /// 菜单
@@ -177,7 +178,7 @@ namespace Lps.Service
         /// <returns></returns>
         public List<SysMenu> SelectMenuTreeByUserId(long userId)
         {
-            MenuQueryDto dto = new() { Status = "0", MenuTypeIds = "M,C" };
+            MenuQueryDto dto = new() { IsStatus = 0, MenuTypeIds = "M,C" };
             if (SysRoleService.IsAdmin(userId))
             {
                 return SelectTreeMenuList(dto);
@@ -202,7 +203,7 @@ namespace Lps.Service
                 JoinType.Left, ur.RoleId == r.RoleId
                 ))
                 .WithCache(60 * 10)
-                .Where((m, rm, ur, r) => m.Status == "0" && r.Status == 0 && ur.UserId == userId)
+                .Where((m, rm, ur, r) => m.IsStatus == 0 && r.IsStatus == 0 && ur.UserId == userId)
                 .Select((m, rm, ur, r) => m).ToList();
             var menuList = menus.Where(f => !string.IsNullOrEmpty(f.Perms));
 
@@ -225,7 +226,7 @@ namespace Lps.Service
                 .Where(c => roleMenus.Contains(c.MenuId))
                 .WhereIF(!string.IsNullOrEmpty(menu.MenuName), (c) => c.MenuName.Contains(menu.MenuName))
                 .WhereIF(!string.IsNullOrEmpty(menu.Visible), (c) => c.Visible == menu.Visible)
-                .WhereIF(!string.IsNullOrEmpty(menu.Status), (c) => c.Status == menu.Status)
+                .WhereIF(!string.IsNullOrEmpty(menu.IsStatus.ToString()), (c) => c.IsStatus == menu.IsStatus)
                 .WhereIF(!string.IsNullOrEmpty(menu.MenuTypeIds), c => menu.MenuTypeIdArr.Contains(c.MenuType))
                 .OrderBy((c) => new { c.ParentId, c.OrderNum })
                 .Select(c => c)
@@ -255,7 +256,7 @@ namespace Lps.Service
                     Component = t2.Component,
                     Perms = t3.Perms,
                     MenuType = (MenuType)(object)t3.MenuType,
-                    Status = (MenuStatus)(object)t3.Status
+                    Status = (MenuStatus)(object)t3.IsStatus
                 }).ToList();
         }
 
@@ -268,7 +269,7 @@ namespace Lps.Service
             var menuExp = Expressionable.Create<SysMenu>();
             menuExp.AndIF(!string.IsNullOrEmpty(menu.MenuName), it => it.MenuName.Contains(menu.MenuName));
             menuExp.AndIF(!string.IsNullOrEmpty(menu.Visible), it => it.Visible == menu.Visible);
-            menuExp.AndIF(!string.IsNullOrEmpty(menu.Status), it => it.Status == menu.Status);
+            menuExp.AndIF(!string.IsNullOrEmpty(menu.IsStatus.ToString()), it => it.IsStatus == menu.IsStatus);
             menuExp.AndIF(!string.IsNullOrEmpty(menu.MenuTypeIds), it => menu.MenuTypeIdArr.Contains(it.MenuType));
             menuExp.AndIF(menu.ParentId != null, it => it.ParentId == menu.ParentId);
 
@@ -291,7 +292,7 @@ namespace Lps.Service
 
             return Queryable()
                 .InnerJoin(roleMenus, (c, j) => c.MenuId == j.Menu_id)
-                .Where((c, j) => c.Status == "0")
+                .Where((c, j) => c.IsStatus == 0)
                 .WhereIF(!string.IsNullOrEmpty(sysMenu.MenuName), (c, j) => c.MenuName.Contains(sysMenu.MenuName))
                 .WhereIF(!string.IsNullOrEmpty(sysMenu.Visible), (c, j) => c.Visible == sysMenu.Visible)
                 .OrderBy((c, j) => new { c.ParentId, c.OrderNum })
@@ -311,7 +312,7 @@ namespace Lps.Service
                 .WithCache(60 * 10)
                 .WhereIF(!string.IsNullOrEmpty(menu.MenuName), it => it.MenuName.Contains(menu.MenuName))
                 .WhereIF(!string.IsNullOrEmpty(menu.Visible), it => it.Visible == menu.Visible)
-                .WhereIF(!string.IsNullOrEmpty(menu.Status), it => it.Status == menu.Status)
+                .WhereIF(!string.IsNullOrEmpty(menu.IsStatus.ToString()), it => it.IsStatus == menu.IsStatus)
                 .WhereIF(!string.IsNullOrEmpty(menu.MenuTypeIds), it => menu.MenuTypeIdArr.Contains(it.MenuType))
                 .WhereIF(menu.ParentId != null, it => it.ParentId == menu.ParentId)
                 .OrderBy(it => new { it.ParentId, it.OrderNum })
@@ -604,7 +605,7 @@ namespace Lps.Service
                     IsCache = "1",
                     MenuType = "C",
                     Visible = "0",
-                    Status = "0",
+                    IsStatus = 0,
                     Icon = "icon1",
                     Create_by = "system",
                 };
@@ -621,7 +622,7 @@ namespace Lps.Service
                 Perms = $"{permPrefix}:query",
                 MenuType = "F",
                 Visible = "0",
-                Status = "0",
+                IsStatus = 0,
                 Icon = "",
             };
             SysMenu menuAdd = new()
@@ -632,7 +633,7 @@ namespace Lps.Service
                 Perms = $"{permPrefix}:add",
                 MenuType = "F",
                 Visible = "0",
-                Status = "0",
+                IsStatus = 0,
                 Icon = "",
             };
             SysMenu menuDel = new()
@@ -643,7 +644,7 @@ namespace Lps.Service
                 Perms = $"{permPrefix}:delete",
                 MenuType = "F",
                 Visible = "0",
-                Status = "0",
+                IsStatus = 0,
                 Icon = "",
             };
 
@@ -655,7 +656,7 @@ namespace Lps.Service
                 Perms = $"{permPrefix}:edit",
                 MenuType = "F",
                 Visible = "0",
-                Status = "0",
+                IsStatus = 0,
                 Icon = "",
             };
 
@@ -667,7 +668,7 @@ namespace Lps.Service
                 Perms = $"{permPrefix}:export",
                 MenuType = "F",
                 Visible = "0",
-                Status = "0",
+                IsStatus = 0,
                 Icon = "",
             };
 
@@ -679,7 +680,7 @@ namespace Lps.Service
                 Perms = $"{permPrefix}:import",
                 MenuType = "F",
                 Visible = "0",
-                Status = "0",
+                IsStatus = 0,
                 Icon = "",
             };
 

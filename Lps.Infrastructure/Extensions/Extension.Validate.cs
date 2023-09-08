@@ -1,6 +1,6 @@
 ﻿//using Microsoft.AspNetCore.Http;
 
-namespace Infrastructure.Extensions
+namespace Lps.Infrastructure.Extensions
 {
     public static partial class Extensions
     {

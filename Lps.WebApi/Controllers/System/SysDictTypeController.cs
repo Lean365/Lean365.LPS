@@ -1,26 +1,26 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Lps.Admin.WebApi.Extensions;
-using Lps.Admin.WebApi.Filters;
+using Lps.WebApi.Extensions;
+using Lps.WebApi.Filters;
 using Lps.Model;
-using Lps.Model.System;
-using Lps.Model.System.Dto;
-using Lps.Service.System.IService;
+using Lps.ServiceCore.Service.IService;
+using Lps.ServiceCore.Model.System;
+using Lps.ServiceCore.Model.Dto;
 
-namespace Lps.Admin.WebApi.Controllers.System
+namespace Lps.WebApi.Controllers.System
 {
     /// <summary>
     /// 数据字典信息
     /// </summary>
     [Verify]
     [Route("system/dict/type")]
-    [ApiExplorerSettings(GroupName = "sys")]
+    [ApiExplorerSettings(GroupName = "system")]
     public class SysDictTypeController : BaseController
     {
-        private readonly ISysDictService SysDictService;
+        private readonly ISysDictTypeService SysDictTypeService;
 
-        public SysDictTypeController(ISysDictService sysDictService)
+        public SysDictTypeController(ISysDictTypeService sysDictTypeService)
         {
-            SysDictService = sysDictService;
+            SysDictTypeService = sysDictTypeService;
         }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace Lps.Admin.WebApi.Controllers.System
         [HttpGet("list")]
         public IActionResult List([FromQuery] SysDictType dict, [FromQuery] PagerInfo pagerInfo)
         {
-            var list = SysDictService.SelectDictTypeList(dict, pagerInfo);
+            var list = SysDictTypeService.SelectDictTypeList(dict, pagerInfo);
 
             return SUCCESS(list, TIME_FORMAT_FULL);
         }
@@ -47,7 +47,7 @@ namespace Lps.Admin.WebApi.Controllers.System
         [ActionPermissionFilter(Permission = "system:dict:query")]
         public IActionResult GetInfo(long dictId = 0)
         {
-            return SUCCESS(SysDictService.GetInfo(dictId));
+            return SUCCESS(SysDictTypeService.GetInfo(dictId));
         }
 
         /// <summary>
@@ -61,13 +61,13 @@ namespace Lps.Admin.WebApi.Controllers.System
         public IActionResult Add([FromBody] SysDictTypeDto dto)
         {
             SysDictType dict = dto.Adapt<SysDictType>();
-            if (UserConstants.NOT_UNIQUE.Equals(SysDictService.CheckDictTypeUnique(dict)))
+            if (UserConstants.NOT_UNIQUE.Equals(SysDictTypeService.CheckDictTypeUnique(dict)))
             {
                 return ToResponse(ApiResult.Error($"新增字典'{dict.DictName}'失败，字典类型已存在"));
             }
             dict.Create_by = HttpContext.GetName();
             dict.Create_time = DateTime.Now;
-            return SUCCESS(SysDictService.InsertDictType(dict));
+            return SUCCESS(SysDictTypeService.InsertDictType(dict));
         }
 
         /// <summary>
@@ -82,13 +82,13 @@ namespace Lps.Admin.WebApi.Controllers.System
         public IActionResult Edit([FromBody] SysDictTypeDto dto)
         {
             SysDictType dict = dto.Adapt<SysDictType>();
-            if (UserConstants.NOT_UNIQUE.Equals(SysDictService.CheckDictTypeUnique(dict)))
+            if (UserConstants.NOT_UNIQUE.Equals(SysDictTypeService.CheckDictTypeUnique(dict)))
             {
                 return ToResponse(ApiResult.Error($"修改字典'{dict.DictName}'失败，字典类型已存在"));
             }
             //设置添加人
             dict.Update_by = HttpContext.GetName();
-            return SUCCESS(SysDictService.UpdateDictType(dict));
+            return SUCCESS(SysDictTypeService.UpdateDictType(dict));
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace Lps.Admin.WebApi.Controllers.System
         {
             long[] idss = Tools.SpitLongArrary(ids);
 
-            return SUCCESS(SysDictService.DeleteDictTypeByIds(idss));
+            return SUCCESS(SysDictTypeService.DeleteDictTypeByIds(idss));
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace Lps.Admin.WebApi.Controllers.System
         [ActionPermissionFilter(Permission = "system:dict:export")]
         public IActionResult Export()
         {
-            var list = SysDictService.GetAll();
+            var list = SysDictTypeService.GetAll();
 
             string sFileName = ExportExcel(list, "sysdictType", "字典");
             return SUCCESS(new { path = "/export/" + sFileName, fileName = sFileName });

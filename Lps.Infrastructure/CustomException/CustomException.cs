@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Infrastructure
+namespace Lps.Infrastructure
 {
     public class CustomException : Exception
     {

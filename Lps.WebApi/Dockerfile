@@ -17,5 +17,5 @@ RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 #COPY . app/
 WORKDIR /app
 
-#等价于 dotnet Lps.Admin.WebApi.dll，如果不指定启动端口默认在docker里面启动端口是80端口
-ENTRYPOINT ["dotnet", "Lps.Admin.WebApi.dll", "--server.urls","http://*:8888"]
+#等价于 dotnet Lps.WebApi.dll，如果不指定启动端口默认在docker里面启动端口是80端口
+ENTRYPOINT ["dotnet", "Lps.WebApi.dll", "--server.urls","http://*:8888"]

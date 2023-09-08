@@ -1,14 +1,15 @@
-﻿using Infrastructure.Attribute;
+﻿using Lps.Infrastructure.Attribute;
 using SqlSugar;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using Lps.Common;
 using Lps.Model;
-using Lps.Model.System;
-using Lps.Service.System.IService;
+using Lps.ServiceCore.Service.IService;
+using Lps.ServiceCore.Model.System;
+using Microsoft.IdentityModel.Tokens;
 
-namespace Lps.Service.System
+namespace Lps.ServiceCore.Service
 {
     /// <summary>
     /// 字典数据类
@@ -27,7 +28,7 @@ namespace Lps.Service.System
             //return SysDictDataRepository.SelectDictDataList(dictData, pagerInfo);
             var exp = Expressionable.Create<SysDictData>();
             exp.AndIF(!string.IsNullOrEmpty(dictData.DictLabel), it => it.DictLabel.Contains(dictData.DictLabel));
-            exp.AndIF(!string.IsNullOrEmpty(dictData.Status), it => it.Status == dictData.Status);
+            exp.AndIF(!string.IsNullOrEmpty(dictData.IsStatus.ToString()), it => it.IsStatus == dictData.IsStatus);
             exp.AndIF(!string.IsNullOrEmpty(dictData.DictType), it => it.DictType == dictData.DictType);
             return GetPages(exp.ToExpression(), pagerInfo);
         }
@@ -43,7 +44,7 @@ namespace Lps.Service.System
 
             var list = Queryable()
                 .WithCache(CK, 60 * 10)
-                .Where(f => f.Status == "0" && f.DictType == dictType)
+                .Where(f => f.IsStatus == 0 && f.DictType == dictType)
             .OrderBy(it => it.DictSort)
             .ToList();
 
@@ -55,7 +56,7 @@ namespace Lps.Service.System
 
             var list = Queryable()
             .WithCache(CK, 60 * 30)
-            .Where(f => f.Status == "0" && dictTypes.Contains(f.DictType))
+            .Where(f => f.IsStatus == 0 && dictTypes.Contains(f.DictType))
             .OrderBy(it => it.DictSort)
             .ToList();
 
@@ -96,12 +97,12 @@ namespace Lps.Service.System
         {
             var result = Update(w => w.DictCode == dict.DictCode, it => new SysDictData()
             {
-                Remark = dict.Remark,
+                ReMarks = dict.ReMarks,
                 Update_time = DateTime.Now,
                 DictSort = dict.DictSort,
                 DictLabel = dict.DictLabel,
                 DictValue = dict.DictValue,
-                Status = dict.Status,
+                IsStatus = dict.IsStatus,
                 CssClass = dict.CssClass,
                 ListClass = dict.ListClass
             });

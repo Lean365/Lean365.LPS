@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Infrastructure.Model
+namespace Lps.Infrastructure.Model
 {
     public class TokenModel
     {

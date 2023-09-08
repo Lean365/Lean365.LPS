@@ -1,13 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Web;
 
-namespace Lps.Admin.WebApi.Controllers
+namespace Lps.WebApi.Controllers
 {
     /// <summary>
     /// 微信公众号
     /// </summary>
     [Route("[controller]/[action]")]
     [AllowAnonymous]
+    [ApiExplorerSettings(GroupName = "tool")]
     public class WxOpenController : BaseController
     {
         /// <summary>

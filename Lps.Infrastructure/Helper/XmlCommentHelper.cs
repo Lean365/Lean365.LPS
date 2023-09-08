@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml.XPath;
 
-namespace Infrastructure.Helper
+namespace Lps.Infrastructure.Helper
 {
     public class XmlCommentHelper
     {

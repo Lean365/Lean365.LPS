@@ -12,7 +12,7 @@ namespace ${options.ModelsNamespace}.${options.SubNamespace}
     {
 ${foreach(item in genTable.Columns)}
         /// <summary>
-        /// ${item.ColumnComment} ${item.Remark}
+        /// ${item.ColumnComment} ${item.ReMarks}
         /// </summary>
 $if(item.IsPk || item.IsIncrement)
         [SugarColumn(IsPrimaryKey = ${item.IsPk.ToString().ToLower()}, IsIdentity = ${item.IsIncrement.ToString().ToLower()}$if(item.CsharpField.ToLower() != item.ColumnName.ToLower()), ColumnName = "$item.ColumnName"$end)]

@@ -1,10 +1,10 @@
 ﻿global using Lps.Common;
 global using Microsoft.AspNetCore.Authorization;
-global using Infrastructure;
-global using Infrastructure.Attribute;
-global using Infrastructure.Enums;
-global using Infrastructure.Model;
+global using Lps.Infrastructure;
+global using Lps.Infrastructure.Attribute;
+global using Lps.Infrastructure.Enums;
+global using Lps.Infrastructure.Model;
 global using Mapster;
-global using Infrastructure.Extensions;
-global using Infrastructure.Controllers;
+global using Lps.Infrastructure.Extensions;
+global using Lps.Infrastructure.Controllers;
 global using Lps.ServiceCore.Middleware;
