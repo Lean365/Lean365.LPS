@@ -18,6 +18,11 @@ import pageAboutCn from './pages/about/zh-cn.json'
 import pageAboutTw from './pages/about/zh-tw.json'
 import pageAboutJa from './pages/about/ja.json'
 import pageAboutEn from './pages/about/en.json'
+//参数配置
+import pageConfigCn from './pages/config/zh-cn.json'
+import pageConfigTw from './pages/config/zh-tw.json'
+import pageConfigJa from './pages/config/ja.json'
+import pageConfigEn from './pages/config/en.json'
 //部门页面
 import pageDeptCn from './pages/dept/zh-cn.json'
 import pageDeptTw from './pages/dept/zh-tw.json'
@@ -98,6 +103,7 @@ const i18n = createI18n({
     'zh-cn': {
       ...Cn,
       ...pageAboutCn,
+      ...pageConfigCn,
       ...pageDeptCn,
       ...pageDictCn,
       ...pageGenCn,
@@ -116,6 +122,7 @@ const i18n = createI18n({
     'zh-tw': {
       ...Tw,
       ...pageAboutTw,
+      ...pageConfigTw,
       ...pageDeptTw,
       ...pageDictTw,
       ...pageGenTw,
@@ -133,6 +140,7 @@ const i18n = createI18n({
     'ja': {
       ...Ja,
       ...pageAboutJa,
+      ...pageConfigJa,
       ...pageDeptJa,
       ...pageDictJa,
       ...pageGenJa,
@@ -150,6 +158,7 @@ const i18n = createI18n({
     en: {
       ...En,
       ...pageAboutEn,
+      ...pageConfigEn,
       ...pageDeptEn,
       ...pageDictEn,
       ...pageGenEn,

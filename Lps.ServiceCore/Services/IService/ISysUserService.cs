@@ -2,7 +2,7 @@
 using Lps.Model;
 using Lps.ServiceCore.Model.Dto;
 using Lps.ServiceCore.Model.System;
-
+using Lps.Repository;
 namespace Lps.ServiceCore.Service.IService
 {
     public interface ISysUserService : IBaseService<SysUser>

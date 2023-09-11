@@ -9,7 +9,10 @@ $end
 namespace ${options.DtosNamespace}
 {
     /// <summary>
-    /// ${genTable.FunctionName}查询对象
+    /// ${genTable.FunctionName}
+    /// 查询对象
+    /// @author ${replaceDto.Author}
+    /// @date ${replaceDto.AddTime}
     /// </summary>
     public class ${replaceDto.ModelTypeName}QueryDto : PagerInfo 
     {

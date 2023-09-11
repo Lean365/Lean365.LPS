@@ -189,6 +189,7 @@
     "Newcompleted": "New completed",
     "Modicompleted": "Modification successfully",
     "Delcompleted": "Delete successfully",
+    "Refreshcompleted": "Refresh successfully",
     "Cleancompleted": "Clear successfully",
     "confirmDel": "Are you sure to delete the Data items of the<",
     "confirmDelDataitems": ">?",

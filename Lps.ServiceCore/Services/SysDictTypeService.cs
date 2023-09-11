@@ -8,7 +8,7 @@ using Lps.Model;
 using Lps.ServiceCore.Service.IService;
 using Lps.ServiceCore.Model.System;
 using Microsoft.IdentityModel.Tokens;
-
+using Lps.Repository;
 namespace Lps.ServiceCore.Service
 {
     /// <summary>

@@ -1,0 +1,12 @@
+{
+  "pconfig": {
+    "configId": "參數主鍵",
+    "configName": "參數名稱",
+    "configKey": "參數鍵名",
+    "configValue": "參數鍵值",
+    "configType": "系統內置",
+    "reMarks": "備註",
+    "createTime": "創建時間",
+    "config": "參數"
+  }
+}

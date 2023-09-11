@@ -7,7 +7,7 @@ using System.Linq;
 using Lps.Model;
 using Lps.Model.System.Generate;
 using Lps.ServiceCore.Service.IService;
-
+using Lps.Repository;
 namespace Lps.ServiceCore.Service
 {
     /// <summary>

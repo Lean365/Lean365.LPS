@@ -1,0 +1,12 @@
+{
+  "pconfig": {
+    "configId": "parameter primary key",
+    "configName": "parameter name",
+    "configKey": "parameter key name",
+    "configValue": "parameter key",
+    "configType": "System built-in",
+    "reMarks": "Remarks",
+    "createTime": "creation time",
+    "config": "parameter"
+  }
+}

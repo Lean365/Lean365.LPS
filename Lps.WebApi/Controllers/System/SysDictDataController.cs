@@ -4,7 +4,7 @@ using Lps.Model;
 using Lps.ServiceCore.Service.IService;
 using Lps.ServiceCore.Model.System;
 using Lps.ServiceCore.Model.Dto;
-
+using Lps.Repository;
 namespace Lps.WebApi.Controllers.System
 {
     /// <summary>

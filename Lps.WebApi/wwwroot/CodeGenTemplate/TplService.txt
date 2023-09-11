@@ -3,6 +3,8 @@ using SqlSugar;
 using Lps.Infrastructure.Attribute;
 using Lps.Infrastructure.Extensions;
 using ${options.BaseNamespace}Model;
+using Lps.ServiceCore.Model.System;
+using Lps.ServiceCore;
 using ${options.DtosNamespace};
 using ${options.ModelsNamespace}.${options.SubNamespace};
 using ${options.RepositoriesNamespace};
@@ -15,7 +17,10 @@ $end
 namespace ${options.ServicesNamespace}.${options.SubNamespace}
 {
     /// <summary>
-    /// ${genTable.FunctionName}Service业务层处理
+    /// ${genTable.FunctionName}
+    /// Service业务层处理
+    /// @author ${replaceDto.Author}
+    /// @date ${replaceDto.AddTime}
     /// </summary>
     [AppService(ServiceType = typeof(I${replaceDto.ModelTypeName}Service), ServiceLifetime = LifeTime.Transient)]
     public class ${replaceDto.ModelTypeName}Service : BaseService<${replaceDto.ModelTypeName}>, I${replaceDto.ModelTypeName}Service
@@ -40,7 +45,7 @@ $if(column.HtmlType == "month")
             DateTime monthEnd = Convert.ToDateTime(parm.${column.CsharpField}).AddMonths(1);
             predicate = predicate.AndIF(parm.${column.CsharpField} != null, it => it.${column.CsharpField} >= parm.${column.CsharpField} && it.${column.CsharpField} < monthEnd);
 $else
-            predicate = predicate.AndIF(parm.Begin${column.CsharpField} == null, it => it.${column.CsharpField} >= DateTime.Now.ToShortDateString().ParseToDateTime());
+            //predicate = predicate.AndIF(parm.Begin${column.CsharpField} == null, it => it.${column.CsharpField} >= DateTime.Now.ToShortDateString().ParseToDateTime());
             predicate = predicate.AndIF(parm.Begin${column.CsharpField} != null, it => it.${column.CsharpField} >= parm.Begin${column.CsharpField});
             predicate = predicate.AndIF(parm.End${column.CsharpField} != null, it => it.${column.CsharpField} <= parm.End${column.CsharpField});
 $end
@@ -89,6 +94,20 @@ $end
             return response;
         }
 $end
+        /// <summary>
+        /// 校验输入项目唯一性
+        /// </summary>
+        /// <param name="entryString"></param>
+        /// <returns></returns>
+        public string CheckEntryUnique(string entryString)
+        {
+            int count = Count(it => it.${replaceDto.PKName}.ToString() == entryString);
+            if (count > 0)
+            {
+                return UserConstants.NOT_UNIQUE;
+            }
+            return UserConstants.UNIQUE;
+        }
 
         /// <summary>
         /// 获取详情
@@ -115,9 +134,9 @@ $end
         public ${replaceDto.ModelTypeName} Add${replaceDto.ModelTypeName}(${replaceDto.ModelTypeName} model)
         {
 $if(null != genTable.SubTableName && "" != genTable.SubTableName)
-            return Context.InsertNav(model).Include(s1 => s1.${genTable.SubTable.ClassName}Nav).ExecuteReturnEntity();
+            return Context.InsertNav(model).EnableDiffLogEvent("新增Nav${genTable.FunctionName}").Include(s1 => s1.${genTable.SubTable.ClassName}Nav).ExecuteReturnEntity();
 $else
-            return Context.Insertable(model).ExecuteReturnEntity();
+            return Context.Insertable(model).EnableDiffLogEvent("新增${genTable.FunctionName}").ExecuteReturnEntity();
 $end
         }
 
@@ -138,7 +157,7 @@ ${end}
             //});
             //return response;
 $if(null != genTable.SubTableName && "" != genTable.SubTableName)
-            return Context.UpdateNav(model).Include(z1 => z1.${genTable.SubTable.ClassName}Nav).ExecuteCommand() ? 1 : 0;
+            return Context.UpdateNav(model).EnableDiffLogEvent("修改Nav${genTable.FunctionName}").Include(z1 => z1.${genTable.SubTable.ClassName}Nav).ExecuteCommand() ? 1 : 0;
 $else
             return Update(model, true);
 $end
@@ -176,7 +195,7 @@ $end
 $end
                 //.WhereColumns(it => it.UserName)//如果不是主键可以这样实现（多字段it=>new{it.x1,it.x2}）
                 .ToStorage();
-            var result = x.AsInsertable.ExecuteCommand();//插入可插入部分;
+            var result = x.AsInsertable.EnableDiffLogEvent("批量导入${genTable.FunctionName}").ExecuteCommand();//插入可插入部分;
 
             string msg = $"插入{x.InsertList.Count} 更新{x.UpdateList.Count} 错误数据{x.ErrorList.Count} 不计算数据{x.IgnoreList.Count} 删除数据{x.DeleteList.Count} 总共{x.TotalList.Count}";                    
             Console.WriteLine(msg);

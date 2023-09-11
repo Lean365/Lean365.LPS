@@ -189,6 +189,7 @@
     "Newcompleted": "已新增完成",
     "Modicompleted": "已修改完成",
     "Delcompleted": "已刪除完成",
+    "Refreshcompleted": "刷新成功",
     "Cleancompleted": "清空完成",
     "confirmDel": "是否確認將<",
     "confirmDelDataitems": ">的數據項刪除？",

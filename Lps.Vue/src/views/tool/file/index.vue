@@ -17,7 +17,8 @@
           <el-option v-for="item in storeTypeOptions" :key="item.dictValue" :label="item.dictLabel"
             :value="item.dictValue"></el-option>
         </el-select> -->
-        <el-radio-group v-model="queryParams.storeType" :placeholder="$t('btn.select')+$t('fupload.storageType')">
+        <el-radio-group v-model="queryParams.storeType" :placeholder="$t('btn.select')+$t('fupload.storageType')"
+          size="small">
           <el-radio-button> {{$t('layout.all')}} </el-radio-button>
           <el-radio-button v-for="item in storeTypeOptions" :key="item.dictValue" :label="item.dictValue">
             {{ item.dictLabel }}
@@ -72,18 +73,18 @@
       <el-table-column prop="fileExt" :label="$t('fupload.fileExt')" align="center" :show-overflow-tooltip="true"
         width="80px" />
       <!-- <el-table-column prop="storeType" label="存储类型" align="center">
-        <template #default="scope">
-          <dict-tag :options="storeTypeOptions" :value="parseInt(scope.row.storeType)" />
-        </template>
-      </el-table-column> -->
+      <template #default="scope">
+        <dict-tag :options="storeTypeOptions" :value="parseInt(scope.row.storeType)" />
+      </template>
+    </el-table-column> -->
       <!-- <el-table-column prop="accessUrl" label="访问路径">
-        <template #default="scope">
-          <el-link target="_blank" v-bind:href="scope.row.accessUrl">
-            {{scope.row.accessUrl}}
-          </el-link>
-        </template>
+      <template #default="scope">
+        <el-link target="_blank" v-bind:href="scope.row.accessUrl">
+          {{scope.row.accessUrl}}
+        </el-link>
+      </template>
 
-      </el-table-column> -->
+    </el-table-column> -->
       <el-table-column prop="create_by" :label="$t('fupload.fileOperator')" align="center" width="180px" />
       <el-table-column prop="create_time" :label="$t('fupload.fileCreatedate')" align="center" width="180px" />
       <el-table-column :label="$t('fupload.fileOperation')" align="center" width="220">

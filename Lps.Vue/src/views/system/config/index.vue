@@ -1,25 +1,24 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="参数名称" prop="configName">
-        <el-input v-model="queryParams.configName" placeholder="请输入参数名称" clearable @keyup.enter="handleQuery" />
+      <el-form-item :label="$t('pconfig.configName')" prop="configName">
+        <el-input v-model="queryParams.configName" :placeholder="$t('btn.enter')+$t('pconfig.configName')" clearable
+          @keyup.enter="handleQuery" size="small" />
       </el-form-item>
-      <el-form-item label="参数键名" prop="configKey">
-        <el-input v-model="queryParams.configKey" placeholder="请输入参数键名" clearable @keyup.enter="handleQuery" />
+      <el-form-item :label="$t('pconfig.configKey')" prop="configKey">
+        <el-input v-model="queryParams.configKey" :placeholder="$t('btn.enter')+$t('pconfig.configKey')" clearable
+          @keyup.enter="handleQuery" size="small" />
       </el-form-item>
-      <el-form-item label="系统内置" prop="configType">
-        <el-select v-model="queryParams.configType" placeholder="系统内置" clearable>
+      <el-form-item :label="$t('pconfig.configType')" prop="configType">
+        <el-select v-model="queryParams.configType" :placeholder="$t('btn.select')+$t('pconfig.configType')" clearable
+          size="small">
           <el-option v-for="dict in sysYesNoOptions" :key="dict.dictValue" :label="dict.dictLabel"
             :value="dict.dictValue" />
         </el-select>
       </el-form-item>
-      <el-form-item label="创建时间">
-        <el-date-picker v-model="dateRange" type="daterange" range-separator="-" start-placeholder="开始日期"
-          end-placeholder="结束日期"></el-date-picker>
-      </el-form-item>
       <el-form-item>
         <el-button type="primary" icon="search" size="small" @click="handleQuery">{{ $t('btn.search') }}</el-button>
-        <el-button icon="refresh" size="small" @click="resetQuery">{{ $t('btn.reset') }}</el-button>
+        <el-button type="info" plain icon="refresh" size="small" @click="resetQuery">{{ $t('btn.reset') }}</el-button>
       </el-form-item>
     </el-form>
 
@@ -49,29 +48,31 @@
 
     <el-table v-loading="loading" :data="configList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="参数主键" align="center" prop="configId" />
-      <el-table-column label="参数名称" align="center" prop="configName" :show-overflow-tooltip="true" />
-      <el-table-column label="参数键名" align="center" prop="configKey" :show-overflow-tooltip="true" />
-      <el-table-column label="参数键值" align="center" prop="configValue" />
-      <el-table-column label="系统内置" align="center" prop="configType">
+      <el-table-column :label="$t('pconfig.configId')" align="center" prop="configId" />
+      <el-table-column :label="$t('pconfig.configName')" align="center" prop="configName"
+        :show-overflow-tooltip="true" />
+      <el-table-column :label="$t('pconfig.configKey')" align="center" prop="configKey" :show-overflow-tooltip="true" />
+      <el-table-column :label="$t('pconfig.configValue')" align="center" prop="configValue" />
+      <el-table-column :label="$t('pconfig.configType')" align="center" prop="configType">
         <template #default="scope">
           <dict-tag :options="sysYesNoOptions" :value="scope.row.configType" />
         </template>
       </el-table-column>
-      <el-table-column label="备注" align="center" prop="reMarks" :show-overflow-tooltip="true" />
-      <el-table-column label="创建时间" align="center" prop="createTime" width="180">
+      <el-table-column :label="$t('pconfig.reMarks')" align="center" prop="reMarks" :show-overflow-tooltip="true" />
+      <el-table-column :label="$t('pconfig.createTime')" align="center" prop="createTime" width="180">
         <template #default="scope">
           <span>{{ scope.row.createTime }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
+      <el-table-column :label="$t('btn.operation')" align="center" class-name="small-padding fixed-width">
         <template #default="scope">
-          <el-button size="small" text icon="edit" @click="handleUpdate(scope.row)" v-hasPermi="['system:config:edit']">
-            {{ $t('btn.edit') }}
+          <el-button type="success" size="small" icon="edit" @click="handleUpdate(scope.row)"
+            v-hasPermi="['system:config:edit']" :title="  $t('btn.edit') ">
+
           </el-button>
-          <el-button size="small" text icon="delete" @click="handleDelete(scope.row)"
-            v-hasPermi="['system:config:remove']">
-            {{ $t('btn.delete') }}
+          <el-button type="danger" plain size="small" icon="delete" @click="handleDelete(scope.row)"
+            v-hasPermi="['system:config:remove']" :title="  $t('btn.delete') ">
+
           </el-button>
         </template>
       </el-table-column>
@@ -83,27 +84,27 @@
     <!-- 添加或修改参数配置对话框 -->
     <el-dialog :title="title" v-model="open" width="500px" append-to-body>
       <el-form ref="formRef" :model="form" :rules="rules" label-width="80px">
-        <el-form-item label="参数名称" prop="configName">
-          <el-input v-model="form.configName" placeholder="请输入参数名称" />
+        <el-form-item :label="$t('pconfig.configName')" prop="configName">
+          <el-input v-model="form.configName" :placeholder="$t('btn.enter')+$t('pconfig.configName')" />
         </el-form-item>
-        <el-form-item label="参数键名" prop="configKey">
-          <el-input v-model="form.configKey" placeholder="请输入参数键名" />
+        <el-form-item :label="$t('pconfig.configKey')" prop="configKey">
+          <el-input v-model="form.configKey" :placeholder="$t('btn.enter')+$t('pconfig.configKey')" />
         </el-form-item>
-        <el-form-item label="参数键值" prop="configValue">
-          <el-input v-model="form.configValue" placeholder="请输入参数键值" />
+        <el-form-item :label="$t('pconfig.configValue')" prop="configValue">
+          <el-input v-model="form.configValue" :placeholder="$t('btn.enter')+$t('pconfig.configValue')" />
         </el-form-item>
-        <el-form-item label="系统内置" prop="configType">
+        <el-form-item :label="$t('pconfig.configType')" prop="configType">
           <el-radio-group v-model="form.configType">
             <el-radio v-for="dict in sysYesNoOptions" :key="dict.dictValue" :label="dict.dictValue">{{ dict.dictLabel
               }}</el-radio>
           </el-radio-group>
         </el-form-item>
-        <el-form-item label="备注" prop="reMarks">
-          <el-input v-model="form.reMarks" type="textarea" placeholder="请输入内容" />
+        <el-form-item :label="$t('pconfig.reMarks')" prop="reMarks">
+          <el-input v-model="form.reMarks" type="textarea" :placeholder="$t('btn.enter')+$t('pconfig.reMarks')" />
         </el-form-item>
       </el-form>
       <template #footer>
-        <el-button text @click="cancel">{{ $t('btn.cancel') }}</el-button>
+        <el-button type="danger" plain @click="cancel">{{ $t('btn.cancel') }}</el-button>
         <el-button type="primary" @click="submitForm">{{ $t('btn.submit') }}</el-button>
       </template>
     </el-dialog>
@@ -111,8 +112,11 @@
 </template>
 
 <script setup name="config">
-  import { listConfig, getConfig, delConfig, addConfig, updateConfig, refreshCache } from '@/api/system/config'
 
+  // 引入 config操作方法
+  import { listConfig, getConfig, delConfig, addConfig, updateConfig, refreshCache } from '@/api/system/config'
+  //获取当前组件实例
+  const { proxy } = getCurrentInstance()
   // 遮罩层
   const loading = ref(true)
   // 选中数组
@@ -135,6 +139,7 @@
   const dateRange = ref([])
   // 系统是否
   const sysYesNoOptions = ref([])
+  //使用reactive()定义响应式变量,仅支持对象、数组、Map、Set等集合类型有效
   const queryParams = reactive({
     pageNum: 1,
     pageSize: 10,
@@ -142,17 +147,18 @@
     configKey: undefined,
     configType: undefined,
   })
+  //reactive()定义响应式变量,仅支持对象、数组、Map、Set等集合类型有效
   const state = reactive({
     form: {},
     rules: {
-      configName: [{ required: true, message: '参数名称不能为空', trigger: 'blur' }],
-      configKey: [{ required: true, message: '参数键名不能为空', trigger: 'blur' }],
-      configValue: [{ required: true, message: '参数键值不能为空', trigger: 'blur' }],
+      configName: [{ required: true, message: proxy.$t('pconfig.configName') + proxy.$t('btn.empty'), trigger: 'blur' }],
+      configKey: [{ required: true, message: proxy.$t('pconfig.configKey') + proxy.$t('btn.empty'), trigger: 'blur' }],
+      configValue: [{ required: true, message: proxy.$t('pconfig.configValue') + proxy.$t('btn.empty'), trigger: 'blur' }],
     },
   })
   const formRef = ref()
   const { form, rules } = toRefs(state)
-  const { proxy } = getCurrentInstance()
+
 
   /** 查询参数列表 */
   function getList() {
@@ -195,7 +201,7 @@
   function handleAdd() {
     reset()
     open.value = true
-    title.value = '添加参数'
+    title.value = proxy.$t('btn.add') + proxy.$t('btn.config')
   }
   // 多选框选中数据
   function handleSelectionChange(selection) {
@@ -210,7 +216,7 @@
     getConfig(configId).then((response) => {
       form.value = response.data
       open.value = true
-      title.value = '修改参数'
+      title.value = proxy.$t('btn.edit') + proxy.$t('btn.config')
     })
   }
   /** 提交按钮 */
@@ -219,13 +225,13 @@
       if (valid) {
         if (form.value.configId != undefined) {
           updateConfig(form.value).then((response) => {
-            proxy.$modal.msgSuccess('修改成功')
+            proxy.$modal.msgSuccess(proxy.$t('common.Modicompleted'))
             open.value = false
             getList()
           })
         } else {
           addConfig(form.value).then((response) => {
-            proxy.$modal.msgSuccess('新增成功')
+            proxy.$modal.msgSuccess(proxy.$t('common.Newcompleted'))
             open.value = false
             getList()
           })
@@ -237,20 +243,20 @@
   function handleDelete(row) {
     const configIds = row.configId || ids.value
     proxy
-      .$confirm('是否确认删除参数编号为"' + configIds + '"的数据项？')
+      .$confirm(proxy.$t('common.confirmDel') + configIds + proxy.$t('common.confirmDelDataitems'))
       .then(function () {
         return delConfig(configIds)
       })
       .then(() => {
         getList()
-        proxy.$modal.msgSuccess('删除成功')
+        proxy.$modal.msgSuccess(proxy.$t('common.Delcompleted'))
       })
       .catch(() => { })
   }
   /** 刷新缓存按钮操作 */
   function handleRefreshCache() {
     refreshCache().then(() => {
-      proxy.$modal.msgSuccess('刷新成功')
+      proxy.$modal.msgSuccess(proxy.$t('common.Refreshcompleted'))
     })
   }
   proxy.getDicts('sys_yes_no').then((response) => {
