@@ -1,5 +1,5 @@
 **中文** | [English](./README.en.md)
-<h2 align="center">💥Laplace.NET通用管理系统💥</h2>
+<h2 align="center">💥Lean365.LPS通用中小制造企业的生产看板💥</h2>
 <h4 align="center">👉.Net7+Vue3.x+Element plus前后端分离的快速发开框架👈</h4>  
 <div align=center>
 <img src="https://github.com/Lean365/LaplaceNet/blob/master/La.Vue/src/assets/logo/Laplace.png" width=128" height="128" />
@@ -41,10 +41,8 @@
 由于是个人项目，资金有限！！！
 ```
 ## 🧰 代码仓库
-| 仓库 | Gitee | Github                                                         |
-| ---- | ----- | -------------------------------------------------------------- |
-| Vue3 |       | [Net7中已包含克隆/下载](https://github.com/Lean365/LaplaceNet) |
-| Net7 |       | [克隆/下载](https://github.com/Lean365/LaplaceNet)             |
+| Gitee | [LaplaceNet/下载](https://gitee.com/leansoft365/LaplaceNet) | [Lean365.LPS/下载](https://gitee.com/leansoft365/Lean365.LPS)
+| Github | [LaplaceNet/下载](https://github.com/Lean365/LaplaceNet)   | [Lean365.LPS/下载](https://github.com/Lean365/Lean365.LPS)
 
 ## 🍅 前端
 - 核心框架 ：vue3.x、vuex、vue-router 、vue-cli 、axios、 element-plus、echats、i18n国际化等，前端采用vscode工具开发

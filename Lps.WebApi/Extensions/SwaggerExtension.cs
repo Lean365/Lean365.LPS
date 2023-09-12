@@ -63,77 +63,77 @@ namespace Lps.WebApi.Extensions
                     Title = "Lean365.NET Api",
                     Version = "v1",
                     Description = "系统管理",
-                    Contact = new OpenApiContact { Name = "Davis.Cheng", Email = "32322788@qq.com", Url = new Uri("https://laplacenet.github.io/") }
+                    Contact = new OpenApiContact { Name = "Davis.Cheng", Email = "32322788@qq.com", Url = new Uri("https://leansoft365.github.io/") }
                 });
                 c.SwaggerDoc("article", new OpenApiInfo
                 {
                     Title = "Lean365.NET Api",
                     Version = "v1",
                     Description = "文章管理",
-                    Contact = new OpenApiContact { Name = "Davis.Cheng", Email = "32322788@qq.com", Url = new Uri("https://laplacenet.github.io/") }
+                    Contact = new OpenApiContact { Name = "Davis.Cheng", Email = "32322788@qq.com", Url = new Uri("https://leansoft365.github.io/") }
                 });
                 c.SwaggerDoc("financial", new OpenApiInfo
                 {
                     Title = "Lean365.NET Api",
                     Version = "v1",
                     Description = "会计核算",
-                    Contact = new OpenApiContact { Name = "Davis.Cheng", Email = "32322788@qq.com", Url = new Uri("https://laplacenet.github.io/") }
+                    Contact = new OpenApiContact { Name = "Davis.Cheng", Email = "32322788@qq.com", Url = new Uri("https://leansoft365.github.io/") }
                 });
                 c.SwaggerDoc("material", new OpenApiInfo
                 {
                     Title = "Lean365.NET Api",
                     Version = "v1",
                     Description = "物料管理",
-                    Contact = new OpenApiContact { Name = "Davis.Cheng", Email = "32322788@qq.com", Url = new Uri("https://laplacenet.github.io/") }
+                    Contact = new OpenApiContact { Name = "Davis.Cheng", Email = "32322788@qq.com", Url = new Uri("https://leansoft365.github.io/") }
                 });
                 c.SwaggerDoc("monitor", new OpenApiInfo
                 {
                     Title = "Lean365.NET Api",
                     Version = "v1",
                     Description = "服务监控",
-                    Contact = new OpenApiContact { Name = "Davis.Cheng", Email = "32322788@qq.com", Url = new Uri("https://laplacenet.github.io/") }
+                    Contact = new OpenApiContact { Name = "Davis.Cheng", Email = "32322788@qq.com", Url = new Uri("https://leansoft365.github.io/") }
                 });
                 c.SwaggerDoc("office", new OpenApiInfo
                 {
                     Title = "Lean365.NET Api",
                     Version = "v1",
                     Description = "日常办公",
-                    Contact = new OpenApiContact { Name = "Davis.Cheng", Email = "32322788@qq.com", Url = new Uri("https://laplacenet.github.io/") }
+                    Contact = new OpenApiContact { Name = "Davis.Cheng", Email = "32322788@qq.com", Url = new Uri("https://leansoft365.github.io/") }
                 });
                 c.SwaggerDoc("production", new OpenApiInfo
                 {
                     Title = "Lean365.NET Api",
                     Version = "v1",
                     Description = "生产管理",
-                    Contact = new OpenApiContact { Name = "Davis.Cheng", Email = "32322788@qq.com", Url = new Uri("https://laplacenet.github.io/") }
+                    Contact = new OpenApiContact { Name = "Davis.Cheng", Email = "32322788@qq.com", Url = new Uri("https://leansoft365.github.io/") }
                 });
                 c.SwaggerDoc("tool", new OpenApiInfo
                 {
                     Title = "Lean365.NET Api",
                     Version = "v1",
                     Description = "系统工具",
-                    Contact = new OpenApiContact { Name = "Davis.Cheng", Email = "32322788@qq.com", Url = new Uri("https://laplacenet.github.io/") }
+                    Contact = new OpenApiContact { Name = "Davis.Cheng", Email = "32322788@qq.com", Url = new Uri("https://leansoft365.github.io/") }
                 });
                 c.SwaggerDoc("sales", new OpenApiInfo
                 {
                     Title = "Lean365.NET Api",
                     Version = "v1",
                     Description = "销售管理",
-                    Contact = new OpenApiContact { Name = "Davis.Cheng", Email = "32322788@qq.com", Url = new Uri("https://laplacenet.github.io/") }
+                    Contact = new OpenApiContact { Name = "Davis.Cheng", Email = "32322788@qq.com", Url = new Uri("https://leansoft365.github.io/") }
                 });
                 c.SwaggerDoc("quality", new OpenApiInfo
                 {
                     Title = "Lean365.NET Api",
                     Version = "v1",
                     Description = "质量管理",
-                    Contact = new OpenApiContact { Name = "Davis.Cheng", Email = "32322788@qq.com", Url = new Uri("https://laplacenet.github.io/") }
+                    Contact = new OpenApiContact { Name = "Davis.Cheng", Email = "32322788@qq.com", Url = new Uri("https://leansoft365.github.io/") }
                 });
                 c.SwaggerDoc("bpm", new OpenApiInfo
                 {
                     Title = "Lean365.NET Api",
                     Version = "v1",
                     Description = "BPM",
-                    Contact = new OpenApiContact { Name = "Davis.Cheng", Email = "32322788@qq.com", Url = new Uri("https://laplacenet.github.io/") }
+                    Contact = new OpenApiContact { Name = "Davis.Cheng", Email = "32322788@qq.com", Url = new Uri("https://leansoft365.github.io/") }
                 });
 
                 c.SwaggerDoc("v1", new OpenApiInfo
