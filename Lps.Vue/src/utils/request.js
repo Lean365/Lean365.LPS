@@ -5,7 +5,6 @@ import errorCode from '@/utils/errorCode'
 import useUserStore from '@/store/modules/user'
 import { blobValidate, delEmptyQueryNodes } from '@/utils/ruoyi'
 import { saveAs } from 'file-saver'
-
 let downloadLoadingInstance
 // 解决后端跨域获取不到cookie问题
 // axios.defaults.withCredentials = true
@@ -60,9 +59,9 @@ service.interceptors.response.use(
       useUserStore().refreshToken(token)
     }
     if (code == 401) {
-      ElMessageBox.confirm('登录状态已过期，请重新登录', '系统提示', {
-        confirmButtonText: '重新登陆',
-        cancelButtonText: '取消',
+      ElMessageBox.confirm('登录状态已过期，请重新登录(Your login session has expired, Please relogin and try again)', '系统提示(prompt)', {
+        confirmButtonText: '重新登陆(ReLogin)',
+        cancelButtonText: '取消(Cancel)',
         type: 'warning'
       }).then(() => {
         useUserStore()
@@ -75,7 +74,7 @@ service.interceptors.response.use(
           })
       })
 
-      return Promise.reject('无效的会话，或者会话已过期，请重新登录。')
+      return Promise.reject('无效的会话，或者会话已过期，请重新登录。(An invalid session, or the session has expired, Please relogin and try again.)')
     } else if (code == 0 || code == 1 || code == 110 || code == 101 || code == 403 || code == 500 || code == 429) {
       ElMessage({
         message: msg,
@@ -92,16 +91,16 @@ service.interceptors.response.use(
     var duration = 3000
     let { message } = error
     if (message == 'Network Error') {
-      message = '后端接口连接异常'
+      message = '后端接口连接异常(Api interface connection error)'
     } else if (message.includes('timeout')) {
-      message = '系统接口请求超时'
+      message = '系统接口请求超时(Api interface request timed out)'
     } else if (message.includes('code 429')) {
-      message = '请求过于频繁，请稍后再试'
+      message = '请求过于频繁，请稍后再试(The request is too frequent, please try again later)'
     } else if (message.includes('Request failed with status code')) {
       message = '系统接口(API)' + message.substr(message.length - 3) + '异常，请联系管理员(Exception, contact your administrator)'
 
       if (import.meta.env.DEV) {
-        message = 'Oops,后端出错了，你不会连错误日志都不会看吧(Oops, the backend has an error, please check the error log.)'
+        message = "Oops,后端连接出错，请查看错误日志！ \n (Oops, the backend has an error, please check the error log.)"
         duration = 0
       }
     }

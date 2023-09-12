@@ -17,8 +17,8 @@ namespace Lps.Infrastructure
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("Today's date: {0:D}", DateTime.Now);
             Console.WriteLine("Source: https://github.com/Lean365/LaplaceNet");
-            Console.WriteLine("Docs：https://laplacenet.github.io/");
-            Console.WriteLine("Donate：https://laplacenet.github.io/docs/others/donate.html");
+            Console.WriteLine("Docs：https://leansoft365.github.io/");
+            Console.WriteLine("Donate：https://leansoft365.github.io/docs/others/donate.html");
         }
     }
 }

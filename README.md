@@ -1,5 +1,5 @@
 **中文** | [English](./README.en.md)
-<h2 align="center">🏬Laplace.NET通用管理系统🏬</h2>
+<h2 align="center">💥Laplace.NET通用管理系统💥</h2>
 <h4 align="center">👉.Net7+Vue3.x+Element plus前后端分离的快速发开框架👈</h4>  
 <div align=center>
 <img src="https://github.com/Lean365/LaplaceNet/blob/master/La.Vue/src/assets/logo/Laplace.png" width=128" height="128" />
@@ -15,14 +15,14 @@
   
 </p>
 
-## 🎉概述
+## 🍁 概述
 
 - 侧重中小制造企业的生产看板。
 - 整合[ZR.Admin](https://gitee.com/izory)框架技术高效快速开发，前后端分离模式，开箱即用。
 - 专注您的业务，轻松开发从现在开始！
 
 
-## 💚 适合人群
+## 📢 适合人群
 
 - 熟悉中小制造企业的业务流程。
 - 正在以及想使用 element-ui/element-plus 开发，前端开发经验 1 年+。
@@ -32,7 +32,7 @@
 
 
 
-## 🌐在线体验
+## 🌏 在线体验
 - 😭计划中...
 
 
@@ -40,19 +40,19 @@
 ```
 由于是个人项目，资金有限！！！
 ```
-## 💎代码仓库
+## 🧰 代码仓库
 | 仓库 | Gitee | Github                                                         |
 | ---- | ----- | -------------------------------------------------------------- |
 | Vue3 |       | [Net7中已包含克隆/下载](https://github.com/Lean365/LaplaceNet) |
 | Net7 |       | [克隆/下载](https://github.com/Lean365/LaplaceNet)             |
 
-## 🍅前端
+## 🍅 前端
 - 核心框架 ：vue3.x、vuex、vue-router 、vue-cli 、axios、 element-plus、echats、i18n国际化等，前端采用vscode工具开发
 
-## 🍆后端
+## 🍆 后端
 - 核心框架：.Net7.0 + Web API + sqlsugar + swagger + signalR + IpRateLimit + Quartz.net + Redis，前端采用vs2022工具开发
 
-## ✨精益生产管理
+## 🐼 精益生产管理
 1. 预算管理
 - 人员
 - 设备
@@ -80,10 +80,10 @@
 - 来料
 - 成品
 
-## 🌈OA
+## 🐬 OA
 - 计划中...
 
-## 🌈ChatGPT
+## 🐾 ChatGPT
 - 计划中...
 
 
@@ -101,7 +101,7 @@
 ├─La.Vue                            ->[前端UI]：vue3.0版本UI层。
 ```
 
-## 📌演示图
+## 🌻 演示图
 
 <table>
     <tr>
