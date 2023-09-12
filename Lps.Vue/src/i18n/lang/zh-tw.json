@@ -94,6 +94,8 @@
     "nowMoment": "現在時刻",
     "nowLoginTime": "登錄時間",
     "lastLoginTime": "上次登錄時間:",
+    "workTime": "在線時長",
+    "onlineClientNum": "在線設備",
     "forced": "強退",
     "NoAuth": "未獲取到授權資訊,請返回重新授權登錄",
     "error401": "401 Unauthorized!",

@@ -10,13 +10,13 @@
     <div class="right-menu">
       <header-search id="header-search" class="right-menu-item" />
       <template v-if="appStore.device == 'desktop'">
-        <zr-git title="源码地址" class="right-menu-item" />
-        <zr-doc title="文档地址" class="right-menu-item" />
-        <screenfull title="全屏" class="right-menu-item" />
+        <Lps-git :title="$t('layout.codeSourceAddress')" class="right-menu-item" />
+        <Lps-doc :title="$t('layout.helpguide')" class="right-menu-item" />
+        <screenfull :title="$t('layout.fullscreen')" class="right-menu-item" />
       </template>
-      <size-select title="布局大小" class="right-menu-item" />
-      <LangSelect title="语言设置" class="right-menu-item" />
-      <Notice title="通知" class="right-menu-item" />
+      <size-select :title="$t('layout.sizeSelect')" class="right-menu-item" />
+      <LangSelect :title="$t('layout.multiLanguage')" class="right-menu-item" />
+      <Notice :title="$t('layout.notice')" class="right-menu-item" />
 
       <el-dropdown @command="handleCommand" class="right-menu-item avatar-container" trigger="hover">
         <span class="avatar-wrapper">
@@ -54,8 +54,8 @@
   import Screenfull from '@/components/Screenfull'
   import SizeSelect from '@/components/SizeSelect'
   import HeaderSearch from '@/components/HeaderSearch'
-  import ZrGit from '@/components/Zr/Git'
-  import ZrDoc from '@/components/Zr/Doc'
+  import LpsGit from '@/components/Lps/Git'
+  import LpsDoc from '@/components/Lps/Doc'
   import Notice from '@/components/Notice/Index'
   import LangSelect from '@/components/LangSelect/index'
   import useAppStore from '@/store/modules/app'
@@ -93,17 +93,17 @@
   const copyText = async (val) => {
     try {
       await toClipboard(val)
-      proxy.$modal.msgSuccess('复制成功！')
+      proxy.$modal.msgSuccess(proxy.$t('common.myTokenCopy'))
     } catch (e) {
       console.log(e)
-      proxy.$modal.msgError('当前浏览器不支持')
+      proxy.$modal.msgError(proxy.$t('common.mybrowserNg'))
     }
   }
   function logout() {
     proxy
       .$confirm(proxy.$t('layout.logOutConfirm'), proxy.$t('common.tips'), {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+        confirmButtonText: proxy.$t('btn.submit'),
+        cancelButtonText: proxy.$t('btn.cancel'),
         type: 'warning'
       })
       .then(() => {

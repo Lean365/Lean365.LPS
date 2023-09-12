@@ -9,24 +9,24 @@ const chartRef = ref(null)
 const props = defineProps({
   className: {
     type: String,
-    default: 'chart'
+    default: 'chart',
   },
   width: {
     type: String,
-    default: '100%'
+    default: '100%',
   },
   height: {
     type: String,
-    default: '350px'
+    default: '350px',
   },
   autoResize: {
     type: Boolean,
-    default: true
+    default: true,
   },
   chartData: {
     type: Object,
-    required: true
-  }
+    required: true,
+  },
 })
 let chart = null
 watch(
@@ -34,42 +34,39 @@ watch(
   (val) => {
     setOptions(val)
   },
-  { deep: true }
+  { deep: true },
 )
 
-function setOptions({ expectedData, actualData } = {}) {
+function setOptions ({ expectedData, actualData } = {}) {
   chart.setOption({
     xAxis: {
-      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+      data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
       boundaryGap: false,
       axisTick: {
-        show: false
-      }
-    },
-    title: {
-      text: '图表测试数据'
+        show: false,
+      },
     },
     grid: {
       left: 10,
       right: 10,
       bottom: 20,
-      top: 60,
-      containLabel: true
+      top: 30,
+      containLabel: true,
     },
     tooltip: {
       trigger: 'axis',
       axisPointer: {
-        type: 'cross'
+        type: 'cross',
       },
-      padding: [5, 10]
+      padding: [5, 10],
     },
     yAxis: {
       axisTick: {
-        show: false
-      }
+        show: false,
+      },
     },
     legend: {
-      data: ['expected', 'actual']
+      data: ['expected', 'actual'],
     },
     series: [
       {
@@ -78,14 +75,14 @@ function setOptions({ expectedData, actualData } = {}) {
           color: '#FF005A',
           lineStyle: {
             color: '#FF005A',
-            width: 2
-          }
+            width: 2,
+          },
         },
         smooth: true,
         type: 'line',
         data: expectedData,
         animationDuration: 2800,
-        animationEasing: 'cubicInOut'
+        animationEasing: 'cubicInOut',
       },
       {
         name: 'actual',
@@ -94,21 +91,21 @@ function setOptions({ expectedData, actualData } = {}) {
         itemStyle: {
           color: '#3888fa',
           areaStyle: {
-            color: '#f3f8ff'
+            color: '#f3f8ff',
           },
           lineStyle: {
             color: '#3888fa',
-            width: 2
-          }
+            width: 2,
+          },
         },
         data: actualData,
         animationDuration: 2800,
-        animationEasing: 'quadraticOut'
-      }
-    ]
+        animationEasing: 'quadraticOut',
+      },
+    ],
   })
 }
-function initChart() {
+function initChart () {
   chart = echarts.init(proxy.$refs.chartRef, 'macarons')
   setOptions(props.chartData)
 }

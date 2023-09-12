@@ -15,8 +15,8 @@
         <el-input v-model="queryParams.menuName" :placeholder="$t('btn.enter')+$t('pmenu.menuName')" clearable
           @keyup.enter="handleQuery" size="small" />
       </el-form-item>
-      <el-form-item :label="$t('pmenu.menuState')" prop="status">
-        <el-select v-model="queryParams.status" :placeholder="$t('btn.select')+$t('pmenu.menuState')" clearable
+      <el-form-item :label="$t('pmenu.menuState')" prop="isStatus">
+        <el-select v-model="queryParams.isStatus" :placeholder="$t('btn.select')+$t('pmenu.menuState')" clearable
           size="small">
           <el-option v-for="dict in sys_normal_disable" :key="dict.dictValue" :label="dict.dictLabel"
             :value="dict.dictValue" />
@@ -314,8 +314,8 @@
                   {{ $t('pmenu.menuState') }}
                 </span>
               </template>
-              <el-radio-group v-model="form.status">
-                <el-radio v-for="dict in sys_normal_disable" :key="dict.dictValue" :label="dict.dictValue">{{
+              <el-radio-group v-model="form.isStatus">
+                <el-radio v-for="dict in sys_normal_disable" :key="dict.dictValue" :label="parseInt(dict.dictValue)">{{
                   dict.dictLabel }}</el-radio>
               </el-radio-group>
             </el-form-item>
@@ -421,7 +421,7 @@
       isFrame: '0',
       isCache: '0',
       visible: '0',
-      status: '0'
+      isStatus: 0
     }
     proxy.resetForm('menuRef')
   }

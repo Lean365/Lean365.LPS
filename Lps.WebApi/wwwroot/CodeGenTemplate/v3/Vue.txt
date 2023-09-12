@@ -6,6 +6,7 @@
 -->
 <template>
   <div>
+    <!-- 工具区域 -->
     <el-form :model="queryParams" label-position="right" inline ref="queryRef" v-show="showSearch" @submit.prevent>
 $foreach(column in genTable.Columns)
 $set(labelName = "")
@@ -89,7 +90,7 @@ $end
 $end
       <el-form-item>
         <el-button icon="search" type="primary" @click="handleQuery">{{ ${t}t('btn.search') }}</el-button>
-        <el-button icon="refresh"type="info" plain @click="resetQuery">{{ ${t}t('btn.reset') }}</el-button>
+        <el-button icon="refresh" type="info" plain @click="resetQuery">{{ ${t}t('btn.reset') }}</el-button>
       </el-form-item>
     </el-form>
     <!-- 工具区域 -->
@@ -548,6 +549,13 @@ $end
 import { debounce } from 'lodash';
   //获取当前组件实例
 const { proxy } = getCurrentInstance()
+
+//标签页
+const activeName = ref('first')
+
+const handleClick = (tab, event) => {
+    console.log(tab, event)
+  }
  //选中refId数组数组
 const ids = ref([])
 // 是否加载动画
@@ -781,7 +789,7 @@ const state = reactive({
   rules: {
 $foreach(column in genTable.Columns)
 $if(column.IsRequired && column.IsIncrement == false)
-    ${column.CsharpFieldFl}: [{ required: true, message: "${column.ColumnComment}+ proxy.${t}t('btn.empty')", trigger: $if(column.htmlType == "select")"change"$else"blur"$end
+    ${column.CsharpFieldFl}: [{ required: true, message: '${column.ColumnComment}'+ proxy.${t}t('btn.empty'), trigger: $if(column.htmlType == "select")"change"$else"blur"$end
 $if(column.CsharpType == "int" || column.CsharpType == "long"), type: "number"$end }],
 $end
 $end
@@ -1041,6 +1049,66 @@ function rowClick(row) {
 }
 
 $end
+
+  //自定义统计函数
+  const getSummaries = (param) => {
+    const { columns, data } = param;
+    const sums = [];
+    columns.forEach((column, index) => {
+      if (index === 1) {
+        sums[index] = '合计'
+        return
+      }
+      //合计的索引
+      // if (index === 2 || index === 3 || index === 4 || index === 5 || index === 6) {
+      if (index === 6 || index === 7) {
+        const values = data.map(item => Number(item[column.property]));
+        if (!values.every(value => isNaN(value))) {
+          sums[index] = values.reduce((prev, curr) => {
+            const value = Number(curr)
+            if (!isNaN(value)) {
+              return (prev + curr)
+            } else {
+              return prev
+            }
+          }, 0)
+          // sums[index] = (sums[index]).toFixed(2); 
+          sums[index] = ThousandWithNumber(sums[index])// !!重点 要对结果进行转换
+        }
+      }
+
+    })
+    //加减运算
+    sums[8] = '未完成台数：' + ThousandWithNumber(formatNumber(sums[6]) - formatNumber(sums[7])).toString()
+    //合计库存金额，数量*价格
+    //sums[8] = ThousandWithNumber((data.reduce((sum, row) => sum + (row.mmMovingAvg * row.mmInventory / 1000.00), 0)).toFixed(2))// !!重点 要对结果进行转换
+    return sums
+  }
+  //千分位转number
+  const formatNumber = (val) => {
+    if (val == null || val == 0) {
+      return val = '0.00'
+    } else {
+      return val.replace(/,/g, '');
+    }
+  }
+  // 千分位函数
+  function ThousandWithNumber(value) {
+    if (!value) return 0
+    // 获取整数部分
+    const wholePart = Math.trunc(value)
+    // 梳理数据 -> 千分位
+    const wholePartFormat = wholePart.toString().replace(/(\d)(?=(?:\d{3})+$)/g, '$1,')
+    // 处理小数部分
+    let decimalPart = ''
+    // 将数值截取为小数部分和整数部分
+    const valueArray = value.toString().split('.')
+    if (valueArray.length === 2) { // 有小数部分
+      decimalPart = valueArray[1].toString() // 取得小数部分
+      return wholePartFormat + '.' + decimalPart
+    }
+    return wholePartFormat + decimalPart
+  }
 
 handleQuery()
 </script>

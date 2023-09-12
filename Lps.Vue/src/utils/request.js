@@ -98,10 +98,10 @@ service.interceptors.response.use(
     } else if (message.includes('code 429')) {
       message = '请求过于频繁，请稍后再试'
     } else if (message.includes('Request failed with status code')) {
-      message = '系统接口' + message.substr(message.length - 3) + '异常，请联系管理员'
+      message = '系统接口(API)' + message.substr(message.length - 3) + '异常，请联系管理员(Exception, contact your administrator)'
 
       if (import.meta.env.DEV) {
-        message = 'Oops,后端出错了，你不会连错误日志都不会看吧'
+        message = 'Oops,后端出错了，你不会连错误日志都不会看吧(Oops, the backend has an error, please check the error log.)'
         duration = 0
       }
     }

@@ -94,6 +94,8 @@
     "nowMoment": "Now moment",
     "nowLoginTime": "login time",
     "lastLoginTime": "Last login time:",
+    "workTime": "Online duration",
+    "onlineClientNum": "Online devices",
     "forced": "Force Exit",
     "NoAuth": "No authorization information was obtained. Please return to re-authorize login",
     "error401": "401 Unauthorized!",

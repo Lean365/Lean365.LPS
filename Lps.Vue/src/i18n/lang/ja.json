@@ -94,6 +94,8 @@
     "nowMoment": "現在",
     "nowLoginTime": "ログイン時間",
     "lastLoginTime": "前回ログイン時間:",
+    "workTime": "オンライン期間",
+    "onlineClientNum": "オンラインデバイス",
     "forced": "強制終了",
     "NoAuth": "認証情報が取得されていません。再認証ログインに戻ってください",
     "error401": "401 Unauthorized!",

@@ -31,7 +31,10 @@
           </div>
           <div class="text-warning mb10">{{ $t('layout.nowLoginTime') }}:{{nowTime}}
           </div>
-          <div>{{ $t('layout.lastLoginTime') }}{{ userInfo.loginDate }}</div>
+          <div class="text-information mb10">{{ $t('layout.lastLoginTime') }}{{ userInfo.loginDate }}</div>
+          <div class="text-danger mb10">{{ $t('layout.workTime') }}:{{ onlineInfo.todayOnlineTime }}</div>
+          <div class="text-information mb10">{{ $t('layout.onlineClientNum') }}:{{ onlineInfo.clientNum }}</div>
+
         </el-card>
       </el-col>
     </el-row>
@@ -119,12 +122,16 @@
   import CommonMenu from './components/CommonMenu'
   import moment from 'moment'
   import zonetime from 'moment-timezone'
+  import dayjs from 'dayjs'
+  // 时间插件
+  import duration from 'dayjs/plugin/duration'
+  dayjs.extend(duration)
   import "moment/dist/locale/zh-cn"
   import 'moment/dist/locale/zh-tw'
   import 'moment/dist/locale/ja'
   import useAppStore from '@/store/modules/app'
   import useUserStore from '@/store/modules/user'
-
+  import useSocketStore from '@/store/modules/socket'
   import { getWeek } from '@/utils/ruoyi'
 
   const showEdit = ref(false)
@@ -154,9 +161,15 @@
   const lang = computed(() => {
     return useAppStore().lang
   })
+  const onlineInfo = computed(() => {
+    return useSocketStore().onlineInfo
+  })
   const currentTime = computed(() => {
     return proxy.parseTime(new Date(), 'YYYY-MM-DD')
   })
+  function workTimeFormatter(val) {
+    return dayjs.duration(val * 60, 'second').format('HH时mm分')
+  }
   const weekName = getWeek()
   const timezone = moment.tz.guess()
   const langselect = lang

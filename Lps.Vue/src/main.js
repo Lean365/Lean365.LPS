@@ -20,6 +20,8 @@ import '@/assets/iconfont/iconfont.js' //iconfont
 import 'virtual:svg-icons-register'
 import SvgIcon from '@/components/SvgIcon/index.vue'
 import elementIcons from '@/components/SvgIcon/svgicon'
+import VForm3 from 'vform3-builds'  //引入VForm 3库
+import 'vform3-builds/dist/designer.style.css'  //引入VForm3样式
 
 import './permission' // permission control
 
@@ -71,4 +73,11 @@ app.component('ZrDialog', Dialog)
 
 directive(app)
 
-app.use(pinia).use(router).use(plugins).use(ElementPlus, {}).use(elementIcons).use(vueI18n).mount('#app')
+app.use(pinia)
+  .use(router)
+  .use(plugins)
+  .use(ElementPlus, {})
+  .use(VForm3)  //全局注册VForm 3(同时注册了v-form-designer和v-form-render组件)
+  .use(elementIcons)
+  .use(vueI18n)
+  .mount('#app')

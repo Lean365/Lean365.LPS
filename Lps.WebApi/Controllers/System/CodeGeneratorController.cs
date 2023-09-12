@@ -86,7 +86,7 @@ namespace Lps.WebApi.Controllers
             //查询原表数据，部分字段映射到代码生成表字段
             var rows = GenTableService.GetGenTables(new GenTable() { TableName = tableName }, pagerInfo);
 
-            return SUCCESS(rows, "MM月dd日 HH:mm");
+            return SUCCESS(rows);
         }
 
         /// <summary>

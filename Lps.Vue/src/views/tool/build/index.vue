@@ -1,15 +1,14 @@
 <template>
-  <div>
-    <svg-icon name="build" />
-    如有需要，请前往
-    <a href="https://gitee.com/gavinzhulei/vue-form-making?_from=gitee_search" target="_blank">
-      https://gitee.com/gavinzhulei/vue-form-making?_from=gitee_search
-    </a>
-    自行集成
-  </div>
+  <v-form-designer ref="vfdRef"></v-form-designer>
 </template>
-<style>
-a {
-  color: aquamarine;
-}
+
+<script setup>
+  const vfdRef = ref(null)
+</script>
+
+<style lang="scss">
+  body {
+    margin: 0;
+    /* 如果页面出现垂直滚动条，则加入此行CSS以消除之 */
+  }
 </style>

@@ -94,6 +94,8 @@
     "nowMoment": "现在时刻",
     "nowLoginTime": "登录时间",
     "lastLoginTime": "上次登录时间:",
+    "workTime": "在线时长",
+    "onlineClientNum": "在线设备",
     "forced": "強退",
     "NoAuth": "未获取到授权信息，请返回重新授权登录",
     "error401": "401 Unauthorized!",

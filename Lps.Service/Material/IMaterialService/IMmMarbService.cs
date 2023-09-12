@@ -8,20 +8,20 @@ using System.Collections.Generic;
 namespace Lps.Service.Material.IMaterialService
 {
     /// <summary>
-    /// 工厂物料数据
+    /// 物料信息
     /// service接口
     /// @author Lean365
-    /// @date 2023-09-11
+    /// @date 2023-09-12
     /// </summary>
-    public interface IMmMarcService : IBaseService<MmMarc>
+    public interface IMmMarbService : IBaseService<MmMarb>
     {
         /// <summary>
-        /// 工厂物料数据
+        /// 物料信息
         /// 列表
         /// </summary>
         /// <param name="parm"></param>
         /// <returns></returns>
-        PagedInfo<MmMarcDto> GetList(MmMarcQueryDto parm);
+        PagedInfo<MmMarbDto> GetList(MmMarbQueryDto parm);
 
         /// <summary>
         /// 校验输入项目唯一性
@@ -31,36 +31,36 @@ namespace Lps.Service.Material.IMaterialService
         public string CheckEntryUnique(string entryString);
 
         /// <summary>
-        /// 工厂物料数据
+        /// 物料信息
         /// 详情
         /// </summary>
-        /// <param name="MarcGuid"></param>
+        /// <param name="MmGuid"></param>
         /// <returns></returns>
-        MmMarc GetInfo(Guid MarcGuid);
+        MmMarb GetInfo(Guid MmGuid);
 
         /// <summary>
-        /// 工厂物料数据
+        /// 物料信息
         /// 新增
         /// </summary>
         /// <param name="parm"></param>
         /// <returns></returns>
-        MmMarc AddMmMarc(MmMarc parm);
+        MmMarb AddMmMarb(MmMarb parm);
 
         /// <summary>
-        /// 工厂物料数据
+        /// 物料信息
         /// 修改编辑
         /// </summary>
         /// <param name="parm"></param>
         /// <returns></returns>
-        int UpdateMmMarc(MmMarc parm);
+        int UpdateMmMarb(MmMarb parm);
 
 
         /// <summary>
         /// 导入
-        /// 工厂物料数据
+        /// 物料信息
         /// </summary>
         /// <param name="list"></param>
         /// <returns></returns>
-        (string, object, object) ImportMmMarc(List<MmMarc> list);
+        (string, object, object) ImportMmMarb(List<MmMarb> list);
     }
 }
