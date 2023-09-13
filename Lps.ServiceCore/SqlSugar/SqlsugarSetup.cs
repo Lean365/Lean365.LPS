@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SqlSugar.IOC;
 using Lps.ServiceCore.Model.System;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Lps.ServiceCore.SqlSugar
 {
@@ -115,7 +116,10 @@ namespace Lps.ServiceCore.SqlSugar
                 var time = it.Time;
                 var diffType = it.DiffType;//enum insert 、update and delete  
                 string name = App.UserName;
-
+                if (editBeforeData.IsNullOrEmpty())
+                {
+                    editBeforeData = editAfterData;
+                }
                 foreach (var item in editBeforeData)
                 {
                     var pars = db.Utilities.SerializeObject(item.Columns.ToDictionary(it => it.ColumnName, it => it.Value));

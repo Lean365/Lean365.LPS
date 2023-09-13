@@ -2,17 +2,17 @@
   <div class="app-container">
     <el-form :model="queryParams" ref="queryRef" :inline="true">
       <el-form-item>
-        <el-button plain type="danger" @click="onLockAll()" icon="lock"
+        <el-button plain type="danger" size="small" @click="onLockAll()" icon="lock"
           v-hasPermi="['monitor:online:forceLogout']">{{$t('ponline.forceLogoutAll')}}</el-button>
       </el-form-item>
       <el-form-item>
-        <el-radio-group v-model="viewSwitch" fill='#d4237a'>
+        <el-radio-group v-model="viewSwitch" fill='#d4237a' size="small">
           <el-radio-button label="1">{{$t('ponline.viewSwitchGrid')}}</el-radio-button>
           <el-radio-button label="2">{{$t('ponline.viewSwitchCard')}}</el-radio-button>
         </el-radio-group>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" icon="Search" @click="handleQuery">{{$t('ponline.reFresh')}}</el-button>
+        <el-button type="primary" icon="Search" size="small" @click="handleQuery">{{$t('ponline.reFresh')}}</el-button>
       </el-form-item>
     </el-form>
     <!-- <el-row :gutter="10" class="mb8">
@@ -38,9 +38,9 @@
       </el-table-column>
       <el-table-column :label="$t('btn.operation')" align="center" width="160">
         <template #default="scope">
-          <el-button color="#626aef" szie="small" @click="onChat(scope.row)" icon="bell" v-hasRole="['admin']"
+          <el-button color="#626aef" size="small" @click="onChat(scope.row)" icon="bell" v-hasRole="['admin']"
             :title="$t('ponline.Notice')"></el-button>
-          <el-button type="danger" plain szie="small" @click="onLock(scope.row)" icon="lock"
+          <el-button type="danger" plain size="small" @click="onLock(scope.row)" icon="lock"
             v-hasPermi="['monitor:online:forceLogout']" :title="$t('ponline.forceLogout')"></el-button>
         </template>
       </el-table-column>

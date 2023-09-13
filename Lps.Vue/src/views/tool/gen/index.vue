@@ -12,7 +12,7 @@
     <el-row :gutter="10" class="mb10">
       <el-col :span="1.5">
         <el-button color="#626aef" plain icon="upload" @click="openImportTable"
-          v-hasPermi="['tool:gen:import']">{{$t('gencode.importTable')}}</el-button>
+          v-hasPermi="['tool:gen:import']">{{$t('gen.ImportTable')}}</el-button>
       </el-col>
       <el-col :span="1.5">
         <el-button type="danger" :disabled="multiple" plain icon="delete" @click="handleDelete"
@@ -234,7 +234,7 @@
     getList()
 
     router.push({
-      path: '/gen/editTable',
+      path: 'gen/editTable',
       query: { tableId: row.tableId }
     })
   }
@@ -242,15 +242,15 @@
   function handleDelete(row) {
     const Ids = row.tableId || tableIds.value
     proxy
-      .$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      .$confirm(proxy.$t('gencode.Permanentlydeleted'), proxy.$t('common.warningTips'), {
+        confirmButtonText: proxy.$t('btn.submit'),
+        cancelButtonText: proxy.$t('btn.cancel'),
         type: 'warning'
       })
       .then(() => {
         delTable(Ids.toString()).then((res) => {
           if (res.code == 200) {
-            proxy.$modal.msgSuccess('删除成功')
+            proxy.$modal.msgSuccess(proxy.$t('common.Delcompleted'))
 
             handleQuery()
           }
@@ -259,7 +259,7 @@
       .catch(() => {
         proxy.$message({
           type: 'info',
-          message: '已取消删除'
+          message: proxy.$t('common.Undeleted')
         })
       })
   }
@@ -274,9 +274,9 @@
   function onCopy(input) {
     if (isSupported) {
       copy(input)
-      proxy.$modal.msgSuccess('复制成功！')
+      proxy.$modal.msgSuccess(proxy.$t('common.copySucceed'))
     } else {
-      proxy.$modal.msgError('当前浏览器不支持')
+      proxy.$modal.msgError(proxy.$t('layout.mybrowserNg'))
     }
   }
   function handleCommand(command, row) {

@@ -558,25 +558,29 @@ namespace Lps.CodeGenerator
                 IsExport = true,
                 HtmlType = GenConstants.HTML_INPUT,
             };
-
+            //图片上传字段
             if (GenConstants.imageFiled.Any(f => column.DbColumnName.ToLower().Contains(f.ToLower())))
             {
                 genTableColumn.HtmlType = GenConstants.HTML_IMAGE_UPLOAD;
             }
+            //时间字段
             else if (GenConstants.COLUMNTYPE_TIME.Any(f => genTableColumn.CsharpType.ToLower().Contains(f.ToLower())))
             {
                 genTableColumn.HtmlType = GenConstants.HTML_DATETIME;
             }
+            //单选字段
             else if (GenConstants.radioFiled.Any(f => column.DbColumnName.EndsWith(f, StringComparison.OrdinalIgnoreCase)) ||
                 GenConstants.radioFiled.Any(f => column.DbColumnName.StartsWith(f, StringComparison.OrdinalIgnoreCase)))
             {
                 genTableColumn.HtmlType = GenConstants.HTML_RADIO;
             }
+            //选择框字段
             else if (GenConstants.selectFiled.Any(f => column.DbColumnName == f) ||
                 GenConstants.selectFiled.Any(f => column.DbColumnName.EndsWith(f, StringComparison.OrdinalIgnoreCase)))
             {
                 genTableColumn.HtmlType = GenConstants.HTML_SELECT;
             }
+            //文本大于500则转换
             else if (column.Length > 500)
             {
                 genTableColumn.HtmlType = GenConstants.HTML_TEXTAREA;
@@ -596,7 +600,21 @@ namespace Lps.CodeGenerator
             {
                 genTableColumn.QueryType = "BETWEEN";
             }
-
+            //查询字段
+            if (GenConstants.COLUMNNAME_NOT_QUERY.Any(f => column.DbColumnName.ToLower().Contains(f.ToLower())))
+            {
+                genTableColumn.IsQuery = false;
+            }
+            //填写字段
+            if (GenConstants.COLUMNNAME_NOT_REQUIRED.Any(f => column.DbColumnName.ToLower().Contains(f.ToLower())))
+            {
+                genTableColumn.IsRequired = false;
+            }
+            //导出字段
+            if (GenConstants.COLUMNNAME_NOT_EXPORT.Any(f => column.DbColumnName.ToLower().Contains(f.ToLower())))
+            {
+                genTableColumn.IsExport = false;
+            }
             return genTableColumn;
         }
 

@@ -29,7 +29,13 @@ namespace Lps.Common
             int[] infoIdss = Array.ConvertAll(strIds, s => int.Parse(s));
             return infoIdss;
         }
-
+        public static Guid[] SpitGuidArrary(string str, char split = ',')
+        {
+            if (string.IsNullOrEmpty(str)) { return Array.Empty<Guid>(); }
+            string[] strIds = str.Split(split, (char)StringSplitOptions.RemoveEmptyEntries);
+            Guid[] infoIdss = Array.ConvertAll(strIds, s => Guid.Parse(s));
+            return infoIdss;
+        }
         /// <summary>
         /// 根据日期获取星期几
         /// </summary>

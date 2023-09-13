@@ -38,11 +38,22 @@ import pageGenCn from './pages/gen/zh-cn.json'
 import pageGenTw from './pages/gen/zh-tw.json'
 import pageGenJa from './pages/gen/ja.json'
 import pageGenEn from './pages/gen/en.json'
+//任务页面
+import pageJobCn from './pages/job/zh-cn.json'
+import pageJobTw from './pages/job/zh-tw.json'
+import pageJobJa from './pages/job/ja.json'
+import pageJobEn from './pages/job/en.json'
 //语言页面
 import pageLangCn from './pages/lang/zh-cn.json'
 import pageLangTw from './pages/lang/zh-tw.json'
 import pageLangJa from './pages/lang/ja.json'
 import pageLangEn from './pages/lang/en.json'
+
+//日志页面
+import pageLogCn from './pages/log/zh-cn.json'
+import pageLogTw from './pages/log/zh-tw.json'
+import pageLogJa from './pages/log/ja.json'
+import pageLogEn from './pages/log/en.json'
 
 //登录页面
 import pageLoginCn from './pages/login/zh-cn.json'
@@ -107,7 +118,9 @@ const i18n = createI18n({
       ...pageDeptCn,
       ...pageDictCn,
       ...pageGenCn,
+      ...pageJobCn,
       ...pageLangCn,
+      ...pageLogCn,
       ...pageLoginCn,
       ...pageMenuCn,
       ...pageOnlineCn,
@@ -126,7 +139,9 @@ const i18n = createI18n({
       ...pageDeptTw,
       ...pageDictTw,
       ...pageGenTw,
+      ...pageJobTw,
       ...pageLangTw,
+      ...pageLogTw,
       ...pageLoginTw,
       ...pageMenuTw,
       ...pageOnlineTw,
@@ -143,8 +158,10 @@ const i18n = createI18n({
       ...pageConfigJa,
       ...pageDeptJa,
       ...pageDictJa,
+      ...pageJobJa,
       ...pageGenJa,
       ...pageLangJa,
+      ...pageLogJa,
       ...pageLoginJa,
       ...pageMenuJa,
       ...pageOnlineJa,
@@ -161,8 +178,10 @@ const i18n = createI18n({
       ...pageConfigEn,
       ...pageDeptEn,
       ...pageDictEn,
+      ...pageJobEn,
       ...pageGenEn,
       ...pageLangEn,
+      ...pageLogEn,
       ...pageLoginEn,
       ...pageMenuEn,
       ...pageOnlineEn,

@@ -2,26 +2,26 @@ using System;
 using Lps.Model;
 using Lps.ServiceCore;
 using Lps.Model.Dto;
-using Lps.Model.Material;
+using Lps.Model.Office;
 using System.Collections.Generic;
 
-namespace Lps.Service.Material.IMaterialService
+namespace Lps.Service.Office.IOfficeService
 {
     /// <summary>
-    /// 物料信息
+    /// 机构信息
     /// service接口
     /// @author Lean365
-    /// @date 2023-09-12
+    /// @date 2023-09-13
     /// </summary>
-    public interface IMmMarbService : IBaseService<MmMarb>
+    public interface IInstInfoService : IBaseService<InstInfo>
     {
         /// <summary>
-        /// 物料信息
+        /// 机构信息
         /// 列表
         /// </summary>
         /// <param name="parm"></param>
         /// <returns></returns>
-        PagedInfo<MmMarbDto> GetList(MmMarbQueryDto parm);
+        PagedInfo<InstInfoDto> GetList(InstInfoQueryDto parm);
 
         /// <summary>
         /// 校验输入项目唯一性
@@ -31,36 +31,36 @@ namespace Lps.Service.Material.IMaterialService
         public string CheckEntryUnique(string entryString);
 
         /// <summary>
-        /// 物料信息
+        /// 机构信息
         /// 详情
         /// </summary>
-        /// <param name="MmGuid"></param>
+        /// <param name="IiGuid"></param>
         /// <returns></returns>
-        MmMarb GetInfo(Guid MmGuid);
+        InstInfo GetInfo(Guid IiGuid);
 
         /// <summary>
-        /// 物料信息
+        /// 机构信息
         /// 新增
         /// </summary>
         /// <param name="parm"></param>
         /// <returns></returns>
-        MmMarb AddMmMarb(MmMarb parm);
+        InstInfo AddInstInfo(InstInfo parm);
 
         /// <summary>
-        /// 物料信息
+        /// 机构信息
         /// 修改编辑
         /// </summary>
         /// <param name="parm"></param>
         /// <returns></returns>
-        int UpdateMmMarb(MmMarb parm);
+        int UpdateInstInfo(InstInfo parm);
 
 
         /// <summary>
         /// 导入
-        /// 物料信息
+        /// 机构信息
         /// </summary>
         /// <param name="list"></param>
         /// <returns></returns>
-        (string, object, object) ImportMmMarb(List<MmMarb> list);
+        (string, object, object) ImportInstInfo(List<InstInfo> list);
     }
 }

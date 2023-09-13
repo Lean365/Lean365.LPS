@@ -133,7 +133,10 @@ $if(replaceDto.ShowBtnDelete || replaceDto.ShowBtnMultiDel)
         [Log(Title = "${genTable.FunctionName}", BusinessType = BusinessType.DELETE)]
         public IActionResult Delete${replaceDto.ModelTypeName}(string ids)
         {
-            int[] idsArr = Tools.SpitIntArrary(ids);
+            //针对自增ID
+            //string[] idsArr = Tools.SpitIntArrary(ids);
+            //针对全局唯一标识符Guid
+            Guid[] idsArr = Tools.SpitGuidArrary(ids);
             if (idsArr.Length <= 0) { return ToResponse(ApiResult.Error($"删除失败Id 不能为空（Delete failed, ID or Guid cannot be empty)")); }
 
             var response = _${replaceDto.ModelTypeName}Service.Delete(idsArr);

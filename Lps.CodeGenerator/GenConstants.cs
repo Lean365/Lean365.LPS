@@ -102,17 +102,17 @@ namespace Lps.CodeGenerator
         /// <summary>
         /// 页面不需要导出字段
         /// </summary>
-        public static string[] COLUMNNAME_NOT_EXPORT = { "update_by", "update_time", "IsDeleted", "UDF01", "UDF51", "UDF02", "UDF52", "UDF03", "UDF53", "UDF04", "UDF54", "UDF05", "UDF55", "UDF06", "UDF56" };
+        public static string[] COLUMNNAME_NOT_EXPORT = { "update_by", "update_time",  "UDF01", "UDF02", "UDF03", "UDF04", "UDF05", "UDF06", "UDF51", "UDF52", "UDF53", "UDF54", "UDF55", "UDF56" };
         /// <summary>
         /// 页面不需要填写字段
         /// </summary>
 
-        public static string[] COLUMNNAME_NOT_REQUIRED = { "IsDeleted", "UDF01", "UDF51", "UDF02", "UDF52", "UDF03", "UDF53", "UDF04", "UDF54", "UDF05", "UDF55", "UDF06", "UDF56" };
+        public static string[] COLUMNNAME_NOT_REQUIRED = { "IsDeleted", "UDF01", "UDF02", "UDF03", "UDF04", "UDF05", "UDF06", "UDF51", "UDF52", "UDF53", "UDF54", "UDF55", "UDF56" };
 
         /// <summary>
         /// Entity基类字段
         /// </summary>
-        public static string[] BASE_ENTITY = { "createBy", "createTime", "updateBy", "updateTime", "ReMarks" };
+        public static string[] BASE_ENTITY = { "createBy", "createTime", "updateBy", "updateTime", "ReMarks", "IsDeleted" };
 
         /// <summary>
         /// Tree基类字段
