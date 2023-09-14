@@ -49,7 +49,7 @@ npm run dev
 
 ## 🎀捐赠
 如果这个项目对您有所帮助，请扫下方二维码打赏作者喝杯咖啡。
-<img src="https://github.com/Lean365/LaplaceNET/raw/master/La.Docs/images/pay.jpg"/>
+<img src="https://github.com/Lean365/Lean365.LPS/blob/master/Lps.Docs/images/pay.jpg"/>
 
 ## 源码地址
 - [Gitee](https://gitee.com/leansoft365/LaplaceNet)

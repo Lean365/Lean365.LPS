@@ -10,6 +10,7 @@
     "japanese": "日本語",
     "korean": "韓国語",
     "english": "英语",
-    "langKeycontent": "翻译key,eg:message.title,menu.title"
+    "langKeycontent": "翻译key,eg:message.title,menu.title",
+    "lang": "多语言表"
   }
 }

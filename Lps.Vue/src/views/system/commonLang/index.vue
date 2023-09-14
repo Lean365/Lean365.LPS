@@ -9,13 +9,13 @@
     <!-- :model属性用于表单验证使用 比如下面的el-form-item 的 prop属性用于对表单值进行验证操作 -->
     <el-form :model="queryParams" label-position="right" inline ref="queryRef" v-show="showSearch" @submit.prevent>
       <el-form-item :label="$t('plang.language')" prop="langCode">
-        <el-select v-model="queryParams.langCode" :placeholder="$t('btn.enter')+'语言code'" size="small">
+        <el-select v-model="queryParams.langCode" :placeholder="$t('btn.enter')+$t('plang.language')" size="small">
           <el-option v-for="item in options.sys_lang_type" :key="item.dictValue" :label="item.dictLabel"
             :value="item.dictValue"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item :label="$t('plang.languageKey')" prop="langKey">
-        <el-input v-model="queryParams.langKey" :placeholder="$t('btn.enter')+'语言key'" size="small" />
+        <el-input v-model="queryParams.langKey" :placeholder="$t('btn.enter')+$t('plang.languageKey')" size="small" />
       </el-form-item>
       <el-form-item :label="$t('plang.showWay')" size="small">
         <el-radio-group v-model="queryParams.showMode" fill="#d4237a">
@@ -350,7 +350,7 @@
       const { code, data } = res
       if (code == 200) {
         open.value = true
-        title.value = '修改数据'
+        title.value = proxy.$t('btn.edit')
         opertype.value = 2
 
         form.value = {
@@ -410,9 +410,9 @@
   // 导出按钮操作
   function handleExport() {
     proxy
-      .$confirm('是否确认导出所有多语言配置数据项?', '警告', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      .$confirm(proxy.$t('common.confirmExport') + proxy.$t('plang.lang'), {
+        confirmButtonText: proxy.$t('btn.submit'),
+        cancelButtonText: proxy.$t('btn.cancel'),
         type: 'warning'
       })
       .then(function () {

@@ -47,7 +47,7 @@ npm run dev
 
 ## 🎀Donate
 If you think this project has helped you, you can help the author buy a glass of juice to show your encouragement 🍹 
-<img src="https://github.com/Lean365/LaplaceNET/raw/master/La.Docs/images/pay.jpg"/>
+<img src="https://github.com/Lean365/Lean365.LPS/blob/master/Lps.Docs/images/pay.jpg"/>
 
 ## 💎Repositories
 - [Gitee](https://gitee.com/leansoft365/LaplaceNet)

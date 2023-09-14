@@ -297,7 +297,7 @@
   function handleDelete(row) {
     const dictIds = row.dictId || ids.value
     proxy
-      .$confirm(proxy.$t('common.confirmDel') + dictIds + proxy.$t('common.confirmDelDataitems'), proxy.$t('common.warningTips'), {
+      .$confirm(proxy.$t('common.confirmDel') + dictIds + proxy.$t('common.confirmDelDataitems'), {
         confirmButtonText: proxy.$t('btn.submit'),
         cancelButtonText: proxy.$t('btn.cancel'),
         type: 'warning'
@@ -313,7 +313,7 @@
   /** 导出按钮操作 */
   function handleExport() {
     proxy
-      .$confirm(proxy.$t('common.confirmExport') + proxy.$t('pdict.dict'), proxy.$t('common.warningTips'), {
+      .$confirm(proxy.$t('common.confirmExport') + proxy.$t('pdict.dict'), {
         confirmButtonText: proxy.$t('btn.submit'),
         cancelButtonText: proxy.$t('btn.cancel'),
         type: 'warning'
