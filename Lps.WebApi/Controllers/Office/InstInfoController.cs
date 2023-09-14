@@ -3,7 +3,7 @@ using Lps.Model.Dto;
 using Lps.ServiceCore.Model.System;
 using Lps.Model.Office;
 using Lps.Service.Office.IOfficeService;
-using Lps.WebApi.Filters;
+using Lps.ServiceCore.Filters;
 using MiniExcelLibs;
 
 
@@ -13,7 +13,7 @@ namespace Lps.WebApi.Controllers
     /// 机构信息
     /// API控制器Controller
     /// @author Lean365
-    /// @date 2023-09-13
+    /// @date 2023-09-14
     /// </summary>
     [Verify]
     [Route("office/InstInfo")]

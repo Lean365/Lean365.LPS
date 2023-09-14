@@ -16,7 +16,7 @@
   },
   "puser": {
     "deptName": "部門",
-    "userName": "用戶名稱",
+    "userName": "用戶",
     "userMobile": "手機號碼",
     "userStat": "状态",
     "Createdate": "創建日",
@@ -30,6 +30,23 @@
     "loginPwd": "密碼",
     "userPost": "崗位",
     "userRole": "角色",
-    "memo": "備註"
+    "memo": "備註",
+    "bulkImport": "批量導入使用者",
+    "bulkExport": "使用者資訊",
+    "userNameMemo": "使用者名稱長度必須介於 6 和 20 之間",
+    "loginPwdMemo": "使用者密碼長度必須介於 6 和 20 之間",
+    "userMobileMemo": "請輸入正確的手機號碼",
+    "emailMemo": "請輸入正確的郵件位址",
+    "statStart": "啟用",
+    "statStop": "停用",
+    "statconfirm": "用戶",
+    "statMemo": "要",
+    "statconfirmMemo": "嗎？",
+    "statSucceed": "成功",
+    "loginPwdinput": "請輸入",
+    "loginPwdinputMemo": "的新密碼",
+    "loginPwdNew": "修改成功,新密碼是:",
+    "importTmpl": "用戶數據導入範本",
+    "importResults": "導入結果"
   }
 }

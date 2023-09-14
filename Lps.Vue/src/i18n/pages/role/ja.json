@@ -26,6 +26,21 @@
     "customization": "カスタマイズ",
     "department": "部門",
     "departmentandbelow": "部門及び以下",
-    "onlyme": "自分"
+    "onlyme": "自分",
+    "selectdelUser": "削除したいユーザーを選択してください",
+    "deletedSuccessfully": " ",
+    "deleteRecord": "のレコードが削除されました",
+    "selectaddUser": "追加するユーザーを選択してください",
+    "addedSuccessfully": " ",
+    "addRecord": "のレコードが追加されました",
+    "role": "ロール",
+    "statStart": "有効化",
+    "statStop": "無効化",
+    "statconfirm": "ユーザー",
+    "statMemo": "を",
+    "statconfirmMemo": "にしてもよろしいですか？ ",
+    "statSucceed": "完了",
+    "noPermission": "アクセス権がありません",
+    "selectRole": "ロールを選択してください"
   }
 }

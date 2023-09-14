@@ -26,6 +26,21 @@
     "customization": "Customization",
     "department": "Department",
     "departmentandbelow": "Department and below",
-    "onlyme": "Only me"
+    "onlyme": "Only me",
+    "selectdelUser": "Please select the user to delete",
+    "deletedSuccessfully": " ",
+    "deleteRecord": "record deleted",
+    "selectaddUser": "Please select the user to add",
+    "addedSuccessfully": " ",
+    "addRecord": "record  added",
+    "role": "Role",
+    "statStart": " Enable",
+    "statStop": " Disable",
+    "statconfirm": "The account ",
+    "statMemo": " want to",
+    "statconfirmMemo": " ?",
+    "statSucceed": " Successful",
+    "noPermission": "You do not have permission to access",
+    "selectRole": "Please select a role"
   }
 }

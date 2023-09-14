@@ -26,6 +26,21 @@
     "customization": "自定义",
     "department": "本部门",
     "departmentandbelow": "本部门及以下",
-    "onlyme": "仅本人"
+    "onlyme": "仅本人",
+    "selectdelUser": "请选择要删除的用户",
+    "deletedSuccessfully": "成功删除 ",
+    "deleteRecord": " 条数据",
+    "selectaddUser": "请选择要添加的用户",
+    "addedSuccessfully": "成功添加 ",
+    "addRecord": " 条数据",
+    "role": "角色",
+    "statStart": "启用",
+    "statStop": "停用",
+    "statconfirm": "用户",
+    "statMemo": "要",
+    "statconfirmMemo": "吗？",
+    "statSucceed": "成功",
+    "noPermission": "你没有权限访问",
+    "selectRole": "请选择角色"
   }
 }

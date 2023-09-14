@@ -24,6 +24,21 @@
     "customization": "定制",
     "department": "部門",
     "departmentandbelow": "部門及以下",
-    "onlyme": "我"
+    "onlyme": "我",
+    "selectdelUser": "請選擇要刪除的使用者",
+    "deletedSuccessfully": "成功刪除 ",
+    "deleteRecord": " 條數據",
+    "selectaddUser": "請選擇要添加的使用者",
+    "addedSuccessfully": "成功添加 ",
+    "addRecord": " 條數據",
+    "role": "角色",
+    "statStart": "啟用",
+    "statStop": "停用",
+    "statconfirm": "用戶",
+    "statMemo": "要",
+    "statconfirmMemo": "嗎？",
+    "statSucceed": "成功",
+    "noPermission": "你沒有訪問許可權",
+    "selectRole": "請選擇角色"
   }
 }

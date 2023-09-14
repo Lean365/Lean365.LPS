@@ -344,7 +344,7 @@
     const text = row.status == '0' ? '启用' : '停用'
 
     proxy
-      .$confirm('确认要"' + text + '""' + row.roleName + '"角色吗?', '警告', {
+      .$confirm('确认要"' + text + '""' + row.roleName + '"角色吗?', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
@@ -465,7 +465,7 @@
     reset()
     getDeptTreeselect()
     open.value = true
-    title.value = '添加角色'
+    title.value = proxy.$t('btn.add') + proxy.$t('prole.role')
     showRoleScope.value = false
   }
 
@@ -478,7 +478,7 @@
     getRole(roleId).then((response) => {
       form.value = response.data
       open.value = true
-      title.value = '修改角色'
+      title.value = proxy.$t('btn.edit') + proxy.$t('prole.role')
 
       nextTick(() => {
         roleDeptTreeselect.then((res) => {
@@ -532,7 +532,7 @@
     if (hasPermi) {
       router.push({ path: '/system/roleusers', query: { roleId } })
     } else {
-      proxy.$modal.msgError('你没有权限访问')
+      proxy.$modal.msgError(proxy.$t('prole.noPermission'))
     }
   }
   /** 提交按钮 */
@@ -543,7 +543,7 @@
           form.value.type = 'edit'
           form.value.deptIds = getDeptAllCheckedKeys()
           updateRole(form.value).then((response) => {
-            proxy.$modal.msgSuccess('修改成功')
+            proxy.$modal.msgSuccess(proxy.$t('common.Modicompleted'))
             open.value = false
             getList()
           })
@@ -553,7 +553,7 @@
           addRole(form.value).then((response) => {
             open.value = false
             if (response.code == 200) {
-              proxy.$modal.msgSuccess('新增成功')
+              proxy.$modal.msgSuccess(proxy.$t('common.Newcompleted'))
               getList()
             } else {
               proxy.$modal.msgError(response.msg)
@@ -569,12 +569,12 @@
     if (form.value.roleId != undefined) {
       form.value.menuIds = getMenuAllCheckedKeys()
       dataScope(form.value).then((response) => {
-        proxy.$modal.msgSuccess('修改成功')
+        proxy.$modal.msgSuccess(proxy.$t('common.Modicompleted'))
         getList()
         cancel()
       })
     } else {
-      proxy.$modal.msgError('请选择角色')
+      proxy.$modal.msgError(proxy.$t('prole.selectRole'))
     }
   }
 
@@ -582,9 +582,9 @@
   function handleDelete(row) {
     const roleIds = row.roleId || ids.value
     proxy
-      .$confirm('是否确认删除角色编号为"' + roleIds + '"的数据项?', '警告', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      .$confirm(proxy.$t('common.confirmDel') + roleIds + proxy.$t('common.confirmDelDataitems'), {
+        confirmButtonText: proxy.$t('btn.submit'),
+        cancelButtonText: proxy.$t('btn.cancel'),
         type: 'warning'
       })
       .then(function () {
@@ -592,16 +592,16 @@
       })
       .then(() => {
         getList()
-        proxy.$modal.msgSuccess('删除成功')
+        proxy.$modal.msgSuccess(proxy.$t('common.Delcompleted'))
       })
   }
 
   /** 导出按钮操作 */
   function handleExport() {
     proxy
-      .$confirm('是否确认导出所有角色数据项?', '警告', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+      .$confirm(proxy.$t('common.confirmExport') + proxy.$t('prole.role'), {
+        confirmButtonText: proxy.$t('btn.submit'),
+        cancelButtonText: proxy.$t('btn.cancel'),
         type: 'warning'
       })
       .then(function () {
@@ -613,10 +613,10 @@
   }
   // 导出角色菜单
   function handleExportMenu(row) {
-    proxy.$modal
-      .confirm('是否确认导出所有角色菜单数据项?', '警告', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
+    proxy
+      .$confirm(proxy.$t('common.confirmExport') + proxy.$t('prole.role') + proxy.$t('pmenu.menu'), {
+        confirmButtonText: proxy.$t('btn.submit'),
+        cancelButtonText: proxy.$t('btn.cancel'),
         type: 'warning'
       })
       .then(async () => {

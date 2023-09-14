@@ -1,13 +1,15 @@
-﻿using Lps.Infrastructure;
+﻿
+using Lps.Common;
 using Lps.Infrastructure.Model;
+using Lps.Infrastructure;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Filters;
-using Lps.Common;
+
 
 //本命名空间暂时先不改，改动比较大2023年9月2日
-namespace Lps.WebApi.Filters
+namespace Lps.ServiceCore.Filters
 {
     /// <summary>
     /// 授权校验访问
@@ -49,7 +51,7 @@ namespace Lps.WebApi.Filters
                 if (!CacheHelper.Exists(CK) && ts.TotalMinutes < 5)
                 {
                     var newToken = JwtUtil.GenerateJwtToken(JwtUtil.AddClaims(loginUser));
-                    
+
                     CacheHelper.SetCache(CK, CK, 1);
                     //移动端不加下面这个获取不到自定义Header
                     if (osType != null)
@@ -63,8 +65,9 @@ namespace Lps.WebApi.Filters
             {
                 string msg = $"请求访问[{url}]失败，无法访问系统资源";
                 //logger.Info(msg);
+                var r = new ApiResult((int)ResultCode.DENY, msg);
 
-                context.Result = new JsonResult(new ApiResult((int)ResultCode.DENY, msg));
+                context.Result = new JsonResult(r);
             }
         }
     }

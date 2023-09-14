@@ -5,6 +5,7 @@ namespace Lps.Infrastructure.Attribute
     /// <summary>
     /// 自定义操作日志记录注解
     /// </summary>
+    [System.AttributeUsage(System.AttributeTargets.All)]
     public class LogAttribute : System.Attribute
     {
         public string Title { get; set; }
@@ -17,6 +18,10 @@ namespace Lps.Infrastructure.Attribute
         /// 是否保存返回数据
         /// </summary>
         public bool IsSaveResponseData { get; set; } = true;
+        /// <summary>
+        /// 日志是否存储到数据库
+        /// </summary>
+        public bool IsSaveDb { get; set; } = true;
 
         public LogAttribute() { }
 

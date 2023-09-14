@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SqlSugar;
-using Lps.WebApi.Filters;
+using Lps.ServiceCore.Filters;
 using Lps.Model;
 using Lps.ServiceCore.Service.IService;
 using Lps.ServiceCore.Model.System;
@@ -61,11 +61,11 @@ namespace Lps.WebApi.Controllers.System
         {
             if (UserConstants.NOT_UNIQUE.Equals(PostService.CheckPostNameUnique(post)))
             {
-                throw new CustomException($"修改岗位{post.PostName}失败，岗位名已存在");
+                throw new CustomException($"添加岗位{post.PostName}失败，岗位名已存在");
             }
             if (UserConstants.NOT_UNIQUE.Equals(PostService.CheckPostCodeUnique(post)))
             {
-                throw new CustomException($"修改岗位{post.PostName}失败，岗位编码已存在");
+                throw new CustomException($"添加岗位{post.PostName}失败，岗位编码已存在");
             }
             post.ToCreate(HttpContext);
 

@@ -146,7 +146,7 @@ namespace Lps.ServiceCore.Service
         {
             if (IsRoleAdmin(role.RoleId))
             {
-                throw new CustomException("不允许操作超级管理员角色");
+                throw new CustomException("不允许操作超级管理员角色(The system prohibits modifying administrator roles)");
             }
         }
 

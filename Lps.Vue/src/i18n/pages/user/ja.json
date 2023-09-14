@@ -1,7 +1,7 @@
 {
   "user": {
     "phoneNumber": "携帯番号",
-    "registerTime": "作成日",
+    "registerTime": "登録日",
     "department": "所属部署",
     "personalInfo": "個人情報",
     "role": "所属ロール",
@@ -19,7 +19,7 @@
     "userName": "ユーザー",
     "userMobile": "携帯",
     "userStat": "状態",
-    "Createdate": "作成日",
+    "Createdate": "登録日",
     "userID": " ID",
     "userNick": "ニックネーム",
     "Operation": "操作",
@@ -30,6 +30,23 @@
     "loginPwd": "パスワード",
     "userPost": "ポスト",
     "userRole": "ロール",
-    "memo": "備考"
+    "memo": "備考",
+    "bulkImport": "ユーザーの一括インポート",
+    "bulkExport": "ユーザー情報",
+    "userNameMemo": "お好きな半角英数文字6~20文字.",
+    "loginPwdMemo": "パスワードは半角英数字6~20文字.",
+    "userMobileMemo": "正しい携帯電話番号を入力してください",
+    "emailMemo": "正しいメールアドレスを入力してください。",
+    "statStart": "有効化",
+    "statStop": "無効化",
+    "statconfirm": "ユーザー",
+    "statMemo": "を",
+    "statconfirmMemo": "にしてもよろしいですか？ ",
+    "statSucceed": "完了",
+    "loginPwdinput": "アカウント",
+    "loginPwdinputMemo": "の新パスワードを入力してください",
+    "loginPwdNew": "変更完了、新しいパスワードは ",
+    "importTmpl": "ユーザーデータインポートテンプレート",
+    "importResults": "インポート結果"
   }
 }

@@ -11,7 +11,7 @@ namespace Lps.Service.Office.IOfficeService
     /// 机构信息
     /// service接口
     /// @author Lean365
-    /// @date 2023-09-13
+    /// @date 2023-09-14
     /// </summary>
     public interface IInstInfoService : IBaseService<InstInfo>
     {

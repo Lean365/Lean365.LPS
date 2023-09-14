@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Lps.WebApi.Extensions;
-using Lps.WebApi.Filters;
+using Lps.ServiceCore.Filters;
 using Lps.Model;
 using Lps.ServiceCore.Service.IService;
 using Lps.ServiceCore.Model.System;

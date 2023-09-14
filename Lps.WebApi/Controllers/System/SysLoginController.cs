@@ -1,7 +1,7 @@
 ﻿using Lazy.Captcha.Core;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-using Lps.WebApi.Filters;
+using Lps.ServiceCore.Filters;
 using Lps.ServiceCore.Service;
 using Lps.ServiceCore.Service.IService;
 using Lps.ServiceCore.Model.System;

@@ -1,7 +1,7 @@
 {
   "user": {
     "personalInfo": "个人信息",
-    "userName": "用户名称",
+    "userName": "用户",
     "phoneNumber": "手机号码",
     "userEmail": "用户邮箱",
     "department": "所属部门",
@@ -12,11 +12,11 @@
     "oldPwd": "旧密码",
     "newPwd": "新密码",
     "confirmPwd": "确认密码",
-    "nickName": "用户昵称"
+    "nickName": "昵称"
   },
   "puser": {
     "deptName": "部门",
-    "userName": "用户名称",
+    "userName": "用户",
     "userMobile": "手机号",
     "userStat": "状态",
     "Createdate": "创建日",
@@ -30,6 +30,23 @@
     "loginPwd": "密码",
     "userPost": "岗位",
     "userRole": "角色",
-    "memo": "备注"
+    "memo": "备注",
+    "bulkImport": "批量导入用户",
+    "bulkExport": "用户信息",
+    "userNameMemo": "用户名称长度必须介于 6 和 20 之间",
+    "loginPwdMemo": "用户密码长度必须介于 6 和 20 之间",
+    "userMobileMemo": "请输入正确的手机号码",
+    "emailMemo": "请输入正确的邮件地址",
+    "statStart": "启用",
+    "statStop": "停用",
+    "statconfirm": "用户",
+    "statMemo": "要",
+    "statconfirmMemo": "吗？",
+    "statSucceed": "成功",
+    "loginPwdinput": "请输入",
+    "loginPwdinputMemo": "的新密码",
+    "loginPwdNew": "修改成功,新密码是：",
+    "importTmpl": "用户数据导入模板",
+    "importResults": "导入结果"
   }
 }

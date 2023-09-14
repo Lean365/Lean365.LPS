@@ -249,7 +249,7 @@ namespace Lps.ServiceCore.Service
         {
             if (user.IsAdmin())
             {
-                throw new CustomException("不允许操作超级管理员角色");
+                throw new CustomException("不允许操作超级管理员角色\r\n(The system prohibits modifying administrator roles)");
             }
         }
 

@@ -2,12 +2,62 @@
  * @Descripttion: (机构信息/inst_info)
  * @version: (4.0.0)
  * @Author: (Lean365)
- * @Date: (2023-09-13)
+ * @Date: (2023-09-14)
 -->
 <template>
   <div>
     <!-- 工具区域 -->
-    <el-form :model="queryParams" label-position="right" inline ref="queryRef" v-show="showSearch" @submit.prevent>
+    <el-form :model="queryParams" label-position="right" inline ref="queryRef" v-show="showSearch" @submit.prevent label-width="auto">
+      <el-form-item label="语言" prop="iiLangkey">
+        <el-select filterable clearable  v-model="queryParams.iiLangkey" :placeholder="$t('btn.select')+'语言'">
+          <el-option v-for="item in  options.sys_lang_type " :key="item.dictValue" :label="item.dictLabel" :value="item.dictValue">
+            <span class="fl">{{ item.dictLabel }}</span>
+            <span class="fr" style="color: var(--el-text-color-secondary);">{{ item.dictValue }}</span>          
+          </el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item label="类别" prop="iiCategory">
+        <el-select filterable clearable  v-model="queryParams.iiCategory" :placeholder="$t('btn.select')+'类别'">
+          <el-option v-for="item in  options.sys_ind_type " :key="item.dictValue" :label="item.dictLabel" :value="item.dictValue">
+            <span class="fl">{{ item.dictLabel }}</span>
+            <span class="fr" style="color: var(--el-text-color-secondary);">{{ item.dictValue }}</span>          
+          </el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item label="编号" prop="iiInstCode">
+        <el-input  clearable v-model="queryParams.iiInstCode" :placeholder="$t('btn.enter')+'编号'" />
+      </el-form-item>
+      <el-form-item label="简称" prop="iiShortName">
+        <el-input  clearable v-model="queryParams.iiShortName" :placeholder="$t('btn.enter')+'简称'" />
+      </el-form-item>
+      <el-form-item label="全称" prop="iiFullName">
+        <el-input  clearable v-model="queryParams.iiFullName" :placeholder="$t('btn.enter')+'全称'" />
+      </el-form-item>
+      <el-form-item label="性质" prop="iiNature">
+        <el-select filterable clearable  v-model="queryParams.iiNature" :placeholder="$t('btn.select')+'性质'">
+          <el-option v-for="item in  options.sys_nature_list " :key="item.dictValue" :label="item.dictLabel" :value="item.dictValue">
+            <span class="fl">{{ item.dictLabel }}</span>
+            <span class="fr" style="color: var(--el-text-color-secondary);">{{ item.dictValue }}</span>          
+          </el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item label="成立日期">
+        <el-date-picker
+          v-model="dateRangeIiFoundedTime" 
+          type="datetimerange"
+          :start-placeholder="$t('btn.dateStart')"
+          :end-placeholder="$t('btn.dateEnd')"
+          value-format="YYYY-MM-DD HH:mm:ss"
+          :default-time="defaultTime"
+          :shortcuts="dateOptions">
+        </el-date-picker>
+      </el-form-item>
+      <el-form-item label="启用" prop="iiisEnabled">
+        <el-radio-group v-model="queryParams.iiisEnabled">
+          <el-radio>{{$t('layout.all')}}</el-radio>
+          <el-radio v-for="item in  options.sys_flag_list " :key="item.dictValue" :label="item.dictValue">{{item.dictLabel}}</el-radio>
+        </el-radio-group>
+      </el-form-item>
       <el-form-item>
         <el-button icon="search" type="primary" @click="handleQuery">{{ $t('btn.search') }}</el-button>
         <el-button icon="refresh" type="info" plain @click="resetQuery">{{ $t('btn.reset') }}</el-button>
@@ -32,7 +82,7 @@
       </el-col>
       <el-col :span="1.5">
         <el-dropdown trigger="click" v-hasPermi="['inst:info:import']">
-          <el-button color="#79bbff" plain icon="Upload">
+          <el-button color="#626aef" plain icon="Upload">
             {{ $t('btn.import') }}<el-icon class="el-icon--right"><arrow-down /></el-icon>
           </el-button>
           <template #dropdown>
@@ -64,15 +114,27 @@
       highlight-current-row
       @sort-change="sortChange"
       @selection-change="handleSelectionChange"
-      height="602" style="width: 100%" :summary-method="getSummaries" show-summary>
+      height="555" style="width: 100%" :summary-method="getSummaries" show-summary>
       <el-table-column type="selection" width="50" align="center"/>
       <el-table-column prop="iiGuid" label="Guid" align="center" v-if="columns.showColumn('iiGuid')"/>
-      <el-table-column prop="iiLangkey" label="语言" align="center" :show-overflow-tooltip="true" v-if="columns.showColumn('iiLangkey')"/>
-      <el-table-column prop="iiCategory" label="类别" align="center" :show-overflow-tooltip="true" v-if="columns.showColumn('iiCategory')"/>
+      <el-table-column prop="iiLangkey" label="语言" align="center" v-if="columns.showColumn('iiLangkey')">
+        <template #default="scope">
+          <dict-tag :options=" options.sys_lang_type " :value="scope.row.iiLangkey"  />
+        </template>
+      </el-table-column>
+      <el-table-column prop="iiCategory" label="类别" align="center" v-if="columns.showColumn('iiCategory')">
+        <template #default="scope">
+          <dict-tag :options=" options.sys_ind_type " :value="scope.row.iiCategory"  />
+        </template>
+      </el-table-column>
       <el-table-column prop="iiInstCode" label="编号" align="center" :show-overflow-tooltip="true" v-if="columns.showColumn('iiInstCode')"/>
       <el-table-column prop="iiShortName" label="简称" align="center" :show-overflow-tooltip="true" v-if="columns.showColumn('iiShortName')"/>
       <el-table-column prop="iiFullName" label="全称" align="center" :show-overflow-tooltip="true" v-if="columns.showColumn('iiFullName')"/>
-      <el-table-column prop="iiNature" label="性质" align="center" :show-overflow-tooltip="true" v-if="columns.showColumn('iiNature')"/>
+      <el-table-column prop="iiNature" label="性质" align="center" v-if="columns.showColumn('iiNature')">
+        <template #default="scope">
+          <dict-tag :options=" options.sys_nature_list " :value="scope.row.iiNature"  />
+        </template>
+      </el-table-column>
       <el-table-column prop="iiOuterPhone" label="外线" align="center" :show-overflow-tooltip="true" v-if="columns.showColumn('iiOuterPhone')"/>
       <el-table-column prop="iiInnerPhone" label="内线" align="center" :show-overflow-tooltip="true" v-if="columns.showColumn('iiInnerPhone')"/>
       <el-table-column prop="iiFax" label="传真" align="center" :show-overflow-tooltip="true" v-if="columns.showColumn('iiFax')"/>
@@ -93,7 +155,11 @@
       <el-table-column prop="iiBusinessScope" label="经营范围" align="center" :show-overflow-tooltip="true" v-if="columns.showColumn('iiBusinessScope')"/>
       <el-table-column prop="iiParentCorp" label="母公司" align="center" :show-overflow-tooltip="true" v-if="columns.showColumn('iiParentCorp')"/>
       <el-table-column prop="iiSortCode" label="排序" align="center" v-if="columns.showColumn('iiSortCode')"/>
-      <el-table-column prop="iiisEnabled" label="启用" align="center" v-if="columns.showColumn('iiisEnabled')"/>
+      <el-table-column prop="iiisEnabled" label="启用" align="center" v-if="columns.showColumn('iiisEnabled')">
+        <template #default="scope">
+          <dict-tag :options=" options.sys_flag_list " :value="scope.row.iiisEnabled"  />
+        </template>
+      </el-table-column>
       <el-table-column prop="iiSlogan" label="企业口号" align="center" :show-overflow-tooltip="true" v-if="columns.showColumn('iiSlogan')"/>
       <el-table-column prop="iiLicenseAnnex" label="营业执照附件" align="center" :show-overflow-tooltip="true" v-if="columns.showColumn('iiLicenseAnnex')"/>
       <el-table-column prop="iiOtherAnnex" label="其它附件" align="center" :show-overflow-tooltip="true" v-if="columns.showColumn('iiOtherAnnex')"/>
@@ -125,13 +191,25 @@
 
           <el-col :lg="12">
             <el-form-item label="语言" prop="iiLangkey">
-              <el-input clearable v-model="form.iiLangkey" :placeholder="$t('btn.enter')+'语言'" />
+              <el-select filterable clearable v-model="form.iiLangkey"  :placeholder="$t('btn.select')+'语言'">
+                <el-option
+                  v-for="item in options.sys_lang_type" 
+                  :key="item.dictValue" 
+                  :label="item.dictLabel" 
+                  :value="item.dictValue"></el-option>
+              </el-select>
             </el-form-item>
           </el-col>
 
           <el-col :lg="12">
             <el-form-item label="类别" prop="iiCategory">
-              <el-input clearable v-model="form.iiCategory" :placeholder="$t('btn.enter')+'类别'" />
+              <el-select filterable clearable v-model="form.iiCategory"  :placeholder="$t('btn.select')+'类别'">
+                <el-option
+                  v-for="item in options.sys_ind_type" 
+                  :key="item.dictValue" 
+                  :label="item.dictLabel" 
+                  :value="item.dictValue"></el-option>
+              </el-select>
             </el-form-item>
           </el-col>
 
@@ -155,7 +233,13 @@
 
           <el-col :lg="12">
             <el-form-item label="性质" prop="iiNature">
-              <el-input clearable v-model="form.iiNature" :placeholder="$t('btn.enter')+'性质'" />
+              <el-select filterable clearable v-model="form.iiNature"  :placeholder="$t('btn.select')+'性质'">
+                <el-option
+                  v-for="item in options.sys_nature_list" 
+                  :key="item.dictValue" 
+                  :label="item.dictLabel" 
+                  :value="item.dictValue"></el-option>
+              </el-select>
             </el-form-item>
           </el-col>
 
@@ -275,13 +359,17 @@
             
           <el-col :lg="12">
             <el-form-item label="排序" prop="iiSortCode">
-              <el-input clearable v-model.number="form.iiSortCode" :placeholder="$t('btn.enter')+'排序'" />
+              <el-input-number v-model.number="form.iiSortCode" :controls="true" controls-position="right" :placeholder="$t('btn.enter')+'排序'" />
             </el-form-item>
           </el-col>
             
           <el-col :lg="12">
             <el-form-item label="启用" prop="iiisEnabled">
-              <el-input clearable v-model.number="form.iiisEnabled" :placeholder="$t('btn.enter')+'启用'" />
+              <el-radio-group v-model="form.iiisEnabled">
+                <el-radio v-for="item in options.sys_flag_list" :key="item.dictValue" :label="parseInt(item.dictValue)">
+                  {{item.dictLabel}}
+                </el-radio>
+              </el-radio-group>
             </el-form-item>
           </el-col>
 
@@ -398,9 +486,17 @@ const showSearch = ref(true)
 //使用reactive()定义响应式变量,仅支持对象、数组、Map、Set等集合类型有效
 const queryParams = reactive({
   pageNum: 1,
-  pageSize: 14,
+  pageSize: 10,
   sort: '',
   sortType: 'asc',
+  iiLangkey: undefined,
+  iiCategory: undefined,
+  iiInstCode: undefined,
+  iiShortName: undefined,
+  iiFullName: undefined,
+  iiNature: undefined,
+  iiFoundedTime: undefined,
+  iiisEnabled: undefined,
 })
 //字段显示控制
 const columns = ref([
@@ -449,12 +545,25 @@ const queryRef = ref()
 //定义起始时间
 const defaultTime = ref([new Date(2000, 1, 1, 0, 0, 0), new Date(2000, 2, 1, 23, 59, 59)])
 
+// 成立日期时间范围
+const dateRangeIiFoundedTime = ref([])
 //字典参数
 var dictParams = [
+  { dictType: "sys_lang_type" },
+  { dictType: "sys_ind_type" },
+  { dictType: "sys_nature_list" },
+  { dictType: "sys_flag_list" },
+  { dictType: "sys_is_deleted" },
 ]
 //字典加载
+proxy.getDicts(dictParams).then((response) => {
+  response.data.forEach((element) => {
+    state.options[element.dictType] = element.list
+  })
+})
 //API获取机构信息/inst_info表记录数据
 function getList(){
+  proxy.addDateRange(queryParams, dateRangeIiFoundedTime.value, 'IiFoundedTime');
   loading.value = true
   listInstInfo(queryParams).then(res => {
     const { code, data } = res
@@ -474,6 +583,8 @@ function handleQuery() {
 
 // 重置查询操作
 function resetQuery(){
+  // 成立日期时间范围
+  dateRangeIiFoundedTime.value = []
   proxy.resetForm("queryRef")
   handleQuery()
 }
@@ -515,12 +626,12 @@ const state = reactive({
   form: {},
   rules: {
     iiGuid: [{ required: true, message: 'Guid'+ proxy.$t('btn.empty'), trigger: "blur" }],
-    iiLangkey: [{ required: true, message: '语言'+ proxy.$t('btn.empty'), trigger: "blur" }],
-    iiCategory: [{ required: true, message: '类别'+ proxy.$t('btn.empty'), trigger: "blur" }],
+    iiLangkey: [{ required: true, message: '语言'+ proxy.$t('btn.empty'), trigger: "change" }],
+    iiCategory: [{ required: true, message: '类别'+ proxy.$t('btn.empty'), trigger: "change" }],
     iiInstCode: [{ required: true, message: '编号'+ proxy.$t('btn.empty'), trigger: "blur" }],
     iiShortName: [{ required: true, message: '简称'+ proxy.$t('btn.empty'), trigger: "blur" }],
     iiFullName: [{ required: true, message: '全称'+ proxy.$t('btn.empty'), trigger: "blur" }],
-    iiNature: [{ required: true, message: '性质'+ proxy.$t('btn.empty'), trigger: "blur" }],
+    iiNature: [{ required: true, message: '性质'+ proxy.$t('btn.empty'), trigger: "change" }],
     iiOuterPhone: [{ required: true, message: '外线'+ proxy.$t('btn.empty'), trigger: "blur" }],
     iiInnerPhone: [{ required: true, message: '内线'+ proxy.$t('btn.empty'), trigger: "blur" }],
     iiFax: [{ required: true, message: '传真'+ proxy.$t('btn.empty'), trigger: "blur" }],
@@ -538,8 +649,16 @@ const state = reactive({
     iiisEnabled: [{ required: true, message: '启用'+ proxy.$t('btn.empty'), trigger: "blur", type: "number" }],
   },
   options: {
+    // 语言 选项列表 格式 eg:{ dictLabel: '标签', dictValue: '0'}
+    sys_lang_type: [],
+    // 类别 选项列表 格式 eg:{ dictLabel: '标签', dictValue: '0'}
+    sys_ind_type: [],
+    // 性质 选项列表 格式 eg:{ dictLabel: '标签', dictValue: '0'}
+    sys_nature_list: [],
+    // 启用 选项列表 格式 eg:{ dictLabel: '标签', dictValue: '0'}
+    sys_flag_list: [],
     // 软删除 选项列表 格式 eg:{ dictLabel: '标签', dictValue: '0'}
-    isDeletedOptions: [],
+    sys_is_deleted: [],
   }
 })
 //将响应式对象转换成普通对象
@@ -613,6 +732,9 @@ function handleAdd() {
   title.value = proxy.$t('btn.add')+'机构信息'
   opertype.value = 1
   form.value.iiGuid= crypto.randomUUID()
+  form.value.iiLangkey= []
+  form.value.iiCategory= []
+  form.value.iiNature= []
   form.value.iiFoundedTime= new Date()
   form.value.iiSortCode= 0
   form.value.iiisEnabled= 0

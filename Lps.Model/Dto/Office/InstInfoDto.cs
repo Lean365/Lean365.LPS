@@ -7,10 +7,19 @@ namespace Lps.Model.Dto
     /// 机构信息
     /// 查询对象
     /// @author Lean365
-    /// @date 2023-09-13
+    /// @date 2023-09-14
     /// </summary>
     public class InstInfoQueryDto : PagerInfo 
     {
+        public string IiLangkey { get; set; }
+        public string IiCategory { get; set; }
+        public string IiInstCode { get; set; }
+        public string IiShortName { get; set; }
+        public string IiFullName { get; set; }
+        public string IiNature { get; set; }
+        public DateTime? BeginIiFoundedTime { get; set; }
+        public DateTime? EndIiFoundedTime { get; set; }
+        public int? IiisEnabled { get; set; }
     }
 
     /// <summary>

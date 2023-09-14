@@ -1,14 +1,16 @@
-﻿using Lps.Infrastructure;
+﻿
+using IPTools.Core;
 using Lps.Infrastructure.Attribute;
 using Lps.Infrastructure.Model;
-using IPTools.Core;
+using Lps.Infrastructure;
+using Lps.ServiceCore.Model.System;
+using Lps.ServiceCore.Service.IService;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Filters;
 using NLog;
-using Lps.ServiceCore.Service.IService;
-using Lps.ServiceCore.Model.System;
+
 
 namespace Lps.ServiceCore.Middleware
 {
@@ -46,11 +48,8 @@ namespace Lps.ServiceCore.Middleware
             if (!string.IsNullOrEmpty(msg))
             {
                 logger.Info($"请求参数错误,{msg}");
-                ApiResult response = new()
-                {
-                    Code = (int)ResultCode.PARAM_ERROR,
-                    Msg = msg
-                };
+                ApiResult response = new((int)ResultCode.PARAM_ERROR, msg);
+
                 context.Result = new JsonResult(response);
             }
             return base.OnActionExecutionAsync(context, next);
@@ -115,13 +114,13 @@ namespace Lps.ServiceCore.Middleware
                     sysOperLog.JsonResult = logAttribute.IsSaveResponseData ? sysOperLog.JsonResult : "";
                 }
 
-                LogEventInfo ei = new(NLog.LogLevel.Info, "GlobalActionMonitor", "");
+                LogEventInfo ei = new(LogLevel.Info, "GlobalActionMonitor", "");
 
                 ei.Properties["jsonResult"] = !HttpMethods.IsGet(method) ? jsonResult : "";
                 ei.Properties["requestParam"] = sysOperLog.OperParam;
                 ei.Properties["user"] = userName;
                 logger.Log(ei);
-
+                if (!logAttribute.IsSaveDb) return;
                 OperLogService.InsertOperlog(sysOperLog);
             }
             catch (Exception ex)

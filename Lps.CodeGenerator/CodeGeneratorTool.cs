@@ -451,7 +451,7 @@ namespace Lps.CodeGenerator
                 //导入默认命名空间前缀
                 BaseNameSpace = "Lps.",//导入默认命名空间前缀
                 //导入默认模块名
-                ModuleName = "office,production,financial,material,sales,quality,example,bpm,human,consolidated",//导入默认模块名
+                ModuleName = "office,production,financial,material,sales,quality,bpm,consolidated",//导入默认模块名
                 //生成实体类名，首字大写
                 ClassName = GetClassName(tableName),
                 //生成业务名，首字大写

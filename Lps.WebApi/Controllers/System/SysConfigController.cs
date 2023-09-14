@@ -2,7 +2,7 @@ using Lps.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using SqlSugar;
 using Lps.WebApi.Extensions;
-using Lps.WebApi.Filters;
+using Lps.ServiceCore.Filters;
 using Lps.ServiceCore.Service.IService;
 using Lps.ServiceCore.Model.System;
 using Lps.ServiceCore.Model.Dto;

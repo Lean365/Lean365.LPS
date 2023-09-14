@@ -17,7 +17,7 @@ namespace Lps.Service.Office
     /// 机构信息
     /// Service业务层处理
     /// @author Lean365
-    /// @date 2023-09-13
+    /// @date 2023-09-14
     /// </summary>
     [AppService(ServiceType = typeof(IInstInfoService), ServiceLifetime = LifeTime.Transient)]
     public class InstInfoService : BaseService<InstInfo>, IInstInfoService
@@ -31,6 +31,16 @@ namespace Lps.Service.Office
         {
             var predicate = Expressionable.Create<InstInfo>();
 
+            predicate = predicate.AndIF(!string.IsNullOrEmpty(parm.IiLangkey), it => it.IiLangkey == parm.IiLangkey);
+            predicate = predicate.AndIF(!string.IsNullOrEmpty(parm.IiCategory), it => it.IiCategory == parm.IiCategory);
+            predicate = predicate.AndIF(!string.IsNullOrEmpty(parm.IiInstCode), it => it.IiInstCode.Contains(parm.IiInstCode));
+            predicate = predicate.AndIF(!string.IsNullOrEmpty(parm.IiShortName), it => it.IiShortName.Contains(parm.IiShortName));
+            predicate = predicate.AndIF(!string.IsNullOrEmpty(parm.IiFullName), it => it.IiFullName.Contains(parm.IiFullName));
+            predicate = predicate.AndIF(!string.IsNullOrEmpty(parm.IiNature), it => it.IiNature == parm.IiNature);
+            //predicate = predicate.AndIF(parm.BeginIiFoundedTime == null, it => it.IiFoundedTime >= DateTime.Now.ToShortDateString().ParseToDateTime());
+            predicate = predicate.AndIF(parm.BeginIiFoundedTime != null, it => it.IiFoundedTime >= parm.BeginIiFoundedTime);
+            predicate = predicate.AndIF(parm.EndIiFoundedTime != null, it => it.IiFoundedTime <= parm.EndIiFoundedTime);
+            predicate = predicate.AndIF(parm.IiisEnabled != null, it => it.IiisEnabled == parm.IiisEnabled);
             var response = Queryable()
                 .Where(predicate.ToExpression())
                 .ToPage<InstInfo, InstInfoDto>(parm);
