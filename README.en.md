@@ -50,40 +50,40 @@ Due to being a personal project, funds are limited!!!
 - Core:vue3.x、vite、vuex、vue-router 、vue-cli 、axios、 element-plus、echats、i18n etc,using vscode tools.
 
 ## 🍆Back-end 
-- Core:.Net7.0 + Web API + sqlsugar + swagger + signalR + IpRateLimit + Quartz.net + Redis,using vs2022 tools.
+- Core:C#、.Net7.0、Web API、sqlsugar、swagger、signalR、IpRateLimit、Quartz.net、Redis,using vs2022 tools.
 
 ## ✨ LeanManufacturing Management
 1. Budget management
-- Personnel
-- Equipment
-- Overtime
-7. Expense management
-- Actual budget comparison
-8. Cost Management
-- sales
-- BOM
-- labor
-- production
-9. Sales Management
-- Customer Complaints
-- Serial number
-10. Material Management
-- MRP
-- FC
-11. Production Management 
-- **EC**
-- **OPH(Output per hour)**
-- Defects
-- Manhour
-12. Quality Control
-- Cost
-- Incoming material
-- finished product
+   - Personnel
+   - Equipment
+   - Overtime
+2. Expense management
+   - Actual budget comparison
+3. Cost Management
+   - sales
+   - BOM
+   - labor
+   - production
+4. Sales Management
+   - Customer Complaints
+   - Serial number
+5.  Material Management
+    - MRP
+    - FC
+6.  Production Management 
+    - **EC**
+    - **OPH(Output per hour)**
+    - Defects
+    - Manhour
+7.  Quality Control
+    - Cost
+    - Incoming material
+    - finished product
 
-## 🌈OA
+## 🐬 OA
 - pending...
 
-## 🌈ChatGPT
+## 🐾 ChatGPT
 - pending...
 
 
