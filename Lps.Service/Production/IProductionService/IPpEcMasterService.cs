@@ -11,7 +11,7 @@ namespace Lps.Service.Production.IProductionService
     /// 主设变
     /// service接口
     /// @author Lean365
-    /// @date 2023-09-14
+    /// @date 2023-09-15
     /// </summary>
     public interface IPpEcMasterService : IBaseService<PpEcMaster>
     {
@@ -38,13 +38,6 @@ namespace Lps.Service.Production.IProductionService
         /// <returns></returns>
         PpEcMaster GetInfo(Guid EmGuid);
 
-        /// <summary>
-        /// 树表
-        /// 主设变
-        /// </summary>
-        /// <param name="iPpEcMaster"></param>
-        /// <returns></returns>
-        List<PpEcMaster> GetTreeList(PpEcMasterQueryDto parm);
         /// <summary>
         /// 主设变
         /// 新增

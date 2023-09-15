@@ -1,3 +1,4 @@
+using Lps.Model.Production;
 using MiniExcelLibs.Attributes;
 
 namespace Lps.Model.Production
@@ -6,7 +7,7 @@ namespace Lps.Model.Production
     /// 主设变
     /// 数据实体对象
     /// @author Lean365
-    /// @date 2023-09-14
+    /// @date 2023-09-15
     /// </summary>
     [SugarTable("pp_ec_master")]
     public class PpEcMaster
@@ -362,15 +363,15 @@ namespace Lps.Model.Production
 
         public DateTime? UpdateTime { get; set; }
 
-        [SugarColumn(IsIgnore = true)]
-        public List<PpEcMaster> Children { get; set; }
+        [Navigate(NavigateType.OneToMany, nameof(PpEcSlave.EmEcNo), nameof(EmGuid))] //自定义关系映射
+        public List<PpEcSlave> PpEcSlaveNav { get; set; }
     }
 
     /// <summary>
     /// 主设变
     /// 数据实体模板对象导出
     /// @author Lean365
-    /// @date 2023-09-14
+    /// @date 2023-09-15
     /// </summary>
     [SugarTable("pp_ec_master")]
     public class PpEcMasterImportTmpl
@@ -702,7 +703,7 @@ namespace Lps.Model.Production
         [ExcelIgnore]
         public DateTime? UpdateTime { get; set; }
 
-        [SugarColumn(IsIgnore = true)]
-        public List<PpEcMaster> Children { get; set; }
+        [Navigate(NavigateType.OneToMany, nameof(PpEcSlave.EmEcNo), nameof(EmGuid))] //自定义关系映射
+        public List<PpEcSlave> PpEcSlaveNav { get; set; }
     }
 }

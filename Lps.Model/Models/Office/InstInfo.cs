@@ -6,7 +6,7 @@ namespace Lps.Model.Office
     /// 机构信息
     /// 数据实体对象
     /// @author Lean365
-    /// @date 2023-09-14
+    /// @date 2023-09-15
     /// </summary>
     [SugarTable("inst_info")]
     public class InstInfo
@@ -458,7 +458,7 @@ namespace Lps.Model.Office
     /// 机构信息
     /// 数据实体模板对象导出
     /// @author Lean365
-    /// @date 2023-09-14
+    /// @date 2023-09-15
     /// </summary>
     [SugarTable("inst_info")]
     public class InstInfoImportTmpl

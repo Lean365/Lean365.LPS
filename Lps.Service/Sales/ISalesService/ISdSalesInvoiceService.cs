@@ -11,7 +11,7 @@ namespace Lps.Service.Sales.ISalesService
     /// 销售凭证
     /// service接口
     /// @author Lean365
-    /// @date 2023-09-14
+    /// @date 2023-09-15
     /// </summary>
     public interface ISdSalesInvoiceService : IBaseService<SdSalesInvoice>
     {

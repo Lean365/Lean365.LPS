@@ -7,17 +7,22 @@ namespace Lps.Model.Dto
     /// 从设变
     /// 查询对象
     /// @author Lean365
-    /// @date 2023-09-14
+    /// @date 2023-09-15
     /// </summary>
     public class PpEcSlaveQueryDto : PagerInfo 
     {
         public DateTime? BeginEsEntryDate { get; set; }
         public DateTime? EndEsEntryDate { get; set; }
-        public string EsEcNo { get; set; }
+        public string EmEcNo { get; set; }
         public string EsModel { get; set; }
         public string EsItem { get; set; }
         public string EsOldItem { get; set; }
         public string EsNewItem { get; set; }
+        public string EsPurType { get; set; }
+        public string EsSloc { get; set; }
+        public string EsInsmk { get; set; }
+        public string EsMstae { get; set; }
+        public string EsSopStae { get; set; }
     }
 
     /// <summary>
@@ -35,7 +40,7 @@ namespace Lps.Model.Dto
 
         [Required(ErrorMessage = "设变No.不能为空")]
         [ExcelColumn(Name = "设变No.")]
-        public string EsEcNo { get; set; }
+        public string EmEcNo { get; set; }
 
         [Required(ErrorMessage = "机种不能为空")]
         [ExcelColumn(Name = "机种")]

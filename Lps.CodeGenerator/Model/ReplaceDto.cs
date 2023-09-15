@@ -17,9 +17,14 @@ namespace Lps.CodeGenerator.Model
         /// </summary>
         public string PKType { get; set; }
         /// <summary>
-        /// 控制器权限
+        /// 权限前缀
         /// </summary>
         public string PermissionPrefix { get; set; }
+
+        /// <summary>
+        /// 多语言Key后缀
+        /// </summary>
+        public string MenuPrefix { get; set; }
         /// <summary>
         /// C#类名
         /// </summary>

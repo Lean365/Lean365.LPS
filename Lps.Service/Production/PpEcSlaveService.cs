@@ -17,7 +17,7 @@ namespace Lps.Service.Production
     /// 从设变
     /// Service业务层处理
     /// @author Lean365
-    /// @date 2023-09-14
+    /// @date 2023-09-15
     /// </summary>
     [AppService(ServiceType = typeof(IPpEcSlaveService), ServiceLifetime = LifeTime.Transient)]
     public class PpEcSlaveService : BaseService<PpEcSlave>, IPpEcSlaveService
@@ -34,11 +34,16 @@ namespace Lps.Service.Production
             //predicate = predicate.AndIF(parm.BeginEsEntryDate == null, it => it.EsEntryDate >= DateTime.Now.ToShortDateString().ParseToDateTime());
             predicate = predicate.AndIF(parm.BeginEsEntryDate != null, it => it.EsEntryDate >= parm.BeginEsEntryDate);
             predicate = predicate.AndIF(parm.EndEsEntryDate != null, it => it.EsEntryDate <= parm.EndEsEntryDate);
-            predicate = predicate.AndIF(!string.IsNullOrEmpty(parm.EsEcNo), it => it.EsEcNo.Contains(parm.EsEcNo));
+            predicate = predicate.AndIF(!string.IsNullOrEmpty(parm.EmEcNo), it => it.EmEcNo.Contains(parm.EmEcNo));
             predicate = predicate.AndIF(!string.IsNullOrEmpty(parm.EsModel), it => it.EsModel.Contains(parm.EsModel));
             predicate = predicate.AndIF(!string.IsNullOrEmpty(parm.EsItem), it => it.EsItem.Contains(parm.EsItem));
             predicate = predicate.AndIF(!string.IsNullOrEmpty(parm.EsOldItem), it => it.EsOldItem.Contains(parm.EsOldItem));
             predicate = predicate.AndIF(!string.IsNullOrEmpty(parm.EsNewItem), it => it.EsNewItem.Contains(parm.EsNewItem));
+            predicate = predicate.AndIF(!string.IsNullOrEmpty(parm.EsPurType), it => it.EsPurType == parm.EsPurType);
+            predicate = predicate.AndIF(!string.IsNullOrEmpty(parm.EsSloc), it => it.EsSloc == parm.EsSloc);
+            predicate = predicate.AndIF(!string.IsNullOrEmpty(parm.EsInsmk), it => it.EsInsmk == parm.EsInsmk);
+            predicate = predicate.AndIF(!string.IsNullOrEmpty(parm.EsMstae), it => it.EsMstae == parm.EsMstae);
+            predicate = predicate.AndIF(!string.IsNullOrEmpty(parm.EsSopStae), it => it.EsSopStae == parm.EsSopStae);
             var response = Queryable()
                 .Where(predicate.ToExpression())
                 .ToPage<PpEcSlave, PpEcSlaveDto>(parm);
@@ -95,7 +100,7 @@ namespace Lps.Service.Production
             //var response = Update(w => w.EsGuid == model.EsGuid, it => new PpEcSlave()
             //{
             //    EsEntryDate = model.EsEntryDate,
-            //    EsEcNo = model.EsEcNo,
+            //    EmEcNo = model.EmEcNo,
             //    EsModel = model.EsModel,
             //    EsItem = model.EsItem,
             //    EsSubItem = model.EsSubItem,
@@ -193,7 +198,7 @@ namespace Lps.Service.Production
                 .SplitInsert(it => !it.Any())
                 .SplitError(x => x.Item.EsGuid.IsEmpty(), "Guid不能为空")
                 .SplitError(x => x.Item.EsEntryDate.IsEmpty(), "输入日不能为空")
-                .SplitError(x => x.Item.EsEcNo.IsEmpty(), "设变No.不能为空")
+                .SplitError(x => x.Item.EmEcNo.IsEmpty(), "设变No.不能为空")
                 .SplitError(x => x.Item.EsModel.IsEmpty(), "机种不能为空")
                 .SplitError(x => x.Item.EsItem.IsEmpty(), "物料不能为空")
                 .SplitError(x => x.Item.EsOldUsageQty.IsEmpty(), "用量不能为空")

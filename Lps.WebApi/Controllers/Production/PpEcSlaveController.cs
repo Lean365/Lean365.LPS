@@ -13,7 +13,7 @@ namespace Lps.WebApi.Controllers
     /// 从设变
     /// API控制器Controller
     /// @author Lean365
-    /// @date 2023-09-14
+    /// @date 2023-09-15
     /// </summary>
     [Verify]
     [Route("production/PpEcSlave")]

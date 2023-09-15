@@ -14,17 +14,6 @@ export function listPpEcMaster(query) {
 }
 
 /**
-* 主设变tree查询
-* @param {查询条件} data
-*/
-export function treelistPpEcMaster(query) {
-  return request({
-    url: 'production/PpEcMaster/treelist',
-    method: 'get',
-    params: query,
-  })
-}
-/**
 * 新增主设变
 * @param data
 */

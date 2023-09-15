@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using MiniExcelLibs.Attributes;
+using Lps.Model.Production;
 
 namespace Lps.Model.Dto
 {
@@ -7,7 +8,7 @@ namespace Lps.Model.Dto
     /// 主设变
     /// 查询对象
     /// @author Lean365
-    /// @date 2023-09-14
+    /// @date 2023-09-15
     /// </summary>
     public class PpEcMasterQueryDto : PagerInfo 
     {
@@ -17,7 +18,6 @@ namespace Lps.Model.Dto
         public string EmEcStatus { get; set; }
         public string EmEcAssigned { get; set; }
         public int? EmEcManageCategory { get; set; }
-        public string EmEcImpDept { get; set; }
         public DateTime? BeginEmEcEntryDate { get; set; }
         public DateTime? EndEmEcEntryDate { get; set; }
         public string EsSopStae { get; set; }
@@ -159,5 +159,7 @@ namespace Lps.Model.Dto
 
 
 
+        [ExcelIgnore]
+        public List<PpEcSlaveDto> PpEcSlaveNav { get; set; }
     }
 }

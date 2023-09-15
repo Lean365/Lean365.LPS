@@ -6,7 +6,7 @@ namespace Lps.Model.Sales
     /// 销售凭证
     /// 数据实体对象
     /// @author Lean365
-    /// @date 2023-09-14
+    /// @date 2023-09-15
     /// </summary>
     [SugarTable("sd_sales_invoice")]
     public class SdSalesInvoice
@@ -305,7 +305,7 @@ namespace Lps.Model.Sales
     /// 销售凭证
     /// 数据实体模板对象导出
     /// @author Lean365
-    /// @date 2023-09-14
+    /// @date 2023-09-15
     /// </summary>
     [SugarTable("sd_sales_invoice")]
     public class SdSalesInvoiceImportTmpl

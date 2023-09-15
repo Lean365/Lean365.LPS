@@ -23,9 +23,9 @@
       @selection-change="handleSelectionChange" highlight-current-row height="652px">
       <el-table-column type="selection" align="center" width="55"></el-table-column>
       <el-table-column prop="tableId" :label="$t('gencode.tableID')" width="80" sortable="" />
-      <el-table-column prop="dbName" :label="$t('gencode.importTable')" width="90" :show-overflow-tooltip="true" />
-      <el-table-column prop="tplCategory" :label="$t('gencode.dbName')" width="90" sortable="" />
-      <el-table-column prop="tableName" :label="$t('gencode.tableName')" width="120" :show-overflow-tooltip="true" />
+      <el-table-column prop="dbName" :label="$t('gencode.dbName')" width="90" :show-overflow-tooltip="true" />
+      <el-table-column prop="tplCategory" :label="$t('gencode.tplCategory')" width="140" sortable="" />
+      <el-table-column prop="tableName" :label="$t('gencode.tableName')" width="160" :show-overflow-tooltip="true" />
       <el-table-column prop="tableComment" :label="$t('gencode.tableComment')" :show-overflow-tooltip="true"
         width="120" />
       <el-table-column prop="className" :label="$t('gencode.className')" :show-overflow-tooltip="true" />
@@ -121,7 +121,7 @@
     },
     preview: {
       open: false,
-      title: proxy.$t('gencode.CodePreview'),
+      title: proxy.$t('gen.CodePreview'),
       data: {},
       activeName: '0'
     }
@@ -157,12 +157,12 @@
   function handleGenTable(row) {
     currentSelected.value = row
     if (!currentSelected.value) {
-      proxy.$modal.msgError(proxy.$t('gencode.selectTable'))
+      proxy.$modal.msgError(proxy.$t('gen.selectTable'))
       return false
     }
     proxy.$refs['codeform'].validate((valid) => {
       if (valid) {
-        proxy.$modal.loading(proxy.$t('gencode.Generatingcode'))
+        proxy.$modal.loading(proxy.$t('gen.Generatingcode'))
 
         codeGenerator({
           tableId: currentSelected.value.tableId,
@@ -173,9 +173,9 @@
             const { data } = res
             showGenerate.value = false
             if (row.genType === '1') {
-              proxy.$modal.msgSuccess(proxy.$t('gencode.Customizedpath'))
+              proxy.$modal.msgSuccess(proxy.$t('gen.Customizedpath'))
             } else {
-              proxy.$modal.msgSuccess(proxy.$t('gencode.Codegenerationcompleted'))
+              proxy.$modal.msgSuccess(proxy.$t('gen.Codegenerationcompleted'))
               proxy.download(data.path)
             }
             proxy.$modal.closeLoading()
@@ -192,12 +192,12 @@
   function handleSynchDb(row) {
     const tableName = row.tableName
     proxy
-      .$confirm(proxy.$t('gencode.ForcedSync') + tableName + proxy.$t('gencode.TableStructure'))
+      .$confirm(proxy.$t('gen.ForcedSync') + tableName + proxy.$t('gen.TableStructure'))
       .then(function () {
         return synchDb(row.tableId, { tableName, dbName: row.dbName })
       })
       .then(() => {
-        proxy.$modal.msgSuccess(proxy.$t('gencode.Syncsuccess'))
+        proxy.$modal.msgSuccess(proxy.$t('gen.Syncsuccess'))
       })
       .catch(() => { })
   }
@@ -209,10 +209,10 @@
   function handlePreview(row) {
     proxy.$refs['codeform'].validate((valid) => {
       if (!valid) {
-        proxy.$modal.msgError(proxy.$t('gencode.completetable'))
+        proxy.$modal.msgError(proxy.$t('gen.completetable'))
         return
       }
-      proxy.$modal.loading(proxy.$t('gencode.Pleasewait'))
+      proxy.$modal.loading(proxy.$t('gen.Pleasewait'))
       previewTable(row.tableId, { VueVersion: 3 }).then((res) => {
         if (res.code === 200) {
           showGenerate.value = false
@@ -242,7 +242,7 @@
   function handleDelete(row) {
     const Ids = row.tableId || tableIds.value
     proxy
-      .$confirm(proxy.$t('gencode.Permanentlydeleted'), proxy.$t('common.warningTips'), {
+      .$confirm(proxy.$t('gen.Permanentlydeleted'), {
         confirmButtonText: proxy.$t('btn.submit'),
         cancelButtonText: proxy.$t('btn.cancel'),
         type: 'warning'
@@ -259,7 +259,7 @@
       .catch(() => {
         proxy.$message({
           type: 'info',
-          message: proxy.$t('common.Undeleted')
+          message: proxy.$t('gen.Undeleted')
         })
       })
   }

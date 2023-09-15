@@ -76,7 +76,7 @@
           <dict-tag :options="statusOptions" :value="scope.row.isStatus" />
         </template>
       </el-table-column>
-      <el-table-column :label="$t('pdict.reMarks')" align="center" prop="reMarks" :show-overflow-tooltip="true" />
+      <el-table-column :label="$t('pdict.reMarks')" prop="reMarks" :show-overflow-tooltip="true" />
       <el-table-column :label="$t('pdict.createTime')" align="center" prop="createTime" width="180">
         <template #default="scope">
           <span>{{ scope.row.createTime }}</span>

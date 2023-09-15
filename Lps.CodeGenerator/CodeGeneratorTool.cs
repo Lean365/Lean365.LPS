@@ -43,6 +43,7 @@ namespace Lps.CodeGenerator
             {
                 ModelTypeName = dto.GenTable.ClassName,//表名对应C# 实体类名
                 PermissionPrefix = dto.GenTable?.Options?.PermissionPrefix,
+                MenuPrefix = dto.GenTable?.Options?.PermissionPrefix.Replace(":","."),
                 Author = dto.GenTable.FunctionAuthor,
                 ShowBtnAdd = dto.GenTable.Options.CheckedBtn.Any(f => f == 1),
                 ShowBtnEdit = dto.GenTable.Options.CheckedBtn.Any(f => f == 2),
@@ -484,11 +485,14 @@ namespace Lps.CodeGenerator
             {
                 //权限前缀，如表sys_user，前缀为sys:user
                 genTable.Options.PermissionPrefix = tableName.ToLower().Substring(0, tableName.IndexOf("_")) + ":" + $"{genTable.ClassName.ToLower().Replace(tableName.ToLower().Substring(0, tableName.IndexOf("_")), "")}";//权限
+                //genTable.Options.MenuPrefix = tableName.ToLower().Substring(0, tableName.IndexOf("_")) + "." + $"{genTable.ClassName.ToLower().Replace(tableName.ToLower().Substring(0, tableName.IndexOf("_")), "")}";//权限
+
             }
             else
             {
                 //权限前缀，如表sysuser，前缀为la:sysuser
                 genTable.Options.PermissionPrefix = $"{genTable.ModuleName.ToLower()}:{genTable.ClassName.ToLower()}";//权限
+                //genTable.Options.MenuPrefix = $"{genTable.ModuleName.ToLower()}.{genTable.ClassName.ToLower()}";//权限
 
             }
             //genTable.Options.PermissionPrefix = $"{genTable.ModuleName.ToLower()}:{genTable.ClassName.ToLower()}";//权限

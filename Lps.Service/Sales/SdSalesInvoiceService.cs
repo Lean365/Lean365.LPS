@@ -17,7 +17,7 @@ namespace Lps.Service.Sales
     /// 销售凭证
     /// Service业务层处理
     /// @author Lean365
-    /// @date 2023-09-14
+    /// @date 2023-09-15
     /// </summary>
     [AppService(ServiceType = typeof(ISdSalesInvoiceService), ServiceLifetime = LifeTime.Transient)]
     public class SdSalesInvoiceService : BaseService<SdSalesInvoice>, ISdSalesInvoiceService

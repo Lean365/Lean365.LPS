@@ -13,7 +13,7 @@ namespace Lps.WebApi.Controllers
     /// 主设变
     /// API控制器Controller
     /// @author Lean365
-    /// @date 2023-09-14
+    /// @date 2023-09-15
     /// </summary>
     [Verify]
     [Route("production/PpEcMaster")]
@@ -44,18 +44,6 @@ namespace Lps.WebApi.Controllers
             return SUCCESS(response);
         }
 
-        /// <summary>
-        /// 查询主设变列表树
-        /// </summary>
-        /// <param name="parm"></param>
-        /// <returns></returns>
-        [HttpGet("treeList")]
-        [ActionPermissionFilter(Permission = "pp:ecmaster:list")]
-        public IActionResult QueryTreePpEcMaster([FromQuery] PpEcMasterQueryDto parm)
-        {
-            var response = _PpEcMasterService.GetTreeList(parm);
-            return SUCCESS(response);
-        }
 
         /// <summary>
         /// 查询主设变详情

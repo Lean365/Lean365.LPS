@@ -1,12 +1,12 @@
 {
   "plogin": {
-    "account": "アカウントID",
-    "password": "パスワード",
+    "account": "アカウント",
+    "password": "パスワード「半角英数字」",
     "confirmPassword": "パスワード(確認用)",
     "captcha": "計算をここに入力",
     "btnLogin": "ログイン",
     "rememberMe": "ログイン情報を記憶",
-    "forgotPwd": "忘れた場合",
+    "forgotPwd": "忘れた方",
     "loggingIn": "ログイン中...",
     "loginSuccess": "ログイン成功",
     "loginTimeOut": "タイムアウト!再ログインしてください",

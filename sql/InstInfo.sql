@@ -2,7 +2,7 @@ use Lean365;
 
 -- 机构信息菜单
 INSERT INTO sys_menu(menuName, parentId, orderNum, path, component, isFrame, isCache, menuType, visible, IsStatus, perms, icon, create_by, create_time,menuName_key) 
-VALUES ('机构信息', 1100, 999, 'InstInfo', 'office/InstInfo', 0, 0, 'C', '0', '0', 'inst:info:list', 'icon1', 'system', GETDATE(), 'menu.InstInfo');
+VALUES ('机构信息', 1100, 999, 'InstInfo', 'office/InstInfo', 0, 0, 'C', '0', '0', 'inst:info:list', 'icon1', 'system', GETDATE(), 'menu.inst.info');
 
 -- 按钮父菜单id
 declare @menuId int = @@identity
@@ -32,13 +32,13 @@ SELECT * FROM sys_menu WHERE menuId = @menuId;
 -- SELECT CAST(CAST(NEWID() AS VARBINARY(3)) AS INT) AS '随机数'
 
 INSERT INTO sys_common_lang(id,lang_code, lang_key, lang_name, addtime) 
-VALUES ((SELECT CAST(CAST(NEWID() AS VARBINARY(3)) AS INT))+1100001,'zh-cn', 'menu.InstInfo', '机构信息', GETDATE());
+VALUES ((SELECT CAST(CAST(NEWID() AS VARBINARY(3)) AS INT))+1100001,'zh-cn', 'menu.inst.info', '机构信息', GETDATE());
 
 INSERT INTO sys_common_lang(id,lang_code, lang_key, lang_name, addtime) 
-VALUES ((SELECT CAST(CAST(NEWID() AS VARBINARY(3)) AS INT))+1100002,'zh-tw', 'menu.InstInfo', 'TW_机构信息', GETDATE());
+VALUES ((SELECT CAST(CAST(NEWID() AS VARBINARY(3)) AS INT))+1100002,'zh-tw', 'menu.inst.info', 'TW_机构信息', GETDATE());
 
 INSERT INTO sys_common_lang(id,lang_code, lang_key, lang_name, addtime) 
-VALUES ((SELECT CAST(CAST(NEWID() AS VARBINARY(3)) AS INT))+1100003,'en', 'menu.InstInfo', 'EN_机构信息', GETDATE());
+VALUES ((SELECT CAST(CAST(NEWID() AS VARBINARY(3)) AS INT))+1100003,'en', 'menu.inst.info', 'EN_机构信息', GETDATE());
 
 INSERT INTO sys_common_lang(id,lang_code, lang_key, lang_name, addtime) 
-VALUES ((SELECT CAST(CAST(NEWID() AS VARBINARY(3)) AS INT))+1100004,'ja', 'menu.InstInfo', 'JA_机构信息', GETDATE());
+VALUES ((SELECT CAST(CAST(NEWID() AS VARBINARY(3)) AS INT))+1100004,'ja', 'menu.inst.info', 'JA_机构信息', GETDATE());

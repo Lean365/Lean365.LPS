@@ -7,7 +7,7 @@ namespace Lps.Model.Dto
     /// 机构信息
     /// 查询对象
     /// @author Lean365
-    /// @date 2023-09-14
+    /// @date 2023-09-15
     /// </summary>
     public class InstInfoQueryDto : PagerInfo 
     {

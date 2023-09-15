@@ -134,7 +134,7 @@ $end
         public ${replaceDto.ModelTypeName} Add${replaceDto.ModelTypeName}(${replaceDto.ModelTypeName} model)
         {
 $if(null != genTable.SubTableName && "" != genTable.SubTableName)
-            return Context.InsertNav(model).EnableDiffLogEvent("新增Nav${genTable.FunctionName}").Include(s1 => s1.${genTable.SubTable.ClassName}Nav).ExecuteReturnEntity();
+            return Context.InsertNav(model).Include(s1 => s1.${genTable.SubTable.ClassName}Nav).ExecuteReturnEntity();
 $else
             return Context.Insertable(model).EnableDiffLogEvent("新增${genTable.FunctionName}").ExecuteReturnEntity();
 $end
@@ -157,7 +157,7 @@ ${end}
             //});
             //return response;
 $if(null != genTable.SubTableName && "" != genTable.SubTableName)
-            return Context.UpdateNav(model).EnableDiffLogEvent("修改Nav${genTable.FunctionName}").Include(z1 => z1.${genTable.SubTable.ClassName}Nav).ExecuteCommand() ? 1 : 0;
+            return Context.UpdateNav(model).Include(z1 => z1.${genTable.SubTable.ClassName}Nav).ExecuteCommand() ? 1 : 0;
 $else
             return Update(model, true);
 $end

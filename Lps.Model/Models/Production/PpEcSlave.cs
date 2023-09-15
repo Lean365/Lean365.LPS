@@ -6,7 +6,7 @@ namespace Lps.Model.Production
     /// 从设变
     /// 数据实体对象
     /// @author Lean365
-    /// @date 2023-09-14
+    /// @date 2023-09-15
     /// </summary>
     [SugarTable("pp_ec_slave")]
     public class PpEcSlave
@@ -36,7 +36,7 @@ namespace Lps.Model.Production
         [SugarColumn(ColumnDescription = "设变No.", ExtendedAttribute = ProteryConstant.NOTNULL)]
         [ExcelColumn(Name = "设变No.")]
 
-        public string EsEcNo { get; set; }
+        public string EmEcNo { get; set; }
 
         /// <summary>
         /// 描述 :机种 
@@ -917,7 +917,7 @@ namespace Lps.Model.Production
     /// 从设变
     /// 数据实体模板对象导出
     /// @author Lean365
-    /// @date 2023-09-14
+    /// @date 2023-09-15
     /// </summary>
     [SugarTable("pp_ec_slave")]
     public class PpEcSlaveImportTmpl
@@ -945,7 +945,7 @@ namespace Lps.Model.Production
         /// </summary>
  	[SugarColumn(ColumnDescription = "设变No.", ExtendedAttribute = ProteryConstant.NOTNULL)]
         [ExcelColumn(Name = "设变No.")]
-        public string EsEcNo { get; set; }
+        public string EmEcNo { get; set; }
 
         /// <summary>
         /// 描述 :机种 

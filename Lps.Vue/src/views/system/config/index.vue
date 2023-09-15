@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="68px">
+    <el-form :model="queryParams" ref="queryForm" :inline="true" v-show="showSearch" label-width="auto">
       <el-form-item :label="$t('pconfig.configName')" prop="configName">
         <el-input v-model="queryParams.configName" :placeholder="$t('btn.enter')+$t('pconfig.configName')" clearable
           @keyup.enter="handleQuery" size="small" />
@@ -46,20 +46,19 @@
       <right-toolbar :showSearch="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
-    <el-table v-loading="loading" :data="configList" @selection-change="handleSelectionChange">
+    <el-table v-loading="loading" :data="configList" border @selection-change="handleSelectionChange" height="602">
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column :label="$t('pconfig.configId')" align="center" prop="configId" />
-      <el-table-column :label="$t('pconfig.configName')" align="center" prop="configName"
-        :show-overflow-tooltip="true" />
-      <el-table-column :label="$t('pconfig.configKey')" align="center" prop="configKey" :show-overflow-tooltip="true" />
-      <el-table-column :label="$t('pconfig.configValue')" align="center" prop="configValue" />
-      <el-table-column :label="$t('pconfig.configType')" align="center" prop="configType">
+      <el-table-column :label="$t('pconfig.configName')" prop="configName" :show-overflow-tooltip="true" />
+      <el-table-column :label="$t('pconfig.configKey')" prop="configKey" :show-overflow-tooltip="true" />
+      <el-table-column :label="$t('pconfig.configValue')" prop="configValue" />
+      <el-table-column :label="$t('pconfig.configType')" prop="configType">
         <template #default="scope">
           <dict-tag :options="sysYesNoOptions" :value="scope.row.configType" />
         </template>
       </el-table-column>
-      <el-table-column :label="$t('pconfig.reMarks')" align="center" prop="reMarks" :show-overflow-tooltip="true" />
-      <el-table-column :label="$t('pconfig.createTime')" align="center" prop="createTime" width="180">
+      <el-table-column :label="$t('pconfig.reMarks')" prop="reMarks" :show-overflow-tooltip="true" />
+      <el-table-column :label="$t('pconfig.createTime')" prop="createTime" width="180">
         <template #default="scope">
           <span>{{ scope.row.createTime }}</span>
         </template>

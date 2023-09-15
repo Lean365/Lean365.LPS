@@ -17,7 +17,7 @@ namespace Lps.Service.Office
     /// 机构信息
     /// Service业务层处理
     /// @author Lean365
-    /// @date 2023-09-14
+    /// @date 2023-09-15
     /// </summary>
     [AppService(ServiceType = typeof(IInstInfoService), ServiceLifetime = LifeTime.Transient)]
     public class InstInfoService : BaseService<InstInfo>, IInstInfoService

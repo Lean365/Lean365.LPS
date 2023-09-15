@@ -10,7 +10,6 @@ using Lps.Model.Production;
 using Lps.Repository;
 using Lps.Service.Production.IProductionService;
 using System.Linq;
-using System.Collections.Generic;
 
 namespace Lps.Service.Production
 {
@@ -18,7 +17,7 @@ namespace Lps.Service.Production
     /// 主设变
     /// Service业务层处理
     /// @author Lean365
-    /// @date 2023-09-14
+    /// @date 2023-09-15
     /// </summary>
     [AppService(ServiceType = typeof(IPpEcMasterService), ServiceLifetime = LifeTime.Transient)]
     public class PpEcMasterService : BaseService<PpEcMaster>, IPpEcMasterService
@@ -39,40 +38,18 @@ namespace Lps.Service.Production
             predicate = predicate.AndIF(!string.IsNullOrEmpty(parm.EmEcStatus), it => it.EmEcStatus == parm.EmEcStatus);
             predicate = predicate.AndIF(!string.IsNullOrEmpty(parm.EmEcAssigned), it => it.EmEcAssigned == parm.EmEcAssigned);
             predicate = predicate.AndIF(parm.EmEcManageCategory != null, it => it.EmEcManageCategory == parm.EmEcManageCategory);
-            predicate = predicate.AndIF(!string.IsNullOrEmpty(parm.EmEcImpDept), it => it.EmEcImpDept == parm.EmEcImpDept);
             //predicate = predicate.AndIF(parm.BeginEmEcEntryDate == null, it => it.EmEcEntryDate >= DateTime.Now.ToShortDateString().ParseToDateTime());
             predicate = predicate.AndIF(parm.BeginEmEcEntryDate != null, it => it.EmEcEntryDate >= parm.BeginEmEcEntryDate);
             predicate = predicate.AndIF(parm.EndEmEcEntryDate != null, it => it.EmEcEntryDate <= parm.EndEmEcEntryDate);
             predicate = predicate.AndIF(!string.IsNullOrEmpty(parm.EsSopStae), it => it.EsSopStae == parm.EsSopStae);
             var response = Queryable()
+                //.Includes(x => x.PpEcSlaveNav) //填充子对象
                 .Where(predicate.ToExpression())
                 .ToPage<PpEcMaster, PpEcMasterDto>(parm);
 
             return response;
         }
 
-        /// <summary>
-        /// 查询主设变树列表
-        /// </summary>
-        /// <param name="parm"></param>
-        /// <returns></returns>
-        public List<PpEcMaster> GetTreeList(PpEcMasterQueryDto parm)
-        {
-            var predicate = Expressionable.Create<PpEcMaster>();
-
-            predicate = predicate.AndIF(!string.IsNullOrEmpty(parm.EmEcNo), it => it.EmEcNo.Contains(parm.EmEcNo));
-            predicate = predicate.AndIF(!string.IsNullOrEmpty(parm.EmEcStatus), it => it.EmEcStatus == parm.EmEcStatus);
-            predicate = predicate.AndIF(!string.IsNullOrEmpty(parm.EmEcAssigned), it => it.EmEcAssigned == parm.EmEcAssigned);
-            predicate = predicate.AndIF(parm.EmEcManageCategory != null, it => it.EmEcManageCategory == parm.EmEcManageCategory);
-            predicate = predicate.AndIF(!string.IsNullOrEmpty(parm.EmEcImpDept), it => it.EmEcImpDept == parm.EmEcImpDept);
-            predicate = predicate.AndIF(!string.IsNullOrEmpty(parm.EsSopStae), it => it.EsSopStae == parm.EsSopStae);
-
-            var response = Queryable()
-                .Where(predicate.ToExpression())
-                .ToTree(it => it.Children, it => it.EmEcNo, 0);
-
-            return response;
-        }
         /// <summary>
         /// 校验输入项目唯一性
         /// </summary>
@@ -96,6 +73,7 @@ namespace Lps.Service.Production
         public PpEcMaster GetInfo(Guid EmGuid)
         {
             var response = Queryable()
+                .Includes(x => x.PpEcSlaveNav) //填充子对象
                 .Where(x => x.EmGuid == EmGuid)
                 .First();
 
@@ -109,7 +87,7 @@ namespace Lps.Service.Production
         /// <returns></returns>
         public PpEcMaster AddPpEcMaster(PpEcMaster model)
         {
-            return Context.Insertable(model).EnableDiffLogEvent("新增主设变").ExecuteReturnEntity();
+            return Context.InsertNav(model).Include(s1 => s1.PpEcSlaveNav).ExecuteReturnEntity();
         }
 
         /// <summary>
@@ -146,7 +124,7 @@ namespace Lps.Service.Production
             //    UpdateTime = model.UpdateTime,
             //});
             //return response;
-            return Update(model, true);
+            return Context.UpdateNav(model).Include(z1 => z1.PpEcSlaveNav).ExecuteCommand() ? 1 : 0;
         }
 
         /// <summary>

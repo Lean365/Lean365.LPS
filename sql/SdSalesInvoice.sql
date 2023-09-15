@@ -2,7 +2,7 @@ use Lean365;
 
 -- 销售凭证菜单
 INSERT INTO sys_menu(menuName, parentId, orderNum, path, component, isFrame, isCache, menuType, visible, IsStatus, perms, icon, create_by, create_time,menuName_key) 
-VALUES ('销售凭证', 5100, 999, 'SdSalesInvoice', 'sales/SdSalesInvoice', 0, 0, 'C', '0', '0', 'sd:salesinvoice:list', 'icon1', 'system', GETDATE(), 'menu.SdSalesInvoice');
+VALUES ('销售凭证', 5100, 999, 'SdSalesInvoice', 'sales/SdSalesInvoice', 0, 0, 'C', '0', '0', 'sd:salesinvoice:list', 'icon1', 'system', GETDATE(), 'menu.sd.salesinvoice');
 
 -- 按钮父菜单id
 declare @menuId int = @@identity
@@ -32,13 +32,13 @@ SELECT * FROM sys_menu WHERE menuId = @menuId;
 -- SELECT CAST(CAST(NEWID() AS VARBINARY(3)) AS INT) AS '随机数'
 
 INSERT INTO sys_common_lang(id,lang_code, lang_key, lang_name, addtime) 
-VALUES ((SELECT CAST(CAST(NEWID() AS VARBINARY(3)) AS INT))+5100001,'zh-cn', 'menu.SdSalesInvoice', '销售凭证', GETDATE());
+VALUES ((SELECT CAST(CAST(NEWID() AS VARBINARY(3)) AS INT))+5100001,'zh-cn', 'menu.sd.salesinvoice', '销售凭证', GETDATE());
 
 INSERT INTO sys_common_lang(id,lang_code, lang_key, lang_name, addtime) 
-VALUES ((SELECT CAST(CAST(NEWID() AS VARBINARY(3)) AS INT))+5100002,'zh-tw', 'menu.SdSalesInvoice', 'TW_销售凭证', GETDATE());
+VALUES ((SELECT CAST(CAST(NEWID() AS VARBINARY(3)) AS INT))+5100002,'zh-tw', 'menu.sd.salesinvoice', 'TW_销售凭证', GETDATE());
 
 INSERT INTO sys_common_lang(id,lang_code, lang_key, lang_name, addtime) 
-VALUES ((SELECT CAST(CAST(NEWID() AS VARBINARY(3)) AS INT))+5100003,'en', 'menu.SdSalesInvoice', 'EN_销售凭证', GETDATE());
+VALUES ((SELECT CAST(CAST(NEWID() AS VARBINARY(3)) AS INT))+5100003,'en', 'menu.sd.salesinvoice', 'EN_销售凭证', GETDATE());
 
 INSERT INTO sys_common_lang(id,lang_code, lang_key, lang_name, addtime) 
-VALUES ((SELECT CAST(CAST(NEWID() AS VARBINARY(3)) AS INT))+5100004,'ja', 'menu.SdSalesInvoice', 'JA_销售凭证', GETDATE());
+VALUES ((SELECT CAST(CAST(NEWID() AS VARBINARY(3)) AS INT))+5100004,'ja', 'menu.sd.salesinvoice', 'JA_销售凭证', GETDATE());

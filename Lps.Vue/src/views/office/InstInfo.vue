@@ -2,14 +2,14 @@
  * @Descripttion: (机构信息/inst_info)
  * @version: (4.0.0)
  * @Author: (Lean365)
- * @Date: (2023-09-14)
+ * @Date: (2023-09-15)
 -->
 <template>
   <div>
     <!-- 工具区域 -->
     <el-form :model="queryParams" label-position="right" inline ref="queryRef" v-show="showSearch" @submit.prevent label-width="auto">
       <el-form-item label="语言" prop="iiLangkey">
-        <el-select filterable clearable  v-model="queryParams.iiLangkey" :placeholder="$t('btn.select')+'语言'">
+        <el-select filterable clearable  v-model="queryParams.iiLangkey" :placeholder="$t('btn.select')+'语言'" size="small">
           <el-option v-for="item in  options.sys_lang_type " :key="item.dictValue" :label="item.dictLabel" :value="item.dictValue">
             <span class="fl">{{ item.dictLabel }}</span>
             <span class="fr" style="color: var(--el-text-color-secondary);">{{ item.dictValue }}</span>          
@@ -17,7 +17,7 @@
         </el-select>
       </el-form-item>
       <el-form-item label="类别" prop="iiCategory">
-        <el-select filterable clearable  v-model="queryParams.iiCategory" :placeholder="$t('btn.select')+'类别'">
+        <el-select filterable clearable  v-model="queryParams.iiCategory" :placeholder="$t('btn.select')+'类别'" size="small">
           <el-option v-for="item in  options.sys_ind_type " :key="item.dictValue" :label="item.dictLabel" :value="item.dictValue">
             <span class="fl">{{ item.dictLabel }}</span>
             <span class="fr" style="color: var(--el-text-color-secondary);">{{ item.dictValue }}</span>          
@@ -25,16 +25,16 @@
         </el-select>
       </el-form-item>
       <el-form-item label="编号" prop="iiInstCode">
-        <el-input  clearable v-model="queryParams.iiInstCode" :placeholder="$t('btn.enter')+'编号'" />
+        <el-input  clearable v-model="queryParams.iiInstCode" :placeholder="$t('btn.enter')+'编号'" size="small"/>
       </el-form-item>
       <el-form-item label="简称" prop="iiShortName">
-        <el-input  clearable v-model="queryParams.iiShortName" :placeholder="$t('btn.enter')+'简称'" />
+        <el-input  clearable v-model="queryParams.iiShortName" :placeholder="$t('btn.enter')+'简称'" size="small"/>
       </el-form-item>
       <el-form-item label="全称" prop="iiFullName">
-        <el-input  clearable v-model="queryParams.iiFullName" :placeholder="$t('btn.enter')+'全称'" />
+        <el-input  clearable v-model="queryParams.iiFullName" :placeholder="$t('btn.enter')+'全称'" size="small"/>
       </el-form-item>
       <el-form-item label="性质" prop="iiNature">
-        <el-select filterable clearable  v-model="queryParams.iiNature" :placeholder="$t('btn.select')+'性质'">
+        <el-select filterable clearable  v-model="queryParams.iiNature" :placeholder="$t('btn.select')+'性质'" size="small">
           <el-option v-for="item in  options.sys_nature_list " :key="item.dictValue" :label="item.dictLabel" :value="item.dictValue">
             <span class="fl">{{ item.dictLabel }}</span>
             <span class="fr" style="color: var(--el-text-color-secondary);">{{ item.dictValue }}</span>          
@@ -49,40 +49,40 @@
           :end-placeholder="$t('btn.dateEnd')"
           value-format="YYYY-MM-DD HH:mm:ss"
           :default-time="defaultTime"
-          :shortcuts="dateOptions">
+          :shortcuts="dateOptions" size="small">
         </el-date-picker>
       </el-form-item>
       <el-form-item label="启用" prop="iiisEnabled">
-        <el-radio-group v-model="queryParams.iiisEnabled">
+        <el-radio-group v-model="queryParams.iiisEnabled" size="small">
           <el-radio>{{$t('layout.all')}}</el-radio>
           <el-radio v-for="item in  options.sys_flag_list " :key="item.dictValue" :label="item.dictValue">{{item.dictLabel}}</el-radio>
         </el-radio-group>
       </el-form-item>
       <el-form-item>
-        <el-button icon="search" type="primary" @click="handleQuery">{{ $t('btn.search') }}</el-button>
-        <el-button icon="refresh" type="info" plain @click="resetQuery">{{ $t('btn.reset') }}</el-button>
+        <el-button icon="search" type="primary" size="small" @click="handleQuery">{{ $t('btn.search') }}</el-button>
+        <el-button icon="refresh" type="info" plain size="small" @click="resetQuery">{{ $t('btn.reset') }}</el-button>
       </el-form-item>
     </el-form>
     <!-- 工具区域 -->
     <el-row :gutter="15" class="mb10">
       <el-col :span="1.5">
-        <el-button type="primary" v-hasPermi="['inst:info:add']" plain icon="plus" @click="handleAdd">
+        <el-button type="primary" v-hasPermi="['inst:info:add']" plain icon="plus" size="small" @click="handleAdd">
           {{ $t('btn.add') }}
         </el-button>
       </el-col>
       <el-col :span="1.5">
-        <el-button type="success" :disabled="single" v-hasPermi="['inst:info:edit']" plain icon="edit" @click="handleUpdate">
+        <el-button type="success" :disabled="single" v-hasPermi="['inst:info:edit']" plain icon="edit" size="small" @click="handleUpdate">
           {{ $t('btn.edit') }}
         </el-button>
       </el-col>
       <el-col :span="1.5">
-        <el-button type="danger" :disabled="multiple" v-hasPermi="['inst:info:delete']" plain icon="delete" @click="handleDelete">
+        <el-button type="danger" :disabled="multiple" v-hasPermi="['inst:info:delete']" plain icon="delete" size="small" @click="handleDelete">
           {{ $t('btn.delete') }}
         </el-button>
       </el-col>
       <el-col :span="1.5">
-        <el-dropdown trigger="click" v-hasPermi="['inst:info:import']">
-          <el-button color="#626aef" plain icon="Upload">
+        <el-dropdown trigger="click" v-hasPermi="['inst:info:import']" >
+          <el-button color="#626aef" plain icon="Upload" size="small">
             {{ $t('btn.import') }}<el-icon class="el-icon--right"><arrow-down /></el-icon>
           </el-button>
           <template #dropdown>
@@ -98,7 +98,7 @@
         </el-dropdown>
       </el-col>
       <el-col :span="1.5">
-        <el-button type="warning" plain icon="download" @click="handleExport" v-hasPermi="['inst:info:export']">
+        <el-button type="warning" plain icon="download" size="small" @click="handleExport" v-hasPermi="['inst:info:export']">
           {{ $t('btn.export') }}
         </el-button>
       </el-col>
@@ -166,7 +166,7 @@
       <el-table-column prop="reMarks" label="备注" align="center" :show-overflow-tooltip="true" v-if="columns.showColumn('reMarks')"/>
       <el-table-column prop="createBy" label="创建者" align="center" :show-overflow-tooltip="true" v-if="columns.showColumn('createBy')"/>
       <el-table-column prop="createTime" label="创建时间" :show-overflow-tooltip="true"  v-if="columns.showColumn('createTime')"/>
-      <el-table-column :label="$t('btn.operation')" width="180">
+      <el-table-column :label="$t('btn.operation')" width="180" align="center">
         <template #default="scope">
           <el-button type="success" size="small" icon="edit" :title="$t('btn.edit')" v-hasPermi="['inst:info:edit']" @click="handleUpdate(scope.row)"></el-button>
           <el-button type="danger" size="small" icon="delete" plain :title="$t('btn.delete')" v-hasPermi="['inst:info:delete']" @click="handleDelete(scope.row)"></el-button>

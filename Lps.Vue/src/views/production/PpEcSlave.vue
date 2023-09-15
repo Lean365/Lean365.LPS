@@ -2,7 +2,7 @@
  * @Descripttion: (从设变/pp_ec_slave)
  * @version: (4.0.0)
  * @Author: (Lean365)
- * @Date: (2023-09-14)
+ * @Date: (2023-09-15)
 -->
 <template>
   <div>
@@ -19,8 +19,8 @@
           :shortcuts="dateOptions" size="small">
         </el-date-picker>
       </el-form-item>
-      <el-form-item label="设变No." prop="esEcNo">
-        <el-input  clearable v-model="queryParams.esEcNo" :placeholder="$t('btn.enter')+'设变No.'" size="small"/>
+      <el-form-item label="设变No." prop="emEcNo">
+        <el-input  clearable v-model="queryParams.emEcNo" :placeholder="$t('btn.enter')+'设变No.'" size="small"/>
       </el-form-item>
       <el-form-item label="机种" prop="esModel">
         <el-input  clearable v-model="queryParams.esModel" :placeholder="$t('btn.enter')+'机种'" size="small"/>
@@ -33,6 +33,44 @@
       </el-form-item>
       <el-form-item label="新物料" prop="esNewItem">
         <el-input  clearable v-model="queryParams.esNewItem" :placeholder="$t('btn.enter')+'新物料'" size="small"/>
+      </el-form-item>
+      <el-form-item label="采购类型" prop="esPurType">
+        <el-select filterable clearable  v-model="queryParams.esPurType" :placeholder="$t('btn.select')+'采购类型'" size="small">
+          <el-option v-for="item in  options.sys_pur_type " :key="item.dictValue" :label="item.dictLabel" :value="item.dictValue">
+            <span class="fl">{{ item.dictLabel }}</span>
+            <span class="fr" style="color: var(--el-text-color-secondary);">{{ item.dictValue }}</span>          
+          </el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item label="仓库" prop="esSloc">
+        <el-select filterable clearable  v-model="queryParams.esSloc" :placeholder="$t('btn.select')+'仓库'" size="small">
+          <el-option v-for="item in  options.sys_sloc_list " :key="item.dictValue" :label="item.dictLabel" :value="item.dictValue">
+            <span class="fl">{{ item.dictLabel }}</span>
+            <span class="fr" style="color: var(--el-text-color-secondary);">{{ item.dictValue }}</span>          
+          </el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item label="检验否" prop="esInsmk">
+        <el-radio-group v-model="queryParams.esInsmk" size="small">
+          <el-radio>{{$t('layout.all')}}</el-radio>
+          <el-radio v-for="item in  options.sys_flag_list " :key="item.dictValue" :label="item.dictValue">{{item.dictLabel}}</el-radio>
+        </el-radio-group>
+      </el-form-item>
+      <el-form-item label="工厂状态" prop="esMstae">
+        <el-select filterable clearable  v-model="queryParams.esMstae" :placeholder="$t('btn.select')+'工厂状态'" size="small">
+          <el-option v-for="item in  options.sys_eol_type " :key="item.dictValue" :label="item.dictLabel" :value="item.dictValue">
+            <span class="fl">{{ item.dictLabel }}</span>
+            <span class="fr" style="color: var(--el-text-color-secondary);">{{ item.dictValue }}</span>          
+          </el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item label="SOP" prop="esSopStae">
+        <el-select filterable clearable  v-model="queryParams.esSopStae" :placeholder="$t('btn.select')+'SOP'" size="small">
+          <el-option v-for="item in  options.sys_sop_yn " :key="item.dictValue" :label="item.dictLabel" :value="item.dictValue">
+            <span class="fl">{{ item.dictLabel }}</span>
+            <span class="fr" style="color: var(--el-text-color-secondary);">{{ item.dictValue }}</span>          
+          </el-option>
+        </el-select>
       </el-form-item>
       <el-form-item>
         <el-button icon="search" type="primary" size="small" @click="handleQuery">{{ $t('btn.search') }}</el-button>
@@ -94,7 +132,7 @@
       <el-table-column type="selection" width="50" align="center"/>
       <el-table-column prop="esGuid" label="Guid" align="center" v-if="columns.showColumn('esGuid')"/>
       <el-table-column prop="esEntryDate" label="输入日" :show-overflow-tooltip="true"  v-if="columns.showColumn('esEntryDate')"/>
-      <el-table-column prop="esEcNo" label="设变No." align="center" :show-overflow-tooltip="true" v-if="columns.showColumn('esEcNo')"/>
+      <el-table-column prop="emEcNo" label="设变No." align="center" :show-overflow-tooltip="true" v-if="columns.showColumn('emEcNo')"/>
       <el-table-column prop="esModel" label="机种" align="center" :show-overflow-tooltip="true" v-if="columns.showColumn('esModel')"/>
       <el-table-column prop="esItem" label="物料" align="center" :show-overflow-tooltip="true" v-if="columns.showColumn('esItem')"/>
       <el-table-column prop="esSubItem" label="子物料" align="center" :show-overflow-tooltip="true" v-if="columns.showColumn('esSubItem')"/>
@@ -115,13 +153,29 @@
       <el-table-column prop="emEcImpDept" label="实施部门" align="center" :show-overflow-tooltip="true" v-if="columns.showColumn('emEcImpDept')"/>
       <el-table-column prop="esPurType" label="采购类型" align="center" v-if="columns.showColumn('esPurType')">
         <template #default="scope">
-          <dict-tag :options=" options.esPurTypeOptions" :value="scope.row.esPurType"  />
+          <dict-tag :options=" options.sys_pur_type " :value="scope.row.esPurType"  />
         </template>
       </el-table-column>
-      <el-table-column prop="esSloc" label="仓库" align="center" :show-overflow-tooltip="true" v-if="columns.showColumn('esSloc')"/>
-      <el-table-column prop="esInsmk" label="检验否" align="center" :show-overflow-tooltip="true" v-if="columns.showColumn('esInsmk')"/>
-      <el-table-column prop="esMstae" label="工厂状态" align="center" :show-overflow-tooltip="true" v-if="columns.showColumn('esMstae')"/>
-      <el-table-column prop="esSopStae" label="SOP" align="center" :show-overflow-tooltip="true" v-if="columns.showColumn('esSopStae')"/>
+      <el-table-column prop="esSloc" label="仓库" align="center" v-if="columns.showColumn('esSloc')">
+        <template #default="scope">
+          <dict-tag :options=" options.sys_sloc_list " :value="scope.row.esSloc"  />
+        </template>
+      </el-table-column>
+      <el-table-column prop="esInsmk" label="检验否" align="center" v-if="columns.showColumn('esInsmk')">
+        <template #default="scope">
+          <dict-tag :options=" options.sys_flag_list " :value="scope.row.esInsmk"  />
+        </template>
+      </el-table-column>
+      <el-table-column prop="esMstae" label="工厂状态" align="center" v-if="columns.showColumn('esMstae')">
+        <template #default="scope">
+          <dict-tag :options=" options.sys_eol_type " :value="scope.row.esMstae"  />
+        </template>
+      </el-table-column>
+      <el-table-column prop="esSopStae" label="SOP" align="center" v-if="columns.showColumn('esSopStae')">
+        <template #default="scope">
+          <dict-tag :options=" options.sys_sop_yn " :value="scope.row.esSopStae"  />
+        </template>
+      </el-table-column>
       <el-table-column prop="esOldCurrStock" label="旧品库存" align="center" v-if="columns.showColumn('esOldCurrStock')"/>
       <el-table-column prop="esNewCurrStock" label="新品库存" align="center" v-if="columns.showColumn('esNewCurrStock')"/>
       <el-table-column prop="esPurEntryDate" label="采购登入日期" :show-overflow-tooltip="true"  v-if="columns.showColumn('esPurEntryDate')"/>
@@ -211,8 +265,8 @@
           </el-col>
 
           <el-col :lg="12">
-            <el-form-item label="设变No." prop="esEcNo">
-              <el-input clearable v-model="form.esEcNo" :placeholder="$t('btn.enter')+'设变No.'" />
+            <el-form-item label="设变No." prop="emEcNo">
+              <el-input clearable v-model="form.emEcNo" :placeholder="$t('btn.enter')+'设变No.'" />
             </el-form-item>
           </el-col>
 
@@ -248,7 +302,7 @@
 
           <el-col :lg="12">
             <el-form-item label="用量" prop="esOldUsageQty">
-              <el-input-number v-model.number="form.esOldUsageQty" :controls="true" controls-position="right" :placeholder="$t('btn.enter')+'用量'" />
+              <el-input clearable v-model="form.esOldUsageQty" :placeholder="$t('btn.enter')+'用量'" />
             </el-form-item>
           </el-col>
 
@@ -328,7 +382,7 @@
             <el-form-item label="采购类型" prop="esPurType">
               <el-select filterable clearable v-model="form.esPurType"  :placeholder="$t('btn.select')+'采购类型'">
                 <el-option
-                  v-for="item in options.esPurTypeOptions" 
+                  v-for="item in options.sys_pur_type" 
                   :key="item.dictValue" 
                   :label="item.dictLabel" 
                   :value="item.dictValue"></el-option>
@@ -338,25 +392,47 @@
 
           <el-col :lg="12">
             <el-form-item label="仓库" prop="esSloc">
-              <el-input clearable v-model="form.esSloc" :placeholder="$t('btn.enter')+'仓库'" />
+              <el-select filterable clearable v-model="form.esSloc"  :placeholder="$t('btn.select')+'仓库'">
+                <el-option
+                  v-for="item in options.sys_sloc_list" 
+                  :key="item.dictValue" 
+                  :label="item.dictLabel" 
+                  :value="item.dictValue"></el-option>
+              </el-select>
             </el-form-item>
           </el-col>
 
           <el-col :lg="12">
             <el-form-item label="检验否" prop="esInsmk">
-              <el-input clearable v-model="form.esInsmk" :placeholder="$t('btn.enter')+'检验否'" />
+              <el-radio-group v-model="form.esInsmk">
+                <el-radio v-for="item in options.sys_flag_list" :key="item.dictValue" :label="item.dictValue">
+                  {{item.dictLabel}}
+                </el-radio>
+              </el-radio-group>
             </el-form-item>
           </el-col>
 
           <el-col :lg="12">
             <el-form-item label="工厂状态" prop="esMstae">
-              <el-input clearable v-model="form.esMstae" :placeholder="$t('btn.enter')+'工厂状态'" />
+              <el-select filterable clearable v-model="form.esMstae"  :placeholder="$t('btn.select')+'工厂状态'">
+                <el-option
+                  v-for="item in options.sys_eol_type" 
+                  :key="item.dictValue" 
+                  :label="item.dictLabel" 
+                  :value="item.dictValue"></el-option>
+              </el-select>
             </el-form-item>
           </el-col>
 
           <el-col :lg="12">
             <el-form-item label="SOP" prop="esSopStae">
-              <el-input clearable v-model="form.esSopStae" :placeholder="$t('btn.enter')+'SOP'" />
+              <el-select filterable clearable v-model="form.esSopStae"  :placeholder="$t('btn.select')+'SOP'">
+                <el-option
+                  v-for="item in options.sys_sop_yn" 
+                  :key="item.dictValue" 
+                  :label="item.dictLabel" 
+                  :value="item.dictValue"></el-option>
+              </el-select>
             </el-form-item>
           </el-col>
 
@@ -795,18 +871,23 @@ const queryParams = reactive({
   sort: '',
   sortType: 'asc',
   esEntryDate: undefined,
-  esEcNo: undefined,
+  emEcNo: undefined,
   esModel: undefined,
   esItem: undefined,
   esOldItem: undefined,
   esNewItem: undefined,
+  esPurType: undefined,
+  esSloc: undefined,
+  esInsmk: undefined,
+  esMstae: undefined,
+  esSopStae: undefined,
 })
 //字段显示控制
 const columns = ref([
   { visible: false, prop: 'esGuid', label: 'Guid' },
 
   { visible: true, prop: 'esEntryDate', label: '输入日' },
-  { visible: true, prop: 'esEcNo', label: '设变No.' },
+  { visible: true, prop: 'emEcNo', label: '设变No.' },
   { visible: true, prop: 'esModel', label: '机种' },
   { visible: true, prop: 'esItem', label: '物料' },
   { visible: true, prop: 'esSubItem', label: '子物料' },
@@ -903,7 +984,11 @@ const defaultTime = ref([new Date(2000, 1, 1, 0, 0, 0), new Date(2000, 2, 1, 23,
 const dateRangeEsEntryDate = ref([])
 //字典参数
 var dictParams = [
-  { dictType: "sys_is_deleted" },
+  { dictType: "sys_pur_type" },
+  { dictType: "sys_sloc_list" },
+  { dictType: "sys_flag_list" },
+  { dictType: "sys_eol_type" },
+  { dictType: "sys_sop_yn" },
 ]
 //字典加载
 proxy.getDicts(dictParams).then((response) => {
@@ -977,7 +1062,7 @@ const state = reactive({
   rules: {
     esGuid: [{ required: true, message: 'Guid'+ proxy.$t('btn.empty'), trigger: "blur" }],
     esEntryDate: [{ required: true, message: '输入日'+ proxy.$t('btn.empty'), trigger: "blur" }],
-    esEcNo: [{ required: true, message: '设变No.'+ proxy.$t('btn.empty'), trigger: "blur" }],
+    emEcNo: [{ required: true, message: '设变No.'+ proxy.$t('btn.empty'), trigger: "blur" }],
     esModel: [{ required: true, message: '机种'+ proxy.$t('btn.empty'), trigger: "blur" }],
     esItem: [{ required: true, message: '物料'+ proxy.$t('btn.empty'), trigger: "blur" }],
     esOldUsageQty: [{ required: true, message: '用量'+ proxy.$t('btn.empty'), trigger: "blur" }],
@@ -985,16 +1070,24 @@ const state = reactive({
     esBomDate: [{ required: true, message: 'bom日期'+ proxy.$t('btn.empty'), trigger: "blur" }],
     emEcImpDept: [{ required: true, message: '实施部门'+ proxy.$t('btn.empty'), trigger: "blur" }],
     esPurType: [{ required: true, message: '采购类型'+ proxy.$t('btn.empty'), trigger: "change" }],
-    esSloc: [{ required: true, message: '仓库'+ proxy.$t('btn.empty'), trigger: "blur" }],
-    esSopStae: [{ required: true, message: 'SOP'+ proxy.$t('btn.empty'), trigger: "blur" }],
+    esSloc: [{ required: true, message: '仓库'+ proxy.$t('btn.empty'), trigger: "change" }],
+    esSopStae: [{ required: true, message: 'SOP'+ proxy.$t('btn.empty'), trigger: "change" }],
     esOldCurrStock: [{ required: true, message: '旧品库存'+ proxy.$t('btn.empty'), trigger: "blur" }],
     esNewCurrStock: [{ required: true, message: '新品库存'+ proxy.$t('btn.empty'), trigger: "blur" }],
   },
   options: {
     // 采购类型 选项列表 格式 eg:{ dictLabel: '标签', dictValue: '0'}
-    esPurTypeOptions: [],
+    sys_pur_type: [],
+    // 仓库 选项列表 格式 eg:{ dictLabel: '标签', dictValue: '0'}
+    sys_sloc_list: [],
+    // 检验否 选项列表 格式 eg:{ dictLabel: '标签', dictValue: '0'}
+    sys_flag_list: [],
+    // 工厂状态 选项列表 格式 eg:{ dictLabel: '标签', dictValue: '0'}
+    sys_eol_type: [],
+    // SOP 选项列表 格式 eg:{ dictLabel: '标签', dictValue: '0'}
+    sys_sop_yn: [],
     // 软删除 选项列表 格式 eg:{ dictLabel: '标签', dictValue: '0'}
-    sys_is_deleted: [],
+    isDeletedOptions: [],
   }
 })
 //将响应式对象转换成普通对象
@@ -1011,7 +1104,7 @@ function reset() {
   form.value = {
     esGuid: null,
     esEntryDate: null,
-    esEcNo: null,
+    emEcNo: null,
     esModel: null,
     esItem: null,
     esSubItem: null,
@@ -1124,6 +1217,10 @@ function handleAdd() {
   form.value.esNewUsageQty= 0
   form.value.esBomDate= new Date()
   form.value.esPurType= []
+  form.value.esSloc= []
+  form.value.esInsmk= 0
+  form.value.esMstae= []
+  form.value.esSopStae= []
   form.value.esOldCurrStock= 0
   form.value.esNewCurrStock= 0
   form.value.esPurEntryDate= new Date()

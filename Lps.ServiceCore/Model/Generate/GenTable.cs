@@ -113,6 +113,7 @@ namespace Lps.Model.System.Generate
         public string TreeName { get; set; } = string.Empty;
         public string TreeParentCode { get; set; } = string.Empty;
         public string PermissionPrefix { get; set; } = string.Empty;
+        public string MenuPrefix { get; set; } = string.Empty;
         /// <summary>
         /// 额外参数字符串
         /// </summary>

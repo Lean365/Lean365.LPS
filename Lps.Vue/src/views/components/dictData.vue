@@ -1,5 +1,5 @@
 <template>
-  <el-form :model="queryParams" ref="queryForm" :inline="true" label-width="68px">
+  <el-form :model="queryParams" ref="queryForm" :inline="true" label-width="auto">
     <el-form-item :label="$t('pdict.dictName')" prop="dictType">
       <el-select v-model="queryParams.dictType" size="small">
         <el-option v-for="item in typeOptions" :key="item.dictId" :label="item.dictName" :value="item.dictType"
@@ -26,7 +26,7 @@
         v-hasPermi="['system:dict:add']">{{$t('btn.add')+$t('pdict.dict')}}</el-button>
     </el-col>
   </el-row>
-  <el-table :data="dataList">
+  <el-table :data="dataList" border height="480">
     <!-- <el-table-column type="selection" width="55" align="center" /> -->
     <el-table-column :label="$t('pdict.dictCode')" align="center" prop="dictCode" />
     <el-table-column :label="$t('pdict.dictLabel')" align="center" prop="dictLabel">

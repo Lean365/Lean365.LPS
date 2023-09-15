@@ -2,7 +2,7 @@ use Lean365;
 
 -- 从设变菜单
 INSERT INTO sys_menu(menuName, parentId, orderNum, path, component, isFrame, isCache, menuType, visible, IsStatus, perms, icon, create_by, create_time,menuName_key) 
-VALUES ('从设变', 310010, 999, 'PpEcSlave', 'production/PpEcSlave', 0, 0, 'C', '0', '0', 'pp:ecslave:list', 'icon1', 'system', GETDATE(), 'menu.PpEcSlave');
+VALUES ('从设变', 310010, 999, 'PpEcSlave', 'production/PpEcSlave', 0, 0, 'C', '0', '0', 'pp:ecslave:list', 'icon1', 'system', GETDATE(), 'menu.pp.ecslave');
 
 -- 按钮父菜单id
 declare @menuId int = @@identity
@@ -32,13 +32,13 @@ SELECT * FROM sys_menu WHERE menuId = @menuId;
 -- SELECT CAST(CAST(NEWID() AS VARBINARY(3)) AS INT) AS '随机数'
 
 INSERT INTO sys_common_lang(id,lang_code, lang_key, lang_name, addtime) 
-VALUES ((SELECT CAST(CAST(NEWID() AS VARBINARY(3)) AS INT))+310010001,'zh-cn', 'menu.PpEcSlave', '从设变', GETDATE());
+VALUES ((SELECT CAST(CAST(NEWID() AS VARBINARY(3)) AS INT))+310010001,'zh-cn', 'menu.pp.ecslave', '从设变', GETDATE());
 
 INSERT INTO sys_common_lang(id,lang_code, lang_key, lang_name, addtime) 
-VALUES ((SELECT CAST(CAST(NEWID() AS VARBINARY(3)) AS INT))+310010002,'zh-tw', 'menu.PpEcSlave', 'TW_从设变', GETDATE());
+VALUES ((SELECT CAST(CAST(NEWID() AS VARBINARY(3)) AS INT))+310010002,'zh-tw', 'menu.pp.ecslave', 'TW_从设变', GETDATE());
 
 INSERT INTO sys_common_lang(id,lang_code, lang_key, lang_name, addtime) 
-VALUES ((SELECT CAST(CAST(NEWID() AS VARBINARY(3)) AS INT))+310010003,'en', 'menu.PpEcSlave', 'EN_从设变', GETDATE());
+VALUES ((SELECT CAST(CAST(NEWID() AS VARBINARY(3)) AS INT))+310010003,'en', 'menu.pp.ecslave', 'EN_从设变', GETDATE());
 
 INSERT INTO sys_common_lang(id,lang_code, lang_key, lang_name, addtime) 
-VALUES ((SELECT CAST(CAST(NEWID() AS VARBINARY(3)) AS INT))+310010004,'ja', 'menu.PpEcSlave', 'JA_从设变', GETDATE());
+VALUES ((SELECT CAST(CAST(NEWID() AS VARBINARY(3)) AS INT))+310010004,'ja', 'menu.pp.ecslave', 'JA_从设变', GETDATE());
