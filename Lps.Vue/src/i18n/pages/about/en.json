@@ -1,16 +1,16 @@
 {
   "pabout": {
-    "account": "ID",
+    "account": "Account",
     "password": "Password",
-    "captcha": "Captcha",
+    "captcha": "Captcha code",
     "btnLogin": "Login",
-    "rememberMe": "Remember Me",
-    "loginSuccess": "login success",
-    "loginTimeOut": "Login status has expired, please log in again",
-    "reLogin": "re-register",
-    "invalidSession": "Invalid session, or session has expired, please log in again.",
-    "otherLoginWay": "Other",
-    "register": "Sign up now",
-    "forgotPwd": "forget"
+    "rememberMe": "Remember password",
+    "loginSuccess": "Login successful",
+    "loginTimeOut": "Login status has expired. Please log in again",
+    "reLogin": "Log in again",
+    "invalidSession": "Invalid session or session has expired. Please log in again.",
+    "otherLoginWay": "Other login methods",
+    "register": "Register Now",
+    "forgotPwd": "Forgot password"
   }
 }

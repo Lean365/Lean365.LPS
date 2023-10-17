@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Lean365/LaplaceNet"
+    "url": "https://github.com/Lean365/Lean365.LPS"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.1.0",
@@ -58,15 +58,18 @@
     "vue-cropper": "1.0.2",
     "vue-i18n": "9.3.0",
     "vue-router": "^4.2.4",
-    "vue3-particles": "^2.12.0"
+    "vue3-particles": "^2.12.0",
+    "xe-utils": "^3.5.13"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.3.4",
     "@vue/compiler-sfc": "^3.3.4",
+    "consola": "^3.2.3",
     "sass": "1.66.1",
     "unplugin-auto-import": "0.16.6",
     "vite": "^4.4.9",
     "vite-plugin-compression": "^0.5.1",
+    "vite-plugin-style-import": "^2.0.0",
     "vite-plugin-svg-icons": "2.0.1",
     "vite-plugin-vue-setup-extend": "^0.4.0"
   }

@@ -172,8 +172,9 @@ namespace Lps.WebApi.Controllers.System
             {
                 return ToResponse(ResultCode.CAPTCHA_ERROR, "验证码错误");
             }
-
+            dto.UserIP = HttpContext.GetClientUserIp();
             SysUser user = sysUserService.Register(dto);
+
             if (user.UserId > 0)
             {
                 return SUCCESS(user);

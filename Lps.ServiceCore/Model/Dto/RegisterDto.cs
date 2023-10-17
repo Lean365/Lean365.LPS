@@ -30,5 +30,9 @@ namespace Lps.ServiceCore.Model.Dto
         /// 头像
         /// </summary>
         public string Photo { get; set; }
+        /// <summary>
+        /// IP地址
+        /// </summary>
+        public string UserIP { get; set; }
     }
 }

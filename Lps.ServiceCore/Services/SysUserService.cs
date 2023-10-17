@@ -6,6 +6,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using IPTools.Core;
 using Lps.Common;
 using Lps.Model;
 using Lps.ServiceCore.Model.Dto;
@@ -126,19 +127,24 @@ namespace Lps.ServiceCore.Service
             var diffArr = roleIds.Where(c => !((IList)user.RoleIds).Contains(c)).ToArray();
             var diffArr2 = user.RoleIds.Where(c => !((IList)roleIds).Contains(c)).ToArray();
 
-            if (diffArr.Length > 0 || diffArr2.Length > 0)
+            bool result = UseTran2(() =>
             {
-                //删除用户与角色关联
-                UserRoleService.DeleteUserRoleByUserId((int)user.UserId);
-                //新增用户与角色关联
-                UserRoleService.InsertUserRole(user);
-            }
-            // 删除用户与岗位关联
-            UserPostService.Delete(user.UserId);
-            // 新增用户与岗位管理
-            UserPostService.InsertUserPost(user);
-            return ChangeUser(user);
+                if (diffArr.Length > 0 || diffArr2.Length > 0)
+                {
+                    //删除用户与角色关联
+                    UserRoleService.DeleteUserRoleByUserId((int)user.UserId);
+                    //新增用户与角色关联
+                    UserRoleService.InsertUserRole(user);
+                }
+                // 删除用户与岗位关联
+                UserPostService.Delete(user.UserId);
+                // 新增用户与岗位管理
+                UserPostService.InsertUserPost(user);
+                ChangeUser(user);
+            });
+            return result ? 1 : 0;
         }
+
 
         public int ChangeUser(SysUser user)
         {
@@ -222,7 +228,7 @@ namespace Lps.ServiceCore.Service
             }
             //密码md5
             string password = NETCore.Encrypt.EncryptProvider.Md5(dto.Password);
-
+            var ip_info = IpTool.Search(dto.UserIP);
             SysUser user = new()
             {
                 Create_time = DateTime.Now,
@@ -231,7 +237,9 @@ namespace Lps.ServiceCore.Service
                 Password = password,
                 IsStatus = 0,
                 DeptId = 0,
-                ReMarks = "用户注册"
+                ReMarks = "用户注册",
+                Province = ip_info.Province,
+                City = ip_info.City
             };
             if (UserConstants.NOT_UNIQUE.Equals(CheckUserNameUnique(dto.Username)))
             {

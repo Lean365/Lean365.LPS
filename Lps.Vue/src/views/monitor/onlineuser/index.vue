@@ -38,7 +38,7 @@
       </el-table-column>
       <el-table-column :label="$t('btn.operation')" align="center" width="160">
         <template #default="scope">
-          <el-button color="#626aef" size="small" @click="onChat(scope.row)" icon="bell" v-hasRole="['admin']"
+          <el-button color="#626aef" size="small" @click="onChat(scope.row)" icon="ChatDotRound" v-hasRole="['admin']"
             :title="$t('ponline.Notice')"></el-button>
           <el-button type="danger" plain size="small" @click="onLock(scope.row)" icon="lock"
             v-hasPermi="['monitor:online:forceLogout']" :title="$t('ponline.forceLogout')"></el-button>
@@ -58,8 +58,8 @@
           </el-descriptions>
           <el-text truncated>{{ item.browser }}</el-text>
           <div style="top:30%;text-align:center;">
-            <el-button color=" #626aef" szie="small" @click="onChat(item)" icon="bell" :title="$t('ponline.Notice')"
-              v-hasRole="['admin']"></el-button>
+            <el-button color=" #626aef" szie="small" @click="onChat(item)" icon="ChatDotRound"
+              :title="$t('ponline.Notice')" v-hasRole="['admin']"></el-button>
             <el-button type="danger" plain szie="small" @click="onLock(item)" icon="lock"
               :title="$t('ponline.forceLogout')" v-hasPermi="['monitor:online:forceLogout']"></el-button>
           </div>
@@ -111,7 +111,7 @@
 
   function onChat(item) {
     proxy
-      .$prompt(proxy.$t('ponline.notificationContent'), proxy.$t('common.systemTips'), {
+      .$prompt(proxy.$t('ponline.notificationContent'), {
         confirmButtonText: proxy.$t('ponline.send'),
         cancelButtonText: proxy.$t('ponline.cancel'),
         type: "info",
@@ -127,10 +127,12 @@
   }
   function onLock(row) {
     proxy
-      .$prompt(proxy.$t('ponline.forceReason'), proxy.$t('common.warningTips'), {
+      .$prompt(proxy.$t('ponline.forceReason'), {
         confirmButtonText: proxy.$t('ponline.send'),
         cancelButtonText: proxy.$t('ponline.cancel'),
         type: "warning",
+        inputPattern: /\S/,
+        inputErrorMessage: proxy.$t('ponline.empty')
       })
       .then((val) => {
         forceLogout({ ...row, time: 10, reason: val.value, clientId: row.clientId }).then(() => {
@@ -142,10 +144,12 @@
   // 批量强退
   function onLockAll() {
     proxy
-      .$prompt(proxy.$t('ponline.forceReason'), proxy.$t('common.warningTips'), {
+      .$prompt(proxy.$t('ponline.forceReason'), {
         confirmButtonText: proxy.$t('ponline.send'),
         cancelButtonText: proxy.$t('ponline.cancel'),
         type: "warning",
+        inputPattern: /\S/,
+        inputErrorMessage: proxy.$t('ponline.empty')
       })
       .then((val) => {
         forceLogoutAll({ time: 10, reason: val.value }).then((res) => {

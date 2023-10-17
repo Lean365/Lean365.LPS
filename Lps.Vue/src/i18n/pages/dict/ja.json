@@ -10,7 +10,7 @@
     "reMarks": "備考",
     "customSql": "カスタマイズsql",
     "dictTypememo": "データベースからデータをロードする場合は、sql_で始まる文字列を使用してください",
-    "customSqlmemo": "データベースからデータをロードする場合は、次の形式で sql ステートメントを構成します: SELECT userId を dictValue として、userName を dictLabel FROM sys_user",
+    "customSqlmemo": "データベースからデータをロードする場合は、このフォーマットでsql文を構成します: SELECT userId を dictValue として、userName を dictLabel FROM sys_user",
     "sql": "SQLスクリプト",
     "dictCode": "辞書コード",
     "dictLabel": "辞書ラベル",

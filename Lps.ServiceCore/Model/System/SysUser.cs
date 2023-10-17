@@ -82,6 +82,14 @@ namespace Lps.ServiceCore.Model.System
         /// </summary>
         [SugarColumn(DefaultValue = "0")]
         public long DeptId { get; set; }
+        /// <summary>
+        /// 行政区域：省
+        /// </summary>
+        public string Province { get; set; }
+        /// <summary>
+        /// 行政区域：市
+        /// </summary>
+        public string City { get; set; }
 
         #region 表额外字段
         public bool IsAdmin()
